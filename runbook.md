@@ -199,7 +199,7 @@ helm repo update
 Create and label the configmap for the dashboard:
 ```sh
 kubectl create configmap dcgm-dashboard \
-  --from-file=dcgm-dashboard.json \
+  --from-file=dcgm-dashboard_v2.json \
   -n prometheus
 
 kubectl label configmap dcgm-dashboard \
