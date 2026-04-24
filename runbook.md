@@ -196,7 +196,9 @@ Add the Prometheus Helm repository:
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 ```
+
 Create and label the configmap for the dashboard:
+
 ```sh
 kubectl create configmap dcgm-dashboard \
   --from-file=dcgm-dashboard_v2.json \

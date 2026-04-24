@@ -66,6 +66,12 @@ Use this command to list currently created GPU instances.
 sudo nvidia-smi mig -lgi
 ```
 
+#### MIG Configuration via GPU Operator
+Change mig configuration by updating `nvidia.com/mig.config` label on he node
+```sh
+kubectl label nodes <node-name> nvidia.com/mig.config=all-balanced --overwrite
+```
+
 ## Container Test
 
 Use this command to run a GPU-enabled container and execute the MNIST GPU workload.

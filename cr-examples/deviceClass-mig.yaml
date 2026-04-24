@@ -1,0 +1,18 @@
+apiVersion: resource.k8s.io/v1
+kind: DeviceClass
+metadata:
+  annotations:
+    meta.helm.sh/release-name: nvidia-dra-driver-gpu
+    meta.helm.sh/release-namespace: nvidia-dra-driver-gpu
+  creationTimestamp: "2026-04-23T09:34:43Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: mig.nvidia.com
+  resourceVersion: "4907"
+  uid: 96c5ae80-fce6-4667-9394-19ddd2f6cf8e
+spec:
+  selectors:
+    - cel:
+        expression: device.driver == 'gpu.nvidia.com' &&
+          device.attributes['gpu.nvidia.com'].type == 'mig'

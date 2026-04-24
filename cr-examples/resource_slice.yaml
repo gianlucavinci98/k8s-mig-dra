@@ -1,0 +1,22 @@
+apiVersion: resource.k8s.io/v1
+kind: ResourceSlice
+metadata:
+  creationTimestamp: "2026-04-23T09:52:47Z"
+  generateName: ai-lab-a100-2-gpu.nvidia.com-
+  generation: 1
+  name: ai-lab-a100-2-gpu.nvidia.com-phhqr
+  ownerReferences:
+  - apiVersion: v1
+    controller: true
+    kind: Node
+    name: ai-lab-a100-2
+    uid: c3b97e0b-bdd8-413c-8ade-531cc0709a18
+  resourceVersion: "6521"
+  uid: 30250f1b-b6c6-48c5-b4d7-5f52a909a93b
+spec:
+  driver: gpu.nvidia.com
+  nodeName: ai-lab-a100-2
+  pool:
+    generation: 1
+    name: ai-lab-a100-2
+    resourceSliceCount: 1
