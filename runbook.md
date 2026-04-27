@@ -168,6 +168,8 @@ Create a node selector label on all the nodes in your cluster that support GPU a
 kubectl label node <node-name> nvidia.com/dra-kubelet-plugin=true
 ```
 
+Choose DCGM export and scrape interval by setting the `DCGM_EXPORTER_INTERVAL` environment variable and the `interval` field in the `dcgmExporter.serviceMonitor` section of the GPU Operator Helm values.
+
 Install the GPU Operator without device plugin and ready for monitoring:
 
 ```sh

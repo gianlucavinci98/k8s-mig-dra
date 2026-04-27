@@ -290,7 +290,7 @@ dcgmExporter:
   image: dcgm-exporter
   version: 4.5.1-4.8.0-distroless
   imagePullPolicy: IfNotPresent
-  # DRA-OVERRIDE: sets exporter sampling interval to 5000ms for faster telemetry refresh.
+  # DRA-OVERRIDE: sets exporter sampling interval for faster telemetry refresh.
   env:
     - name: DCGM_EXPORTER_INTERVAL
       value: "5000"

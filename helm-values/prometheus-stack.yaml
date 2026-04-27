@@ -4087,12 +4087,12 @@ prometheus:
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/release-0.44/pkg/prometheus/promcfg.go#L180-L183
     ##
     # DRA-OVERRIDE: increase scrape frequency to 5s for finer-grained GPU and cluster observability.
-    scrapeInterval: 5s
+    scrapeInterval: ""
 
     ## Number of seconds to wait for target to respond before erroring
     ##
     # DRA-OVERRIDE: it must be lower than scrapeInterval to avoid scrape timeouts. Setting it to 4s to give some buffer for network latency and processing time.
-    scrapeTimeout: "4s"
+    scrapeTimeout: ""
 
     ## List of scrape classes to expose to scraping objects such as
     ## PodMonitors, ServiceMonitors, Probes and ScrapeConfigs.

@@ -764,7 +764,7 @@
           "links": [],
           "mappings": [],
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
@@ -1525,7 +1525,7 @@
           },
           "mappings": [],
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
@@ -1537,7 +1537,7 @@
               }
             ]
           },
-          "unit": "decmbytes"
+          "unit": "mbytes"
         },
         "overrides": [
           {
@@ -1548,7 +1548,7 @@
             "properties": [
               {
                 "id": "max",
-                "value": 20480
+                "value": 20095
               }
             ]
           },
@@ -1560,7 +1560,19 @@
             "properties": [
               {
                 "id": "max",
-                "value": 10240
+                "value": 9983
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*.5gb.*"
+            },
+            "properties": [
+              {
+                "id": "max",
+                "value": 4863
               }
             ]
           }

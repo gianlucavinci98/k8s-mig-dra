@@ -1,0 +1,11 @@
+apiVersion: resource.k8s.io/v1
+kind: DeviceClass
+metadata:
+  name: mig.nvidia.com-custom
+spec:
+  selectors:
+    - cel:
+        expression: >
+          device.driver == 'gpu.nvidia.com' &&
+          device.attributes['gpu.nvidia.com'].type == 'mig' &&
+          device.attributes["gpu.nvidia.com"].profile == "1g.5gb"
