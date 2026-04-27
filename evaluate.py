@@ -11,8 +11,10 @@ with open(file) as f:
 
 total_tokens = sum(r["eval_count"] for r in records)
 
-# wall clock stimato usando il total_duration massimo tra le richieste
-total_time_sec = max(r["total_duration"] for r in records) / 1e9
+# wall clock dell'esperimento basato sul primo start e sull'ultimo end
+experiment_start_ms = min(r["start_time"] for r in records)
+experiment_end_ms = max(r["end_time"] for r in records)
+total_time_sec = (experiment_end_ms - experiment_start_ms) / 1000
 
 # somma tempi GPU
 total_eval_time = sum(r["eval_duration"] for r in records) / 1e9  # ns -> s
@@ -38,11 +40,6 @@ tokens_per_req = [
     r["eval_count"] / (r["eval_duration"] / 1e9)
     for r in records if r["eval_duration"] > 0
 ]
-
-# stampa tokens_per_req per richiesta
-print("--- TOKENS/SEC PER RICHIESTA ---")
-for idx, tps in enumerate(tokens_per_req, start=1):
-    print(f"Request #{idx}: {tps:.2f} tokens/sec")
 
 # dettagli per richiesta (human readable)
 per_request_stats = []
@@ -74,14 +71,14 @@ avg_tokens = sum(tokens_per_req) / len(tokens_per_req)
 
 # --- OUTPUT ---
 
-print("--- PER-REQUEST STATS ---")
+print("\n\n--- PER-REQUEST STATS ---")
 for s in per_request_stats:
     print(
         f"Request #{s['idx']:>1} | "
         f"res_time: {s['time']} | "
         f"latency: {s['latency_sec']:.2f} s | "
         f"tokens: {s['tokens']} | "
-        f"gen_time: {s['generation_time_sec']:.2f} s | "
+        f"gen_time: {s['generation_time_sec']:.3f} s | "
         f"tok/s: {s['tok_per_sec']:.2f}"
     )
 
