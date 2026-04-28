@@ -3,13 +3,19 @@
 URL="http://10.146.0.55:31134/api/generate"
 MODEL="tinyllama"
 
-TOTAL_REQUESTS="${1:-20}"
-CONCURRENCY="${2:-5}"
+TEST_MIG_CONFIG="$(kubectl get nodes -o json | jq -r '.items[].metadata.labels["nvidia.com/mig.config"] // empty' | awk 'NF { print; exit }')"
+TEST_OLLAMA_REPLICAS="$(kubectl -n ollama-test get deploy ollama-mig -o jsonpath='{.spec.replicas}' 2>/dev/null)"
+
+TEST_MIG_CONFIG="${TEST_MIG_CONFIG:-unknown-mig-config}"
+TEST_OLLAMA_REPLICAS="${TEST_OLLAMA_REPLICAS:-unknown-replicas}"
+
+TOTAL_REQUESTS="${1:-10}"
+CONCURRENCY="${2:-10}"
 RUN_TS="$(date +%Y%m%d-%H%M%S-%3N)"
 
-OUT_FILE="results.jsonl"
+OUT_FILE="results/results.jsonl"
 : > "$OUT_FILE"
-RESULT_LOG="result-${RUN_TS}.log"
+RESULT_LOG="results/result-${RUN_TS}-${TEST_MIG_CONFIG}-replicas${TEST_OLLAMA_REPLICAS}.log"
 : > "$RESULT_LOG"
 exec > >(tee -a "$RESULT_LOG") 2>&1
 
@@ -22,6 +28,8 @@ log() {
 }
 
 log "Starting load test"
+log "MIG Config: $TEST_MIG_CONFIG"
+log "Ollama Replicas: $TEST_OLLAMA_REPLICAS"
 log "Total requests: $TOTAL_REQUESTS"
 log "Concurrency: $CONCURRENCY"
 

@@ -1575,6 +1575,18 @@
                 "value": 4863
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*.40gb.*"
+            },
+            "properties": [
+              {
+                "id": "max",
+                "value": 40441
+              }
+            ]
           }
         ]
       },

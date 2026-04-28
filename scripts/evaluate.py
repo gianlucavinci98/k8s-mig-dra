@@ -1,6 +1,6 @@
 import json
 
-file = "results.jsonl"
+file = "results/results.jsonl"
 
 records = []
 with open(file) as f:
