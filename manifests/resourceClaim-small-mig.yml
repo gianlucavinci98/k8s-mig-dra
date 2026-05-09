@@ -2,7 +2,7 @@ apiVersion: resource.k8s.io/v1
 kind: ResourceClaimTemplate
 metadata:
   namespace: ollama-test
-  name: whatever-small-mig
+  name: small-mig
 spec:
   spec:
     devices:
@@ -13,4 +13,5 @@ spec:
             count: 1
             selectors:
               - cel:
-                  expression: device.attributes["gpu.nvidia.com"].type == "mig"
+                  expression: device.attributes["gpu.nvidia.com"].type == "mig" &&
+                    device.attributes["gpu.nvidia.com"].profile == "1g.5gb"
