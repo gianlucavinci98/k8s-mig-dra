@@ -2,6 +2,7 @@
 
 URL="http://10.146.0.55:31134/api/generate"
 MODEL="tinyllama"
+NUM_PREDICT="${NUM_PREDICT:-50}"
 
 TEST_MIG_CONFIG="$(kubectl get nodes -o json | jq -r '.items[].metadata.labels["nvidia.com/mig.config"] // empty' | awk 'NF { print; exit }')"
 TEST_OLLAMA_REPLICAS="$(kubectl -n ollama-test get deploy ollama-mig -o jsonpath='{.spec.replicas}' 2>/dev/null)"
@@ -14,10 +15,22 @@ CONCURRENCY="${2:-10}"
 RUN_TS="$(date +%Y%m%d-%H%M%S-%3N)"
 
 OUT_FILE="results/results.jsonl"
+METADATA_FILE="results/metadata.json"
 : > "$OUT_FILE"
-RESULT_LOG="results/result-${RUN_TS}-${TEST_MIG_CONFIG}-replicas${TEST_OLLAMA_REPLICAS}.log"
+RESULT_LOG="results/result-${RUN_TS}-${TEST_MIG_CONFIG}-replicas${TEST_OLLAMA_REPLICAS}-${NUM_PREDICT}.log"
 : > "$RESULT_LOG"
 exec > >(tee -a "$RESULT_LOG") 2>&1
+
+# Save metadata for the report
+cat > "$METADATA_FILE" <<EOF
+{
+  "mig_config": "$TEST_MIG_CONFIG",
+  "ollama_replicas": $TEST_OLLAMA_REPLICAS,
+  "total_requests": $TOTAL_REQUESTS,
+  "concurrency": $CONCURRENCY,
+  "num_predict": $NUM_PREDICT
+}
+EOF
 
 ts() {
   date +"%H:%M:%S"
@@ -32,6 +45,7 @@ log "MIG Config: $TEST_MIG_CONFIG"
 log "Ollama Replicas: $TEST_OLLAMA_REPLICAS"
 log "Total requests: $TOTAL_REQUESTS"
 log "Concurrency: $CONCURRENCY"
+log "Output tokens (effort): $NUM_PREDICT"
 
 run_request() {
   local id=$1
@@ -43,7 +57,7 @@ run_request() {
     \"prompt\": \"Write a very long and detailed explanation about distributed systems, Kubernetes scheduling, GPU partitioning with MIG, and performance tradeoffs. Include examples and technical depth.\",
     \"stream\": false,
     \"options\": {
-      \"num_predict\": 400
+      \"num_predict\": $NUM_PREDICT
     }
   }")
 
@@ -51,6 +65,7 @@ run_request() {
 
   echo "$response" | jq -c --arg start "$start" \
                          --arg end "$end" \
+                         --arg num_predict "$NUM_PREDICT" \
   '{
     created_at,
     total_duration,
@@ -59,6 +74,7 @@ run_request() {
     prompt_eval_duration,
     eval_count,
     eval_duration,
+    num_predict: ($num_predict|tonumber),
     start_time: ($start|tonumber),
     end_time: ($end|tonumber)
   }' >> "$OUT_FILE"

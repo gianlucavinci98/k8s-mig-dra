@@ -1,11 +1,25 @@
 import json
+import os
 
 file = "results/results.jsonl"
+metadata_file = "results/metadata.json"
 
 records = []
 with open(file) as f:
     for line in f:
         records.append(json.loads(line))
+
+# Load metadata if available
+metadata = {}
+if os.path.exists(metadata_file):
+    with open(metadata_file) as f:
+        metadata = json.load(f)
+
+num_predict = metadata.get("num_predict")
+mig_config = metadata.get("mig_config")
+ollama_replicas = metadata.get("ollama_replicas")
+total_requests = metadata.get("total_requests")
+concurrency = metadata.get("concurrency")
 
 # --- METRICHE BASE ---
 
@@ -74,13 +88,25 @@ avg_tokens = sum(tokens_per_req) / len(tokens_per_req)
 print("\n\n--- PER-REQUEST STATS ---")
 for s in per_request_stats:
     print(
-        f"Request #{s['idx']:>1} | "
+        f"Request #{s['idx']:0>2} | "
         f"res_time: {s['time']} | "
-        f"latency: {s['latency_sec']:.2f} s | "
+        f"latency: {s['latency_sec']:6.2f} s | "
         f"tokens: {s['tokens']} | "
         f"gen_time: {s['generation_time_sec']:.3f} s | "
         f"tok/s: {s['tok_per_sec']:.2f}"
     )
+
+print("\n--- TEST CONFIGURATION ---")
+if mig_config:
+    print(f"MIG Config: {mig_config}")
+if ollama_replicas is not None:
+    print(f"Ollama Replicas: {ollama_replicas}")
+if total_requests is not None:
+    print(f"Total requests: {total_requests}")
+if concurrency is not None:
+    print(f"Concurrency: {concurrency}")
+if num_predict is not None:
+    print(f"Requested output tokens (effort): {num_predict}")
 
 print(f"\nTotal tokens: {total_tokens}")
 print(f"Wall time (s): {total_time_sec:.2f}")
