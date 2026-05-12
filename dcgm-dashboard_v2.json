@@ -543,7 +543,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 8,
         "w": 24,
         "x": 0,
         "y": 7
@@ -1504,7 +1504,7 @@
           "includeNullMetadata": true,
           "interval": "5",
           "intervalFactor": 1,
-          "legendFormat": "Node:{{Hostname}}  GPU:{{gpu}}  MIG:{{GPU_I_PROFILE}}  ID:{{GPU_I_ID}}",
+          "legendFormat": "[{{Hostname}}] - {{gpu}}/{{GPU_I_ID}} - {{GPU_I_PROFILE}}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -1637,7 +1637,7 @@
           "includeNullMetadata": true,
           "interval": "5",
           "intervalFactor": 1,
-          "legendFormat": "{{Hostname}}  GPU:{{gpu}}  MIG:{{GPU_I_PROFILE}}  ID:{{GPU_I_ID}}",
+          "legendFormat": "[{{Hostname}}] - {{gpu}}/{{GPU_I_ID}} - {{GPU_I_PROFILE}}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -1742,7 +1742,7 @@
           "expr": "avg by(GPU_I_ID, Hostname, gpu, GPU_I_PROFILE) (DCGM_FI_PROF_GR_ENGINE_ACTIVE{Hostname=~\"$Hostname\", gpu=~\"$gpu\", GPU_I_PROFILE=~\"$mig\"})",
           "instant": false,
           "interval": "5",
-          "legendFormat": "Node:{{Hostname}}  GPU:{{gpu}}  MIG:{{GPU_I_PROFILE}}  ID:{{GPU_I_ID}}",
+          "legendFormat": "[{{Hostname}}] - {{gpu}}/{{GPU_I_ID}} - {{GPU_I_PROFILE}}",
           "range": true,
           "refId": "A"
         }
@@ -1850,7 +1850,7 @@
           "includeNullMetadata": true,
           "interval": "5",
           "intervalFactor": 1,
-          "legendFormat": "Node:{{Hostname}}  GPU:{{gpu}}  MIG:{{GPU_I_PROFILE}}  ID:{{GPU_I_ID}}",
+          "legendFormat": "[{{Hostname}}] - {{gpu}}/{{GPU_I_ID}} - {{GPU_I_PROFILE}}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -1959,13 +1959,13 @@
           "includeNullMetadata": true,
           "interval": "5",
           "intervalFactor": 1,
-          "legendFormat": "Node:{{Hostname}}  GPU:{{gpu}}  MIG:{{GPU_I_PROFILE}}  ID:{{GPU_I_ID}}",
+          "legendFormat": "[{{Hostname}}] - {{gpu}}/{{GPU_I_ID}} - {{GPU_I_PROFILE}}",
           "range": true,
           "refId": "A",
           "useBackend": false
         }
       ],
-      "title": "Memory Utilization",
+      "title": "Memory Bandwidth",
       "type": "timeseries"
     },
     {
@@ -2394,7 +2394,7 @@
     }
   ],
   "preload": false,
-  "refresh": "",
+  "refresh": "auto",
   "schemaVersion": 42,
   "tags": [
     "gpu",
