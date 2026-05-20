@@ -88,7 +88,7 @@ avg_tokens = sum(tokens_per_req) / len(tokens_per_req)
 print("\n\n--- PER-REQUEST STATS ---")
 for s in per_request_stats:
     print(
-        f"Request #{s['idx']:0>2} | "
+        f"Request {s['idx']:0>2} | "
         f"res_time: {s['time']} | "
         f"latency: {s['latency_sec']:6.2f} s | "
         f"tokens: {s['tokens']} | "
