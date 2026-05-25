@@ -14,43 +14,43 @@ spec:
         app: ollama-mig
     spec:
       initContainers:
-      - name: ollama-pull
-        image: ollama/ollama:0.12.11-rc1
-        command: ["/bin/sh", "-c"]
-        args:
-          - |
-            ollama serve &
-            sleep 5
-            ollama pull tinyllama
-        volumeMounts:
-        - name: ollama-data
-          mountPath: /root/.ollama
+        - name: ollama-pull
+          image: ollama/ollama:0.12.11-rc1
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              ollama serve &
+              sleep 5
+              ollama pull tinyllama
+          volumeMounts:
+            - name: ollama-data
+              mountPath: /root/.ollama
 
       containers:
-      - name: ollama
-        image: ollama/ollama:0.12.11-rc1
-        ports:
-        - containerPort: 11434
+        - name: ollama
+          image: ollama/ollama:0.12.11-rc1
+          ports:
+            - containerPort: 11434
 
-        env:
-        - name: OLLAMA_HOST
-          value: "0.0.0.0:11434"
+          env:
+            - name: OLLAMA_HOST
+              value: "0.0.0.0:11434"
 
-        resources:
-          claims:
-          - name: mig-gpu
+          resources:
+            claims:
+              - name: mig-gpu
 
-        volumeMounts:
-        - name: ollama-data
-          mountPath: /root/.ollama
+          volumeMounts:
+            - name: ollama-data
+              mountPath: /root/.ollama
 
       resourceClaims:
-      - name: mig-gpu
-        resourceClaimTemplateName: whatever-mig
+        - name: mig-gpu
+          resourceClaimTemplateName: whatever-mig
 
       volumes:
-      - name: ollama-data
-        emptyDir: {}
+        - name: ollama-data
+          emptyDir: {}
 
 ---
 apiVersion: v1
@@ -63,6 +63,6 @@ spec:
   selector:
     app: ollama-mig
   ports:
-  - port: 11434
-    targetPort: 11434
-    nodePort: 31134
+    - port: 11434
+      targetPort: 11434
+      nodePort: 31134

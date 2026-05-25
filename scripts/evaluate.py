@@ -1,8 +1,17 @@
 import json
 import os
+import csv
 
 file = "results/results.jsonl"
 metadata_file = "results/metadata.json"
+table_file = "results/results_table.csv"
+
+def env_flag_is_enabled(value: str | None) -> bool:
+    return str(value).lower() in {"1", "true", "yes", "on"}
+
+
+# Follow the same switch used to persist RESULT_LOG.
+WRITE_RUN_TO_TABLE = env_flag_is_enabled(os.environ.get("SAVE_RESULT_LOG"))
 
 records = []
 with open(file) as f:
@@ -83,6 +92,34 @@ throughput_gpu = total_tokens / total_eval_time
 # 5) media tokens/sec
 avg_tokens = sum(tokens_per_req) / len(tokens_per_req)
 
+latency_avg_ms = sum(latencies) / len(latencies)
+latency_p95_ms = sorted(latencies)[min(int(len(latencies) * 0.95), len(latencies) - 1)]
+
+
+def append_run_to_table() -> None:
+    row = {
+        "MIG config": mig_config,
+        "repliche Ollama": ollama_replicas,
+        "concorrenza": concurrency,
+        "token output": num_predict,
+        "Total tokens": total_tokens,
+        "Wall time": round(total_time_sec, 2),
+        "GPU time": round(total_eval_time, 2),
+        "Throughput REAL": round(throughput_real, 2),
+        "Throughput GPU": round(throughput_gpu, 2),
+        "Latency avg": round(latency_avg_ms, 2),
+        "Latency p95": round(latency_p95_ms, 2),
+    }
+
+    fieldnames = list(row.keys())
+    file_exists = os.path.exists(table_file)
+
+    with open(table_file, "a", newline="") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(row)
+
 # --- OUTPUT ---
 
 print("\n\n--- PER-REQUEST STATS ---")
@@ -117,5 +154,9 @@ print(f"Throughput REAL (tok/s): {throughput_real:.2f}")
 print(f"Throughput GPU (tok/s): {throughput_gpu:.2f}")
 print(f"Avg tokens/sec per request: {avg_tokens:.2f}")
 
-print(f"Latency avg (ms): {sum(latencies)/len(latencies):.2f}")
-print(f"Latency p95 (ms): {sorted(latencies)[min(int(len(latencies)*0.95), len(latencies)-1)]:.2f}")
+print(f"Latency avg (ms): {latency_avg_ms:.2f}")
+print(f"Latency p95 (ms): {latency_p95_ms:.2f}")
+
+if WRITE_RUN_TO_TABLE:
+    append_run_to_table()
+    print(f"\nRun appended to CSV table: {table_file}")

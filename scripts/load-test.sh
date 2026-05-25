@@ -2,7 +2,7 @@
 
 URL="http://10.146.0.55:31134/api/generate"
 MODEL="tinyllama"
-NUM_PREDICT="${NUM_PREDICT:-50}"
+NUM_PREDICT="${NUM_PREDICT:-500}"
 
 TEST_MIG_CONFIG="$(kubectl get nodes -o json | jq -r '.items[].metadata.labels["nvidia.com/mig.config"] // empty' | awk 'NF { print; exit }')"
 TEST_OLLAMA_REPLICAS="$(kubectl -n ollama-test get deploy ollama-mig -o jsonpath='{.spec.replicas}' 2>/dev/null)"
@@ -12,14 +12,18 @@ TEST_OLLAMA_REPLICAS="${TEST_OLLAMA_REPLICAS:-unknown-replicas}"
 
 TOTAL_REQUESTS="${1:-10}"
 CONCURRENCY="${2:-10}"
+SAVE_RESULT_LOG="${3:-0}"
 RUN_TS="$(date +%Y%m%d-%H%M%S-%3N)"
 
 OUT_FILE="results/results.jsonl"
 METADATA_FILE="results/metadata.json"
 : > "$OUT_FILE"
 RESULT_LOG="results/result-${RUN_TS}-${TEST_MIG_CONFIG}-replicas${TEST_OLLAMA_REPLICAS}-${NUM_PREDICT}.log"
-: > "$RESULT_LOG"
-exec > >(tee -a "$RESULT_LOG") 2>&1
+
+if [[ "$SAVE_RESULT_LOG" == "1" || "$SAVE_RESULT_LOG" == "true" || "$SAVE_RESULT_LOG" == "yes" || "$SAVE_RESULT_LOG" == "on" ]]; then
+  : > "$RESULT_LOG"
+  exec > >(tee -a "$RESULT_LOG") 2>&1
+fi
 
 # Save metadata for the report
 cat > "$METADATA_FILE" <<EOF
@@ -111,4 +115,4 @@ done
 log "Load test completed"
 
 log "Running results evaluation"
-python3 evaluate.py
+SAVE_RESULT_LOG="$SAVE_RESULT_LOG" python3 evaluate.py
