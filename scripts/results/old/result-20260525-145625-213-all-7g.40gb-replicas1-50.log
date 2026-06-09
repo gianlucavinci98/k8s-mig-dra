@@ -1,0 +1,80 @@
+[14:56:25] Starting load test
+[14:56:25] MIG Config: all-7g.40gb
+[14:56:25] Ollama Replicas: 1
+[14:56:25] Total requests: 10
+[14:56:25] Concurrency: 10
+[14:56:25] Output tokens (effort): 50
+[14:56:25] REQUEST: 1 - STARTED in background (active_jobs=1)
+[14:56:25] REQUEST: 2 - STARTED in background (active_jobs=2)
+[14:56:25] REQUEST: 3 - STARTED in background (active_jobs=3)
+[14:56:25] REQUEST: 4 - STARTED in background (active_jobs=4)
+[14:56:25] REQUEST: 5 - STARTED in background (active_jobs=5)
+[14:56:25] REQUEST: 6 - STARTED in background (active_jobs=6)
+[14:56:25] REQUEST: 7 - STARTED in background (active_jobs=7)
+[14:56:25] REQUEST: 8 - STARTED in background (active_jobs=8)
+[14:56:25] REQUEST: 9 - STARTED in background (active_jobs=9)
+[14:56:25] REQUEST: 10 - STARTED in background (active_jobs=10)
+[14:56:25] WAITING -> active_jobs=10
+[14:56:26] REQUEST: 1 - COMPLETED
+[14:56:26] RESUMING -> a request finished (active_jobs=9)
+[14:56:26] ALL REQUESTS LAUNCHED
+[14:56:26] WAITING for remaining requests to finish (active_jobs=9)
+[14:56:27] REQUEST: 6 - COMPLETED
+[14:56:27] REQUEST COMPLETED -> remaining active_jobs=8
+[14:56:27] WAITING for remaining requests to finish (active_jobs=8)
+[14:56:27] REQUEST: 7 - COMPLETED
+[14:56:27] REQUEST COMPLETED -> remaining active_jobs=7
+[14:56:27] WAITING for remaining requests to finish (active_jobs=7)
+[14:56:27] REQUEST: 5 - COMPLETED
+[14:56:27] REQUEST COMPLETED -> remaining active_jobs=6
+[14:56:27] WAITING for remaining requests to finish (active_jobs=6)
+[14:56:27] REQUEST: 4 - COMPLETED
+[14:56:27] REQUEST COMPLETED -> remaining active_jobs=5
+[14:56:27] WAITING for remaining requests to finish (active_jobs=5)
+[14:56:27] REQUEST: 2 - COMPLETED
+[14:56:27] REQUEST COMPLETED -> remaining active_jobs=4
+[14:56:27] WAITING for remaining requests to finish (active_jobs=4)
+[14:56:27] REQUEST: 9 - COMPLETED
+[14:56:27] REQUEST COMPLETED -> remaining active_jobs=3
+[14:56:27] WAITING for remaining requests to finish (active_jobs=3)
+[14:56:27] REQUEST: 3 - COMPLETED
+[14:56:27] REQUEST COMPLETED -> remaining active_jobs=2
+[14:56:27] WAITING for remaining requests to finish (active_jobs=2)
+[14:56:28] REQUEST: 8 - COMPLETED
+[14:56:28] REQUEST COMPLETED -> remaining active_jobs=1
+[14:56:28] WAITING for remaining requests to finish (active_jobs=1)
+[14:56:28] REQUEST: 10 - COMPLETED
+[14:56:28] REQUEST COMPLETED -> remaining active_jobs=0
+[14:56:28] Load test completed
+[14:56:28] Running results evaluation
+
+
+--- PER-REQUEST STATS ---
+Request 01 | res_time: 14:56:26.86 | latency:   1.63 s | tokens: 50 | gen_time: 0.120 s | tok/s: 415.71
+Request 02 | res_time: 14:56:27.02 | latency:   1.78 s | tokens: 50 | gen_time: 0.114 s | tok/s: 438.18
+Request 03 | res_time: 14:56:27.17 | latency:   1.93 s | tokens: 50 | gen_time: 0.114 s | tok/s: 437.01
+Request 04 | res_time: 14:56:27.32 | latency:   2.09 s | tokens: 50 | gen_time: 0.114 s | tok/s: 440.27
+Request 05 | res_time: 14:56:27.48 | latency:   2.24 s | tokens: 50 | gen_time: 0.114 s | tok/s: 438.41
+Request 06 | res_time: 14:56:27.63 | latency:   2.40 s | tokens: 50 | gen_time: 0.114 s | tok/s: 439.61
+Request 07 | res_time: 14:56:27.78 | latency:   2.54 s | tokens: 50 | gen_time: 0.114 s | tok/s: 440.53
+Request 08 | res_time: 14:56:27.94 | latency:   2.70 s | tokens: 50 | gen_time: 0.114 s | tok/s: 439.63
+Request 09 | res_time: 14:56:28.09 | latency:   2.85 s | tokens: 50 | gen_time: 0.114 s | tok/s: 437.59
+Request 10 | res_time: 14:56:28.25 | latency:   3.00 s | tokens: 50 | gen_time: 0.115 s | tok/s: 436.56
+
+--- TEST CONFIGURATION ---
+MIG Config: all-7g.40gb
+Ollama Replicas: 1
+Total requests: 10
+Concurrency: 10
+Requested output tokens (effort): 50
+
+Total tokens: 500
+Wall time (s): 3.03
+GPU time (s): 1.15
+
+--- METRICS ---
+Throughput REAL (tok/s): 165.13
+Throughput GPU (tok/s): 436.23
+Avg tokens/sec per request: 436.35
+Latency avg (ms): 2314.55
+Latency p95 (ms): 2996.79

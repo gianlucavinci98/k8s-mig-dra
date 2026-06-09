@@ -88,7 +88,7 @@
       },
       "id": 50,
       "panels": [],
-      "title": "Aggregate",
+      "title": "Partitions",
       "type": "row"
     },
     {
@@ -141,10 +141,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 0,
-        "y": 1
+        "h": 8,
+        "w": 4,
+        "x": 20,
+        "y": 12
       },
       "id": 44,
       "maxDataPoints": 100,
@@ -182,7 +182,7 @@
           "refId": "A"
         }
       ],
-      "title": "GPU Engine Utilization",
+      "title": "Total GPU Engine Utilization",
       "type": "gauge"
     },
     {
@@ -235,10 +235,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 6,
-        "y": 1
+        "h": 5,
+        "w": 8,
+        "x": 16,
+        "y": 45
       },
       "id": 43,
       "maxDataPoints": 100,
@@ -329,10 +329,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 12,
-        "y": 1
+        "h": 5,
+        "w": 8,
+        "x": 0,
+        "y": 45
       },
       "id": 42,
       "maxDataPoints": 100,
@@ -370,7 +370,7 @@
           "refId": "A"
         }
       ],
-      "title": "GPU Memory Utilization",
+      "title": "GPU Memory Bandwidth",
       "type": "gauge"
     },
     {
@@ -422,10 +422,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 18,
-        "y": 1
+        "h": 5,
+        "w": 8,
+        "x": 8,
+        "y": 45
       },
       "id": 23,
       "maxDataPoints": 100,
@@ -543,10 +543,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 24,
+        "h": 10,
+        "w": 12,
         "x": 0,
-        "y": 7
+        "y": 1
       },
       "id": 60,
       "maxDataPoints": 100,
@@ -602,11 +602,11 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 41
+        "y": 36
       },
       "id": 51,
       "panels": [],
-      "title": "per GPU",
+      "title": "Others",
       "type": "row"
     },
     {
@@ -674,9 +674,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 9,
+        "w": 8,
         "x": 0,
-        "y": 42
+        "y": 50
       },
       "id": 46,
       "options": {
@@ -782,9 +782,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 8,
-        "x": 9,
-        "y": 42
+        "w": 20,
+        "x": 0,
+        "y": 28
       },
       "id": 45,
       "options": {
@@ -890,8 +890,8 @@
       "gridPos": {
         "h": 8,
         "w": 4,
-        "x": 17,
-        "y": 42
+        "x": 20,
+        "y": 28
       },
       "id": 59,
       "options": {
@@ -976,9 +976,9 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
-        "x": 21,
-        "y": 42
+        "w": 4,
+        "x": 20,
+        "y": 20
       },
       "id": 49,
       "options": {
@@ -1058,9 +1058,9 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
-        "x": 21,
-        "y": 46
+        "w": 4,
+        "x": 20,
+        "y": 24
       },
       "id": 48,
       "options": {
@@ -1170,9 +1170,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 9,
-        "x": 0,
-        "y": 50
+        "w": 8,
+        "x": 16,
+        "y": 37
       },
       "id": 47,
       "options": {
@@ -1279,7 +1279,7 @@
       "gridPos": {
         "h": 8,
         "w": 8,
-        "x": 9,
+        "x": 8,
         "y": 50
       },
       "id": 55,
@@ -1343,10 +1343,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 7,
-        "x": 17,
-        "y": 50
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 58
       },
       "id": 53,
       "options": {
@@ -1398,11 +1398,11 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 11
       },
       "id": 52,
       "panels": [],
-      "title": "per MIG profile",
+      "title": "GPU Util",
       "type": "row"
     },
     {
@@ -1469,10 +1469,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 11,
-        "x": 0,
-        "y": 14
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 37
       },
       "id": 37,
       "options": {
@@ -1591,10 +1591,10 @@
         ]
       },
       "gridPos": {
-        "h": 9,
-        "w": 13,
-        "x": 11,
-        "y": 14
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 1
       },
       "id": 38,
       "options": {
@@ -1711,10 +1711,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 8,
+        "h": 8,
+        "w": 20,
         "x": 0,
-        "y": 23
+        "y": 20
       },
       "id": 10,
       "options": {
@@ -1747,7 +1747,7 @@
           "refId": "A"
         }
       ],
-      "title": "GPU Utilization",
+      "title": "Partitioned GPU Utilization",
       "type": "timeseries"
     },
     {
@@ -1815,10 +1815,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
-        "x": 8,
-        "y": 23
+        "x": 16,
+        "y": 50
       },
       "id": 28,
       "options": {
@@ -1924,10 +1924,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
-        "x": 16,
-        "y": 23
+        "x": 0,
+        "y": 37
       },
       "id": 36,
       "options": {
@@ -1966,6 +1966,112 @@
         }
       ],
       "title": "Memory Bandwidth",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "max": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 20,
+        "x": 0,
+        "y": 12
+      },
+      "id": 62,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.4.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg(DCGM_FI_PROF_GR_ENGINE_ACTIVE{Hostname=~\"$Hostname\", gpu=~\"$gpu\", GPU_I_PROFILE=~\"$mig\"})",
+          "format": "time_series",
+          "interval": "5",
+          "intervalFactor": 1,
+          "legendFormat": "Node:{{Hostname}}  GPU:{{gpu}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Total GPU Engine Utilization",
       "type": "timeseries"
     },
     {
@@ -2092,10 +2198,10 @@
         ]
       },
       "gridPos": {
-        "h": 9,
-        "w": 24,
+        "h": 10,
+        "w": 16,
         "x": 0,
-        "y": 32
+        "y": 58
       },
       "id": 39,
       "maxDataPoints": 100,
@@ -2171,7 +2277,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 76
       },
       "id": 56,
       "panels": [],
@@ -2244,7 +2350,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 59
+        "y": 77
       },
       "id": 57,
       "options": {
@@ -2351,7 +2457,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 59
+        "y": 77
       },
       "id": 58,
       "options": {
@@ -2495,7 +2601,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "NVIDIA DCGM Dashboard for Kubernetes (MIG & Non-MIG GPUs)",
+  "title": "NVIDIA DCGM Dashboard for Kubernetes (MIG)",
   "uid": "pgv-h42QjU_J",
   "version": 4,
   "weekStart": ""

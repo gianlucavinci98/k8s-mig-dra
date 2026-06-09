@@ -1,0 +1,35 @@
+[08:30:23] Starting load test
+[08:30:23] MIG Config: all-1g.5gb
+[08:30:23] Ollama Replicas: 7
+[08:30:23] Total requests: 1
+[08:30:23] Concurrency: 1
+[08:30:23] Output tokens (effort): 50
+[08:30:23] REQUEST: 1 - STARTED in background (active_jobs=1)
+[08:30:23] WAITING -> active_jobs=1
+[08:30:25] REQUEST: 1 - COMPLETED
+[08:30:25] RESUMING -> a request finished (active_jobs=0)
+[08:30:25] ALL REQUESTS LAUNCHED
+[08:30:25] Load test completed
+[08:30:25] Running results evaluation
+
+
+--- PER-REQUEST STATS ---
+Request #01 | res_time: 08:30:25.57 | latency:   1.70 s | tokens: 50 | gen_time: 0.320 s | tok/s: 156.22
+
+--- TEST CONFIGURATION ---
+MIG Config: all-1g.5gb
+Ollama Replicas: 7
+Total requests: 1
+Concurrency: 1
+Requested output tokens (effort): 50
+
+Total tokens: 50
+Wall time (s): 1.72
+GPU time (s): 0.32
+
+--- METRICS ---
+Throughput REAL (tok/s): 29.12
+Throughput GPU (tok/s): 156.22
+Avg tokens/sec per request: 156.22
+Latency avg (ms): 1704.78
+Latency p95 (ms): 1704.78
