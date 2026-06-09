@@ -1,6 +1,7 @@
 import json
 import os
 import csv
+from pathlib import Path
 
 file = "results/results.jsonl"
 metadata_file = "results/metadata.json"
@@ -12,6 +13,7 @@ def env_flag_is_enabled(value: str | None) -> bool:
 
 # Follow the same switch used to persist RESULT_LOG.
 WRITE_RUN_TO_TABLE = env_flag_is_enabled(os.environ.get("SAVE_RESULT_LOG"))
+RESULT_LOG = os.environ.get("RESULT_LOG")
 
 records = []
 with open(file) as f:
@@ -96,6 +98,44 @@ latency_avg_ms = sum(latencies) / len(latencies)
 latency_p95_ms = sorted(latencies)[min(int(len(latencies) * 0.95), len(latencies) - 1)]
 
 
+def per_request_csv_path() -> Path:
+    if RESULT_LOG:
+        return Path(RESULT_LOG).with_suffix(".csv")
+
+    return Path("results") / "per-request-stats.csv"
+
+
+def append_per_request_stats_to_table() -> None:
+    fieldnames = [
+        "idx",
+        "time",
+        "latency_sec",
+        "tokens",
+        "generation_time_sec",
+        "tok_per_sec",
+    ]
+
+    output_file = per_request_csv_path()
+    file_exists = output_file.exists()
+
+    with output_file.open("a", newline="") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+
+        for row in per_request_stats:
+            writer.writerow(
+                {
+                    "idx": row["idx"],
+                    "time": row["time"],
+                    "latency_sec": round(row["latency_sec"], 3),
+                    "tokens": row["tokens"],
+                    "generation_time_sec": round(row["generation_time_sec"], 3),
+                    "tok_per_sec": round(row["tok_per_sec"], 3),
+                }
+            )
+
+
 def append_run_to_table() -> None:
     row = {
         "MIG config": mig_config,
@@ -159,4 +199,6 @@ print(f"Latency p95 (ms): {latency_p95_ms:.2f}")
 
 if WRITE_RUN_TO_TABLE:
     append_run_to_table()
+    append_per_request_stats_to_table()
     print(f"\nRun appended to CSV table: {table_file}")
+    print(f"Per-request stats appended to CSV table: {per_request_csv_path()}")

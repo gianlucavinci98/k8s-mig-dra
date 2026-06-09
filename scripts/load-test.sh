@@ -115,4 +115,4 @@ done
 log "Load test completed"
 
 log "Running results evaluation"
-SAVE_RESULT_LOG="$SAVE_RESULT_LOG" python3 evaluate.py
+SAVE_RESULT_LOG="$SAVE_RESULT_LOG" RESULT_LOG="$RESULT_LOG" python3 evaluate.py
