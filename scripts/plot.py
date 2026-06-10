@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -10,11 +11,19 @@ INPUT_CSV = BASE_DIR / "results" / "results_table.csv"
 OUTPUT_DIR = BASE_DIR / "results" / "plots"
 
 
+def format_configuration_label(mig_config: str, ollama_replicas: int) -> str:
+	match = re.search(r"(\d+)g", mig_config)
+	ce_count = match.group(1) if match else mig_config
+	replica_word = "replica" if ollama_replicas == 1 else "repliche"
+	return f"{mig_config}+{ollama_replicas} {replica_word} = {ce_count} CE + {ollama_replicas} Rep"
+
+
 def load_results() -> pd.DataFrame:
 	df = pd.read_csv(INPUT_CSV)
 
 	required_columns = {
 		"MIG config",
+		"repliche Ollama",
 		"concorrenza",
 		"token output",
 		"Throughput REAL",
@@ -28,36 +37,43 @@ def load_results() -> pd.DataFrame:
 
 
 def plot_throughput(df: pd.DataFrame, token_output: int) -> Path:
-	filtered = df[df["token output"] == token_output].copy()
+	token_output_values = pd.to_numeric(df["token output"], errors="coerce")
+	filtered = df[token_output_values == token_output].copy()
 	if filtered.empty:
 		raise ValueError(f"No rows found for token output={token_output}")
 
+	filtered["repliche Ollama"] = pd.to_numeric(filtered["repliche Ollama"], errors="coerce")
 	filtered["concorrenza"] = pd.to_numeric(filtered["concorrenza"], errors="coerce")
 	filtered["Throughput REAL"] = pd.to_numeric(filtered["Throughput REAL"], errors="coerce")
-	filtered = filtered.dropna(subset=["concorrenza", "Throughput REAL", "MIG config"])
+	filtered = filtered.dropna(subset=["repliche Ollama", "concorrenza", "Throughput REAL", "MIG config"])
 
 	if filtered.empty:
 		raise ValueError(f"No plottable rows found for token output={token_output}")
 
-	profiles = sorted(filtered["MIG config"].unique())
+	filtered["repliche Ollama"] = filtered["repliche Ollama"].astype(int)
+	series = filtered[["MIG config", "repliche Ollama"]].drop_duplicates().sort_values(["MIG config", "repliche Ollama"])
 
 	plt.figure(figsize=(10, 6))
 	sns.set_style("whitegrid")
 
-	for profile in profiles:
-		profile_df = filtered[filtered["MIG config"] == profile].sort_values("concorrenza")
+	for _, row in series.iterrows():
+		profile = row["MIG config"]
+		replicas = int(row["repliche Ollama"])
+		profile_df = filtered[
+			(filtered["MIG config"] == profile) & (filtered["repliche Ollama"] == replicas)
+		].sort_values("concorrenza")
 		plt.plot(
 			profile_df["concorrenza"],
 			profile_df["Throughput REAL"],
 			marker="o",
 			linewidth=2,
-			label=profile,
+			label=format_configuration_label(profile, replicas),
 		)
 
-	plt.title(f"Real throughput - {token_output} output tokens")
-	plt.xlabel("Numero delle chiamate")
-	plt.ylabel("Real throughput")
-	plt.legend(title="Profilo", frameon=True)
+	plt.title(f"Output tokens: {token_output}")
+	plt.xlabel("Concurrency (number of simultaneous requests).")
+	plt.ylabel("User Throughput (tok/s)")
+	plt.legend(title="Configuration", frameon=True)
 	plt.tight_layout()
 
 	OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -69,7 +85,8 @@ def plot_throughput(df: pd.DataFrame, token_output: int) -> Path:
 
 def main() -> None:
 	df = load_results()
-	outputs = [plot_throughput(df, 25)]
+	token_outputs = sorted(pd.to_numeric(df["token output"], errors="coerce").dropna().astype(int).unique())
+	outputs = [plot_throughput(df, token_output) for token_output in token_outputs]
 
 	for output in outputs:
 		print(f"Saved plot to {output}")
