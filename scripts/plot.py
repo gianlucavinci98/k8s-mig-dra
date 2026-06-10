@@ -69,7 +69,7 @@ def plot_throughput(df: pd.DataFrame, token_output: int) -> Path:
 
 def main() -> None:
 	df = load_results()
-	outputs = [plot_throughput(df, 50), plot_throughput(df, 500)]
+	outputs = [plot_throughput(df, 25)]
 
 	for output in outputs:
 		print(f"Saved plot to {output}")

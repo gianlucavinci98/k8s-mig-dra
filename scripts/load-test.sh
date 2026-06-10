@@ -2,7 +2,7 @@
 
 URL="http://10.146.0.55:31134/api/generate"
 MODEL="tinyllama"
-NUM_PREDICT="${NUM_PREDICT:-50}"
+NUM_PREDICT="${NUM_PREDICT:-25}"
 
 TEST_MIG_CONFIG="$(kubectl get nodes -o json | jq -r '.items[].metadata.labels["nvidia.com/mig.config"] // empty' | awk 'NF { print; exit }')"
 TEST_OLLAMA_REPLICAS="$(kubectl -n ollama-test get deploy ollama-mig -o jsonpath='{.spec.replicas}' 2>/dev/null)"

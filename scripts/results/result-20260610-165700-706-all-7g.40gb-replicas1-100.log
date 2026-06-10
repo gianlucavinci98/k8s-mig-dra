@@ -1,0 +1,83 @@
+[16:57:00] Starting load test
+[16:57:00] MIG Config: all-7g.40gb
+[16:57:00] Ollama Replicas: 1
+[16:57:00] Total requests: 10
+[16:57:00] Concurrency: 10
+[16:57:00] Output tokens (effort): 100
+[16:57:00] REQUEST: 1 - STARTED in background (active_jobs=1)
+[16:57:00] REQUEST: 2 - STARTED in background (active_jobs=2)
+[16:57:00] REQUEST: 3 - STARTED in background (active_jobs=3)
+[16:57:00] REQUEST: 4 - STARTED in background (active_jobs=4)
+[16:57:00] REQUEST: 5 - STARTED in background (active_jobs=5)
+[16:57:00] REQUEST: 6 - STARTED in background (active_jobs=6)
+[16:57:00] REQUEST: 7 - STARTED in background (active_jobs=7)
+[16:57:00] REQUEST: 8 - STARTED in background (active_jobs=8)
+[16:57:00] REQUEST: 9 - STARTED in background (active_jobs=9)
+[16:57:00] REQUEST: 10 - STARTED in background (active_jobs=10)
+[16:57:00] WAITING -> active_jobs=10
+[16:57:01] REQUEST: 1 - COMPLETED
+[16:57:01] RESUMING -> a request finished (active_jobs=9)
+[16:57:01] ALL REQUESTS LAUNCHED
+[16:57:01] WAITING for remaining requests to finish (active_jobs=9)
+[16:57:01] REQUEST: 2 - COMPLETED
+[16:57:01] REQUEST COMPLETED -> remaining active_jobs=8
+[16:57:01] WAITING for remaining requests to finish (active_jobs=8)
+[16:57:01] REQUEST: 3 - COMPLETED
+[16:57:01] REQUEST COMPLETED -> remaining active_jobs=7
+[16:57:01] WAITING for remaining requests to finish (active_jobs=7)
+[16:57:02] REQUEST: 8 - COMPLETED
+[16:57:02] REQUEST COMPLETED -> remaining active_jobs=6
+[16:57:02] WAITING for remaining requests to finish (active_jobs=6)
+[16:57:02] REQUEST: 4 - COMPLETED
+[16:57:02] REQUEST COMPLETED -> remaining active_jobs=5
+[16:57:02] WAITING for remaining requests to finish (active_jobs=5)
+[16:57:02] REQUEST: 7 - COMPLETED
+[16:57:02] REQUEST COMPLETED -> remaining active_jobs=4
+[16:57:02] WAITING for remaining requests to finish (active_jobs=4)
+[16:57:02] REQUEST: 6 - COMPLETED
+[16:57:02] REQUEST COMPLETED -> remaining active_jobs=3
+[16:57:02] WAITING for remaining requests to finish (active_jobs=3)
+[16:57:03] REQUEST: 5 - COMPLETED
+[16:57:03] REQUEST COMPLETED -> remaining active_jobs=2
+[16:57:03] WAITING for remaining requests to finish (active_jobs=2)
+[16:57:03] REQUEST: 10 - COMPLETED
+[16:57:03] REQUEST COMPLETED -> remaining active_jobs=1
+[16:57:03] WAITING for remaining requests to finish (active_jobs=1)
+[16:57:03] REQUEST: 9 - COMPLETED
+[16:57:03] REQUEST COMPLETED -> remaining active_jobs=0
+[16:57:03] Load test completed
+[16:57:03] Running results evaluation
+
+
+--- PER-REQUEST STATS ---
+Request 01 | res_time: 16:57:01.12 | latency:   0.40 s | tokens: 100 | gen_time: 0.238 s | tok/s: 420.58
+Request 02 | res_time: 16:57:01.43 | latency:   0.70 s | tokens: 100 | gen_time: 0.235 s | tok/s: 425.61
+Request 03 | res_time: 16:57:01.74 | latency:   1.01 s | tokens: 100 | gen_time: 0.236 s | tok/s: 423.64
+Request 04 | res_time: 16:57:02.05 | latency:   1.31 s | tokens: 100 | gen_time: 0.235 s | tok/s: 424.78
+Request 05 | res_time: 16:57:02.35 | latency:   1.62 s | tokens: 100 | gen_time: 0.234 s | tok/s: 426.76
+Request 06 | res_time: 16:57:02.66 | latency:   1.93 s | tokens: 100 | gen_time: 0.236 s | tok/s: 423.41
+Request 07 | res_time: 16:57:02.97 | latency:   2.24 s | tokens: 100 | gen_time: 0.235 s | tok/s: 425.64
+Request 08 | res_time: 16:57:03.28 | latency:   2.55 s | tokens: 100 | gen_time: 0.235 s | tok/s: 425.45
+Request 09 | res_time: 16:57:03.58 | latency:   2.84 s | tokens: 100 | gen_time: 0.235 s | tok/s: 425.38
+Request 10 | res_time: 16:57:03.89 | latency:   3.15 s | tokens: 100 | gen_time: 0.234 s | tok/s: 428.08
+
+--- TEST CONFIGURATION ---
+MIG Config: all-7g.40gb
+Ollama Replicas: 1
+Total requests: 10
+Concurrency: 10
+Requested output tokens (effort): 100
+
+Total tokens: 1000
+Wall time (s): 3.18
+GPU time (s): 2.35
+
+--- METRICS ---
+Throughput REAL (tok/s): 314.66
+Throughput GPU (tok/s): 424.92
+Avg tokens/sec per request: 424.93
+Latency avg (ms): 1773.25
+Latency p95 (ms): 3147.13
+
+Run appended to CSV table: results/results_table.csv
+Per-request stats appended to CSV table: results/result-20260610-165700-706-all-7g.40gb-replicas1-100.csv

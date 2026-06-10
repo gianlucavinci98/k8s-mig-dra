@@ -1,0 +1,533 @@
+[16:59:14] Starting load test
+[16:59:14] MIG Config: all-7g.40gb
+[16:59:14] Ollama Replicas: 1
+[16:59:14] Total requests: 100
+[16:59:14] Concurrency: 100
+[16:59:14] Output tokens (effort): 400
+[16:59:14] REQUEST: 1 - STARTED in background (active_jobs=1)
+[16:59:14] REQUEST: 2 - STARTED in background (active_jobs=2)
+[16:59:14] REQUEST: 3 - STARTED in background (active_jobs=3)
+[16:59:14] REQUEST: 4 - STARTED in background (active_jobs=4)
+[16:59:15] REQUEST: 5 - STARTED in background (active_jobs=5)
+[16:59:15] REQUEST: 6 - STARTED in background (active_jobs=6)
+[16:59:15] REQUEST: 7 - STARTED in background (active_jobs=7)
+[16:59:15] REQUEST: 8 - STARTED in background (active_jobs=8)
+[16:59:15] REQUEST: 9 - STARTED in background (active_jobs=9)
+[16:59:15] REQUEST: 10 - STARTED in background (active_jobs=10)
+[16:59:15] REQUEST: 11 - STARTED in background (active_jobs=11)
+[16:59:15] REQUEST: 12 - STARTED in background (active_jobs=12)
+[16:59:15] REQUEST: 13 - STARTED in background (active_jobs=13)
+[16:59:15] REQUEST: 14 - STARTED in background (active_jobs=14)
+[16:59:15] REQUEST: 15 - STARTED in background (active_jobs=15)
+[16:59:15] REQUEST: 16 - STARTED in background (active_jobs=16)
+[16:59:15] REQUEST: 17 - STARTED in background (active_jobs=17)
+[16:59:15] REQUEST: 18 - STARTED in background (active_jobs=18)
+[16:59:15] REQUEST: 19 - STARTED in background (active_jobs=19)
+[16:59:15] REQUEST: 20 - STARTED in background (active_jobs=20)
+[16:59:15] REQUEST: 21 - STARTED in background (active_jobs=21)
+[16:59:15] REQUEST: 22 - STARTED in background (active_jobs=22)
+[16:59:15] REQUEST: 23 - STARTED in background (active_jobs=23)
+[16:59:15] REQUEST: 24 - STARTED in background (active_jobs=24)
+[16:59:15] REQUEST: 25 - STARTED in background (active_jobs=25)
+[16:59:15] REQUEST: 26 - STARTED in background (active_jobs=26)
+[16:59:15] REQUEST: 27 - STARTED in background (active_jobs=27)
+[16:59:15] REQUEST: 28 - STARTED in background (active_jobs=28)
+[16:59:15] REQUEST: 29 - STARTED in background (active_jobs=29)
+[16:59:15] REQUEST: 30 - STARTED in background (active_jobs=30)
+[16:59:15] REQUEST: 31 - STARTED in background (active_jobs=31)
+[16:59:15] REQUEST: 32 - STARTED in background (active_jobs=32)
+[16:59:15] REQUEST: 33 - STARTED in background (active_jobs=33)
+[16:59:15] REQUEST: 34 - STARTED in background (active_jobs=34)
+[16:59:15] REQUEST: 35 - STARTED in background (active_jobs=35)
+[16:59:15] REQUEST: 36 - STARTED in background (active_jobs=36)
+[16:59:15] REQUEST: 37 - STARTED in background (active_jobs=37)
+[16:59:15] REQUEST: 38 - STARTED in background (active_jobs=38)
+[16:59:15] REQUEST: 39 - STARTED in background (active_jobs=39)
+[16:59:15] REQUEST: 40 - STARTED in background (active_jobs=40)
+[16:59:15] REQUEST: 41 - STARTED in background (active_jobs=41)
+[16:59:15] REQUEST: 42 - STARTED in background (active_jobs=42)
+[16:59:15] REQUEST: 43 - STARTED in background (active_jobs=43)
+[16:59:15] REQUEST: 44 - STARTED in background (active_jobs=44)
+[16:59:15] REQUEST: 45 - STARTED in background (active_jobs=45)
+[16:59:15] REQUEST: 46 - STARTED in background (active_jobs=46)
+[16:59:15] REQUEST: 47 - STARTED in background (active_jobs=47)
+[16:59:15] REQUEST: 48 - STARTED in background (active_jobs=48)
+[16:59:15] REQUEST: 49 - STARTED in background (active_jobs=49)
+[16:59:15] REQUEST: 50 - STARTED in background (active_jobs=50)
+[16:59:15] REQUEST: 51 - STARTED in background (active_jobs=51)
+[16:59:15] REQUEST: 52 - STARTED in background (active_jobs=52)
+[16:59:15] REQUEST: 53 - STARTED in background (active_jobs=53)
+[16:59:15] REQUEST: 54 - STARTED in background (active_jobs=54)
+[16:59:15] REQUEST: 55 - STARTED in background (active_jobs=55)
+[16:59:15] REQUEST: 56 - STARTED in background (active_jobs=56)
+[16:59:15] REQUEST: 57 - STARTED in background (active_jobs=57)
+[16:59:15] REQUEST: 58 - STARTED in background (active_jobs=58)
+[16:59:15] REQUEST: 59 - STARTED in background (active_jobs=59)
+[16:59:15] REQUEST: 60 - STARTED in background (active_jobs=60)
+[16:59:15] REQUEST: 61 - STARTED in background (active_jobs=61)
+[16:59:15] REQUEST: 62 - STARTED in background (active_jobs=62)
+[16:59:15] REQUEST: 63 - STARTED in background (active_jobs=63)
+[16:59:15] REQUEST: 64 - STARTED in background (active_jobs=64)
+[16:59:15] REQUEST: 65 - STARTED in background (active_jobs=65)
+[16:59:15] REQUEST: 66 - STARTED in background (active_jobs=66)
+[16:59:15] REQUEST: 67 - STARTED in background (active_jobs=67)
+[16:59:15] REQUEST: 68 - STARTED in background (active_jobs=68)
+[16:59:15] REQUEST: 69 - STARTED in background (active_jobs=69)
+[16:59:15] REQUEST: 70 - STARTED in background (active_jobs=70)
+[16:59:15] REQUEST: 71 - STARTED in background (active_jobs=71)
+[16:59:15] REQUEST: 72 - STARTED in background (active_jobs=72)
+[16:59:15] REQUEST: 73 - STARTED in background (active_jobs=73)
+[16:59:15] REQUEST: 74 - STARTED in background (active_jobs=74)
+[16:59:15] REQUEST: 75 - STARTED in background (active_jobs=75)
+[16:59:15] REQUEST: 76 - STARTED in background (active_jobs=76)
+[16:59:15] REQUEST: 77 - STARTED in background (active_jobs=77)
+[16:59:15] REQUEST: 78 - STARTED in background (active_jobs=78)
+[16:59:15] REQUEST: 79 - STARTED in background (active_jobs=79)
+[16:59:15] REQUEST: 80 - STARTED in background (active_jobs=80)
+[16:59:15] REQUEST: 81 - STARTED in background (active_jobs=81)
+[16:59:15] REQUEST: 82 - STARTED in background (active_jobs=82)
+[16:59:15] REQUEST: 83 - STARTED in background (active_jobs=83)
+[16:59:15] REQUEST: 84 - STARTED in background (active_jobs=84)
+[16:59:15] REQUEST: 85 - STARTED in background (active_jobs=85)
+[16:59:15] REQUEST: 86 - STARTED in background (active_jobs=86)
+[16:59:15] REQUEST: 87 - STARTED in background (active_jobs=87)
+[16:59:15] REQUEST: 88 - STARTED in background (active_jobs=88)
+[16:59:15] REQUEST: 89 - STARTED in background (active_jobs=89)
+[16:59:15] REQUEST: 90 - STARTED in background (active_jobs=90)
+[16:59:15] REQUEST: 91 - STARTED in background (active_jobs=91)
+[16:59:15] REQUEST: 92 - STARTED in background (active_jobs=92)
+[16:59:15] REQUEST: 93 - STARTED in background (active_jobs=93)
+[16:59:15] REQUEST: 94 - STARTED in background (active_jobs=94)
+[16:59:15] REQUEST: 95 - STARTED in background (active_jobs=95)
+[16:59:15] REQUEST: 96 - STARTED in background (active_jobs=96)
+[16:59:15] REQUEST: 97 - STARTED in background (active_jobs=97)
+[16:59:15] REQUEST: 98 - STARTED in background (active_jobs=98)
+[16:59:15] REQUEST: 99 - STARTED in background (active_jobs=99)
+[16:59:15] REQUEST: 100 - STARTED in background (active_jobs=100)
+[16:59:15] WAITING -> active_jobs=100
+[16:59:16] REQUEST: 9 - COMPLETED
+[16:59:16] RESUMING -> a request finished (active_jobs=99)
+[16:59:16] ALL REQUESTS LAUNCHED
+[16:59:16] WAITING for remaining requests to finish (active_jobs=99)
+[16:59:18] REQUEST: 5 - COMPLETED
+[16:59:18] REQUEST COMPLETED -> remaining active_jobs=98
+[16:59:18] WAITING for remaining requests to finish (active_jobs=98)
+[16:59:19] REQUEST: 27 - COMPLETED
+[16:59:19] REQUEST COMPLETED -> remaining active_jobs=97
+[16:59:19] WAITING for remaining requests to finish (active_jobs=97)
+[16:59:20] REQUEST: 11 - COMPLETED
+[16:59:20] REQUEST COMPLETED -> remaining active_jobs=96
+[16:59:20] WAITING for remaining requests to finish (active_jobs=96)
+[16:59:22] REQUEST: 14 - COMPLETED
+[16:59:22] REQUEST COMPLETED -> remaining active_jobs=95
+[16:59:22] WAITING for remaining requests to finish (active_jobs=95)
+[16:59:23] REQUEST: 55 - COMPLETED
+[16:59:23] REQUEST COMPLETED -> remaining active_jobs=94
+[16:59:23] WAITING for remaining requests to finish (active_jobs=94)
+[16:59:24] REQUEST: 6 - COMPLETED
+[16:59:24] REQUEST COMPLETED -> remaining active_jobs=93
+[16:59:24] WAITING for remaining requests to finish (active_jobs=93)
+[16:59:25] REQUEST: 69 - COMPLETED
+[16:59:25] REQUEST COMPLETED -> remaining active_jobs=92
+[16:59:25] WAITING for remaining requests to finish (active_jobs=92)
+[16:59:27] REQUEST: 62 - COMPLETED
+[16:59:27] REQUEST COMPLETED -> remaining active_jobs=91
+[16:59:27] WAITING for remaining requests to finish (active_jobs=91)
+[16:59:28] REQUEST: 87 - COMPLETED
+[16:59:28] REQUEST COMPLETED -> remaining active_jobs=90
+[16:59:28] WAITING for remaining requests to finish (active_jobs=90)
+[16:59:29] REQUEST: 33 - COMPLETED
+[16:59:29] REQUEST COMPLETED -> remaining active_jobs=89
+[16:59:29] WAITING for remaining requests to finish (active_jobs=89)
+[16:59:30] REQUEST: 88 - COMPLETED
+[16:59:30] REQUEST COMPLETED -> remaining active_jobs=88
+[16:59:30] WAITING for remaining requests to finish (active_jobs=88)
+[16:59:32] REQUEST: 91 - COMPLETED
+[16:59:32] REQUEST COMPLETED -> remaining active_jobs=87
+[16:59:32] WAITING for remaining requests to finish (active_jobs=87)
+[16:59:33] REQUEST: 51 - COMPLETED
+[16:59:33] REQUEST COMPLETED -> remaining active_jobs=86
+[16:59:33] WAITING for remaining requests to finish (active_jobs=86)
+[16:59:34] REQUEST: 83 - COMPLETED
+[16:59:34] REQUEST COMPLETED -> remaining active_jobs=85
+[16:59:34] WAITING for remaining requests to finish (active_jobs=85)
+[16:59:35] REQUEST: 65 - COMPLETED
+[16:59:35] REQUEST COMPLETED -> remaining active_jobs=84
+[16:59:35] WAITING for remaining requests to finish (active_jobs=84)
+[16:59:37] REQUEST: 7 - COMPLETED
+[16:59:37] REQUEST COMPLETED -> remaining active_jobs=83
+[16:59:37] WAITING for remaining requests to finish (active_jobs=83)
+[16:59:38] REQUEST: 90 - COMPLETED
+[16:59:38] REQUEST COMPLETED -> remaining active_jobs=82
+[16:59:38] WAITING for remaining requests to finish (active_jobs=82)
+[16:59:39] REQUEST: 68 - COMPLETED
+[16:59:39] REQUEST COMPLETED -> remaining active_jobs=81
+[16:59:39] WAITING for remaining requests to finish (active_jobs=81)
+[16:59:40] REQUEST: 70 - COMPLETED
+[16:59:40] REQUEST COMPLETED -> remaining active_jobs=80
+[16:59:40] WAITING for remaining requests to finish (active_jobs=80)
+[16:59:42] REQUEST: 59 - COMPLETED
+[16:59:42] REQUEST COMPLETED -> remaining active_jobs=79
+[16:59:42] WAITING for remaining requests to finish (active_jobs=79)
+[16:59:43] REQUEST: 56 - COMPLETED
+[16:59:43] REQUEST COMPLETED -> remaining active_jobs=78
+[16:59:43] WAITING for remaining requests to finish (active_jobs=78)
+[16:59:44] REQUEST: 49 - COMPLETED
+[16:59:44] REQUEST COMPLETED -> remaining active_jobs=77
+[16:59:44] WAITING for remaining requests to finish (active_jobs=77)
+[16:59:45] REQUEST: 45 - COMPLETED
+[16:59:45] REQUEST COMPLETED -> remaining active_jobs=76
+[16:59:45] WAITING for remaining requests to finish (active_jobs=76)
+[16:59:47] REQUEST: 50 - COMPLETED
+[16:59:47] REQUEST COMPLETED -> remaining active_jobs=75
+[16:59:47] WAITING for remaining requests to finish (active_jobs=75)
+[16:59:48] REQUEST: 57 - COMPLETED
+[16:59:48] REQUEST COMPLETED -> remaining active_jobs=74
+[16:59:48] WAITING for remaining requests to finish (active_jobs=74)
+[16:59:49] REQUEST: 98 - COMPLETED
+[16:59:49] REQUEST COMPLETED -> remaining active_jobs=73
+[16:59:49] WAITING for remaining requests to finish (active_jobs=73)
+[16:59:50] REQUEST: 82 - COMPLETED
+[16:59:50] REQUEST COMPLETED -> remaining active_jobs=72
+[16:59:50] WAITING for remaining requests to finish (active_jobs=72)
+[16:59:52] REQUEST: 81 - COMPLETED
+[16:59:52] REQUEST COMPLETED -> remaining active_jobs=71
+[16:59:52] WAITING for remaining requests to finish (active_jobs=71)
+[16:59:53] REQUEST: 100 - COMPLETED
+[16:59:53] REQUEST COMPLETED -> remaining active_jobs=70
+[16:59:53] WAITING for remaining requests to finish (active_jobs=70)
+[16:59:54] REQUEST: 3 - COMPLETED
+[16:59:54] REQUEST COMPLETED -> remaining active_jobs=69
+[16:59:54] WAITING for remaining requests to finish (active_jobs=69)
+[16:59:55] REQUEST: 26 - COMPLETED
+[16:59:55] REQUEST COMPLETED -> remaining active_jobs=68
+[16:59:55] WAITING for remaining requests to finish (active_jobs=68)
+[16:59:57] REQUEST: 86 - COMPLETED
+[16:59:57] REQUEST COMPLETED -> remaining active_jobs=67
+[16:59:57] WAITING for remaining requests to finish (active_jobs=67)
+[16:59:58] REQUEST: 97 - COMPLETED
+[16:59:58] REQUEST COMPLETED -> remaining active_jobs=66
+[16:59:58] WAITING for remaining requests to finish (active_jobs=66)
+[16:59:59] REQUEST: 89 - COMPLETED
+[16:59:59] REQUEST COMPLETED -> remaining active_jobs=65
+[16:59:59] WAITING for remaining requests to finish (active_jobs=65)
+[17:00:00] REQUEST: 93 - COMPLETED
+[17:00:00] REQUEST COMPLETED -> remaining active_jobs=64
+[17:00:00] WAITING for remaining requests to finish (active_jobs=64)
+[17:00:02] REQUEST: 95 - COMPLETED
+[17:00:02] REQUEST COMPLETED -> remaining active_jobs=63
+[17:00:02] WAITING for remaining requests to finish (active_jobs=63)
+[17:00:03] REQUEST: 32 - COMPLETED
+[17:00:03] REQUEST COMPLETED -> remaining active_jobs=62
+[17:00:03] WAITING for remaining requests to finish (active_jobs=62)
+[17:00:04] REQUEST: 71 - COMPLETED
+[17:00:04] REQUEST COMPLETED -> remaining active_jobs=61
+[17:00:04] WAITING for remaining requests to finish (active_jobs=61)
+[17:00:06] REQUEST: 20 - COMPLETED
+[17:00:06] REQUEST COMPLETED -> remaining active_jobs=60
+[17:00:06] WAITING for remaining requests to finish (active_jobs=60)
+[17:00:07] REQUEST: 92 - COMPLETED
+[17:00:07] REQUEST COMPLETED -> remaining active_jobs=59
+[17:00:07] WAITING for remaining requests to finish (active_jobs=59)
+[17:00:08] REQUEST: 75 - COMPLETED
+[17:00:08] REQUEST COMPLETED -> remaining active_jobs=58
+[17:00:08] WAITING for remaining requests to finish (active_jobs=58)
+[17:00:09] REQUEST: 60 - COMPLETED
+[17:00:09] REQUEST COMPLETED -> remaining active_jobs=57
+[17:00:09] WAITING for remaining requests to finish (active_jobs=57)
+[17:00:11] REQUEST: 58 - COMPLETED
+[17:00:11] REQUEST COMPLETED -> remaining active_jobs=56
+[17:00:11] WAITING for remaining requests to finish (active_jobs=56)
+[17:00:12] REQUEST: 48 - COMPLETED
+[17:00:12] REQUEST COMPLETED -> remaining active_jobs=55
+[17:00:12] WAITING for remaining requests to finish (active_jobs=55)
+[17:00:13] REQUEST: 41 - COMPLETED
+[17:00:13] REQUEST COMPLETED -> remaining active_jobs=54
+[17:00:13] WAITING for remaining requests to finish (active_jobs=54)
+[17:00:14] REQUEST: 15 - COMPLETED
+[17:00:14] REQUEST COMPLETED -> remaining active_jobs=53
+[17:00:14] WAITING for remaining requests to finish (active_jobs=53)
+[17:00:16] REQUEST: 1 - COMPLETED
+[17:00:16] REQUEST COMPLETED -> remaining active_jobs=52
+[17:00:16] WAITING for remaining requests to finish (active_jobs=52)
+[17:00:17] REQUEST: 2 - COMPLETED
+[17:00:17] REQUEST COMPLETED -> remaining active_jobs=51
+[17:00:17] WAITING for remaining requests to finish (active_jobs=51)
+[17:00:18] REQUEST: 17 - COMPLETED
+[17:00:18] REQUEST COMPLETED -> remaining active_jobs=50
+[17:00:18] WAITING for remaining requests to finish (active_jobs=50)
+[17:00:19] REQUEST: 72 - COMPLETED
+[17:00:19] REQUEST COMPLETED -> remaining active_jobs=49
+[17:00:19] WAITING for remaining requests to finish (active_jobs=49)
+[17:00:21] REQUEST: 29 - COMPLETED
+[17:00:21] REQUEST COMPLETED -> remaining active_jobs=48
+[17:00:21] WAITING for remaining requests to finish (active_jobs=48)
+[17:00:22] REQUEST: 79 - COMPLETED
+[17:00:22] REQUEST COMPLETED -> remaining active_jobs=47
+[17:00:22] WAITING for remaining requests to finish (active_jobs=47)
+[17:00:23] REQUEST: 44 - COMPLETED
+[17:00:23] REQUEST COMPLETED -> remaining active_jobs=46
+[17:00:23] WAITING for remaining requests to finish (active_jobs=46)
+[17:00:24] REQUEST: 76 - COMPLETED
+[17:00:24] REQUEST COMPLETED -> remaining active_jobs=45
+[17:00:24] WAITING for remaining requests to finish (active_jobs=45)
+[17:00:26] REQUEST: 38 - COMPLETED
+[17:00:26] REQUEST COMPLETED -> remaining active_jobs=44
+[17:00:26] WAITING for remaining requests to finish (active_jobs=44)
+[17:00:27] REQUEST: 96 - COMPLETED
+[17:00:27] REQUEST COMPLETED -> remaining active_jobs=43
+[17:00:27] WAITING for remaining requests to finish (active_jobs=43)
+[17:00:28] REQUEST: 74 - COMPLETED
+[17:00:28] REQUEST COMPLETED -> remaining active_jobs=42
+[17:00:28] WAITING for remaining requests to finish (active_jobs=42)
+[17:00:29] REQUEST: 46 - COMPLETED
+[17:00:29] REQUEST COMPLETED -> remaining active_jobs=41
+[17:00:29] WAITING for remaining requests to finish (active_jobs=41)
+[17:00:31] REQUEST: 19 - COMPLETED
+[17:00:31] REQUEST COMPLETED -> remaining active_jobs=40
+[17:00:31] WAITING for remaining requests to finish (active_jobs=40)
+[17:00:32] REQUEST: 94 - COMPLETED
+[17:00:32] REQUEST COMPLETED -> remaining active_jobs=39
+[17:00:32] WAITING for remaining requests to finish (active_jobs=39)
+[17:00:33] REQUEST: 43 - COMPLETED
+[17:00:33] REQUEST COMPLETED -> remaining active_jobs=38
+[17:00:33] WAITING for remaining requests to finish (active_jobs=38)
+[17:00:34] REQUEST: 99 - COMPLETED
+[17:00:34] REQUEST COMPLETED -> remaining active_jobs=37
+[17:00:34] WAITING for remaining requests to finish (active_jobs=37)
+[17:00:36] REQUEST: 36 - COMPLETED
+[17:00:36] REQUEST COMPLETED -> remaining active_jobs=36
+[17:00:36] WAITING for remaining requests to finish (active_jobs=36)
+[17:00:37] REQUEST: 35 - COMPLETED
+[17:00:37] REQUEST COMPLETED -> remaining active_jobs=35
+[17:00:37] WAITING for remaining requests to finish (active_jobs=35)
+[17:00:38] REQUEST: 8 - COMPLETED
+[17:00:38] REQUEST COMPLETED -> remaining active_jobs=34
+[17:00:38] WAITING for remaining requests to finish (active_jobs=34)
+[17:00:40] REQUEST: 80 - COMPLETED
+[17:00:40] REQUEST COMPLETED -> remaining active_jobs=33
+[17:00:40] WAITING for remaining requests to finish (active_jobs=33)
+[17:00:41] REQUEST: 73 - COMPLETED
+[17:00:41] REQUEST COMPLETED -> remaining active_jobs=32
+[17:00:41] WAITING for remaining requests to finish (active_jobs=32)
+[17:00:42] REQUEST: 47 - COMPLETED
+[17:00:42] REQUEST COMPLETED -> remaining active_jobs=31
+[17:00:42] WAITING for remaining requests to finish (active_jobs=31)
+[17:00:43] REQUEST: 22 - COMPLETED
+[17:00:43] REQUEST COMPLETED -> remaining active_jobs=30
+[17:00:43] WAITING for remaining requests to finish (active_jobs=30)
+[17:00:45] REQUEST: 37 - COMPLETED
+[17:00:45] REQUEST COMPLETED -> remaining active_jobs=29
+[17:00:45] WAITING for remaining requests to finish (active_jobs=29)
+[17:00:46] REQUEST: 24 - COMPLETED
+[17:00:46] REQUEST COMPLETED -> remaining active_jobs=28
+[17:00:46] WAITING for remaining requests to finish (active_jobs=28)
+[17:00:47] REQUEST: 18 - COMPLETED
+[17:00:47] REQUEST COMPLETED -> remaining active_jobs=27
+[17:00:47] WAITING for remaining requests to finish (active_jobs=27)
+[17:00:48] REQUEST: 10 - COMPLETED
+[17:00:48] REQUEST COMPLETED -> remaining active_jobs=26
+[17:00:48] WAITING for remaining requests to finish (active_jobs=26)
+[17:00:50] REQUEST: 84 - COMPLETED
+[17:00:50] REQUEST COMPLETED -> remaining active_jobs=25
+[17:00:50] WAITING for remaining requests to finish (active_jobs=25)
+[17:00:51] REQUEST: 25 - COMPLETED
+[17:00:51] REQUEST COMPLETED -> remaining active_jobs=24
+[17:00:51] WAITING for remaining requests to finish (active_jobs=24)
+[17:00:52] REQUEST: 42 - COMPLETED
+[17:00:52] REQUEST COMPLETED -> remaining active_jobs=23
+[17:00:52] WAITING for remaining requests to finish (active_jobs=23)
+[17:00:53] REQUEST: 64 - COMPLETED
+[17:00:53] REQUEST COMPLETED -> remaining active_jobs=22
+[17:00:53] WAITING for remaining requests to finish (active_jobs=22)
+[17:00:55] REQUEST: 85 - COMPLETED
+[17:00:55] REQUEST COMPLETED -> remaining active_jobs=21
+[17:00:55] WAITING for remaining requests to finish (active_jobs=21)
+[17:00:56] REQUEST: 30 - COMPLETED
+[17:00:56] REQUEST COMPLETED -> remaining active_jobs=20
+[17:00:56] WAITING for remaining requests to finish (active_jobs=20)
+[17:00:57] REQUEST: 54 - COMPLETED
+[17:00:57] REQUEST COMPLETED -> remaining active_jobs=19
+[17:00:57] WAITING for remaining requests to finish (active_jobs=19)
+[17:00:58] REQUEST: 78 - COMPLETED
+[17:00:58] REQUEST COMPLETED -> remaining active_jobs=18
+[17:00:58] WAITING for remaining requests to finish (active_jobs=18)
+[17:01:00] REQUEST: 63 - COMPLETED
+[17:01:00] REQUEST COMPLETED -> remaining active_jobs=17
+[17:01:00] WAITING for remaining requests to finish (active_jobs=17)
+[17:01:01] REQUEST: 53 - COMPLETED
+[17:01:01] REQUEST COMPLETED -> remaining active_jobs=16
+[17:01:01] WAITING for remaining requests to finish (active_jobs=16)
+[17:01:02] REQUEST: 61 - COMPLETED
+[17:01:02] REQUEST COMPLETED -> remaining active_jobs=15
+[17:01:02] WAITING for remaining requests to finish (active_jobs=15)
+[17:01:03] REQUEST: 12 - COMPLETED
+[17:01:03] REQUEST COMPLETED -> remaining active_jobs=14
+[17:01:03] WAITING for remaining requests to finish (active_jobs=14)
+[17:01:05] REQUEST: 23 - COMPLETED
+[17:01:05] REQUEST COMPLETED -> remaining active_jobs=13
+[17:01:05] WAITING for remaining requests to finish (active_jobs=13)
+[17:01:06] REQUEST: 4 - COMPLETED
+[17:01:06] REQUEST COMPLETED -> remaining active_jobs=12
+[17:01:06] WAITING for remaining requests to finish (active_jobs=12)
+[17:01:07] REQUEST: 31 - COMPLETED
+[17:01:07] REQUEST COMPLETED -> remaining active_jobs=11
+[17:01:07] WAITING for remaining requests to finish (active_jobs=11)
+[17:01:08] REQUEST: 67 - COMPLETED
+[17:01:08] REQUEST COMPLETED -> remaining active_jobs=10
+[17:01:08] WAITING for remaining requests to finish (active_jobs=10)
+[17:01:10] REQUEST: 13 - COMPLETED
+[17:01:10] REQUEST COMPLETED -> remaining active_jobs=9
+[17:01:10] WAITING for remaining requests to finish (active_jobs=9)
+[17:01:11] REQUEST: 39 - COMPLETED
+[17:01:11] REQUEST COMPLETED -> remaining active_jobs=8
+[17:01:11] WAITING for remaining requests to finish (active_jobs=8)
+[17:01:12] REQUEST: 77 - COMPLETED
+[17:01:12] REQUEST COMPLETED -> remaining active_jobs=7
+[17:01:12] WAITING for remaining requests to finish (active_jobs=7)
+[17:01:13] REQUEST: 21 - COMPLETED
+[17:01:13] REQUEST COMPLETED -> remaining active_jobs=6
+[17:01:13] WAITING for remaining requests to finish (active_jobs=6)
+[17:01:15] REQUEST: 28 - COMPLETED
+[17:01:15] REQUEST COMPLETED -> remaining active_jobs=5
+[17:01:15] WAITING for remaining requests to finish (active_jobs=5)
+[17:01:16] REQUEST: 66 - COMPLETED
+[17:01:16] REQUEST COMPLETED -> remaining active_jobs=4
+[17:01:16] WAITING for remaining requests to finish (active_jobs=4)
+[17:01:17] REQUEST: 52 - COMPLETED
+[17:01:17] REQUEST COMPLETED -> remaining active_jobs=3
+[17:01:17] WAITING for remaining requests to finish (active_jobs=3)
+[17:01:18] REQUEST: 40 - COMPLETED
+[17:01:18] REQUEST COMPLETED -> remaining active_jobs=2
+[17:01:18] WAITING for remaining requests to finish (active_jobs=2)
+[17:01:20] REQUEST: 34 - COMPLETED
+[17:01:20] REQUEST COMPLETED -> remaining active_jobs=1
+[17:01:20] WAITING for remaining requests to finish (active_jobs=1)
+[17:01:21] REQUEST: 16 - COMPLETED
+[17:01:21] REQUEST COMPLETED -> remaining active_jobs=0
+[17:01:21] Load test completed
+[17:01:21] Running results evaluation
+
+
+--- PER-REQUEST STATS ---
+Request 01 | res_time: 16:59:16.97 | latency:   1.96 s | tokens: 400 | gen_time: 1.008 s | tok/s: 396.85
+Request 02 | res_time: 16:59:18.24 | latency:   3.23 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.51
+Request 03 | res_time: 16:59:19.48 | latency:   4.41 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.60
+Request 04 | res_time: 16:59:20.76 | latency:   5.74 s | tokens: 400 | gen_time: 0.996 s | tok/s: 401.54
+Request 05 | res_time: 16:59:22.00 | latency:   6.95 s | tokens: 400 | gen_time: 0.999 s | tok/s: 400.23
+Request 06 | res_time: 16:59:23.24 | latency:   8.12 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.43
+Request 07 | res_time: 16:59:24.51 | latency:   9.50 s | tokens: 400 | gen_time: 0.994 s | tok/s: 402.38
+Request 08 | res_time: 16:59:25.73 | latency:  10.54 s | tokens: 400 | gen_time: 0.988 s | tok/s: 404.92
+Request 09 | res_time: 16:59:27.00 | latency:  11.80 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.04
+Request 10 | res_time: 16:59:28.26 | latency:  13.01 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.27
+Request 11 | res_time: 16:59:29.52 | latency:  14.33 s | tokens: 400 | gen_time: 0.993 s | tok/s: 403.02
+Request 12 | res_time: 16:59:30.77 | latency:  15.52 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.64
+Request 13 | res_time: 16:59:32.02 | latency:  16.77 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.73
+Request 14 | res_time: 16:59:33.27 | latency:  18.15 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.68
+Request 15 | res_time: 16:59:34.52 | latency:  19.32 s | tokens: 400 | gen_time: 0.996 s | tok/s: 401.75
+Request 16 | res_time: 16:59:35.77 | latency:  20.61 s | tokens: 400 | gen_time: 0.994 s | tok/s: 402.40
+Request 17 | res_time: 16:59:37.03 | latency:  22.02 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.74
+Request 18 | res_time: 16:59:38.30 | latency:  23.09 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.17
+Request 19 | res_time: 16:59:39.57 | latency:  24.41 s | tokens: 400 | gen_time: 0.993 s | tok/s: 403.01
+Request 20 | res_time: 16:59:40.83 | latency:  25.68 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.81
+Request 21 | res_time: 16:59:42.10 | latency:  26.95 s | tokens: 400 | gen_time: 0.996 s | tok/s: 401.78
+Request 22 | res_time: 16:59:43.37 | latency:  28.22 s | tokens: 400 | gen_time: 0.995 s | tok/s: 401.97
+Request 23 | res_time: 16:59:44.64 | latency:  29.53 s | tokens: 400 | gen_time: 0.997 s | tok/s: 401.06
+Request 24 | res_time: 16:59:45.88 | latency:  30.79 s | tokens: 400 | gen_time: 0.996 s | tok/s: 401.43
+Request 25 | res_time: 16:59:47.15 | latency:  31.74 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.18
+Request 26 | res_time: 16:59:48.42 | latency:  33.26 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.77
+Request 27 | res_time: 16:59:49.65 | latency:  34.40 s | tokens: 400 | gen_time: 0.987 s | tok/s: 405.07
+Request 28 | res_time: 16:59:50.92 | latency:  35.65 s | tokens: 400 | gen_time: 0.993 s | tok/s: 403.01
+Request 29 | res_time: 16:59:52.19 | latency:  36.98 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.08
+Request 30 | res_time: 16:59:53.45 | latency:  38.21 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.38
+Request 31 | res_time: 16:59:54.67 | latency:  39.67 s | tokens: 400 | gen_time: 0.987 s | tok/s: 405.08
+Request 32 | res_time: 16:59:55.93 | latency:  40.86 s | tokens: 400 | gen_time: 0.990 s | tok/s: 403.99
+Request 33 | res_time: 16:59:57.20 | latency:  41.94 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.82
+Request 34 | res_time: 16:59:58.47 | latency:  43.21 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.01
+Request 35 | res_time: 16:59:59.73 | latency:  44.48 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.15
+Request 36 | res_time: 17:00:00.96 | latency:  45.73 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.04
+Request 37 | res_time: 17:00:02.22 | latency:  46.97 s | tokens: 400 | gen_time: 0.995 s | tok/s: 401.89
+Request 38 | res_time: 17:00:03.49 | latency:  48.39 s | tokens: 400 | gen_time: 0.997 s | tok/s: 401.30
+Request 39 | res_time: 17:00:04.76 | latency:  49.58 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.71
+Request 40 | res_time: 17:00:06.04 | latency:  50.96 s | tokens: 400 | gen_time: 0.994 s | tok/s: 402.39
+Request 41 | res_time: 17:00:07.29 | latency:  52.01 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.50
+Request 42 | res_time: 17:00:08.55 | latency:  53.15 s | tokens: 400 | gen_time: 0.993 s | tok/s: 403.00
+Request 43 | res_time: 17:00:09.78 | latency:  54.65 s | tokens: 400 | gen_time: 0.984 s | tok/s: 406.56
+Request 44 | res_time: 17:00:11.06 | latency:  55.63 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.63
+Request 45 | res_time: 17:00:12.30 | latency:  56.84 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.52
+Request 46 | res_time: 17:00:13.56 | latency:  58.07 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.15
+Request 47 | res_time: 17:00:14.82 | latency:  59.77 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.06
+Request 48 | res_time: 17:00:16.08 | latency:  61.08 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.20
+Request 49 | res_time: 17:00:17.34 | latency:  62.34 s | tokens: 400 | gen_time: 0.988 s | tok/s: 404.90
+Request 50 | res_time: 17:00:18.57 | latency:  63.51 s | tokens: 400 | gen_time: 0.990 s | tok/s: 403.85
+Request 51 | res_time: 17:00:19.83 | latency:  64.26 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.46
+Request 52 | res_time: 17:00:21.10 | latency:  65.48 s | tokens: 400 | gen_time: 0.994 s | tok/s: 402.31
+Request 53 | res_time: 17:00:22.37 | latency:  66.71 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.46
+Request 54 | res_time: 17:00:23.63 | latency:  68.53 s | tokens: 400 | gen_time: 0.988 s | tok/s: 404.75
+Request 55 | res_time: 17:00:24.89 | latency:  69.72 s | tokens: 400 | gen_time: 0.988 s | tok/s: 404.71
+Request 56 | res_time: 17:00:26.15 | latency:  71.06 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.78
+Request 57 | res_time: 17:00:27.42 | latency:  72.17 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.78
+Request 58 | res_time: 17:00:28.68 | latency:  73.32 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.52
+Request 59 | res_time: 17:00:29.94 | latency:  74.82 s | tokens: 400 | gen_time: 0.987 s | tok/s: 405.35
+Request 60 | res_time: 17:00:31.21 | latency:  76.17 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.06
+Request 61 | res_time: 17:00:32.48 | latency:  77.19 s | tokens: 400 | gen_time: 0.988 s | tok/s: 405.05
+Request 62 | res_time: 17:00:33.75 | latency:  78.36 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.23
+Request 63 | res_time: 17:00:34.98 | latency:  79.73 s | tokens: 400 | gen_time: 0.987 s | tok/s: 405.46
+Request 64 | res_time: 17:00:36.22 | latency:  81.12 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.02
+Request 65 | res_time: 17:00:37.47 | latency:  82.07 s | tokens: 400 | gen_time: 0.987 s | tok/s: 405.31
+Request 66 | res_time: 17:00:38.74 | latency:  83.72 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.58
+Request 67 | res_time: 17:00:40.00 | latency:  84.36 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.62
+Request 68 | res_time: 17:00:41.26 | latency:  85.73 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.77
+Request 69 | res_time: 17:00:42.53 | latency:  87.42 s | tokens: 400 | gen_time: 0.995 s | tok/s: 402.19
+Request 70 | res_time: 17:00:43.78 | latency:  88.70 s | tokens: 400 | gen_time: 0.996 s | tok/s: 401.43
+Request 71 | res_time: 17:00:45.04 | latency:  89.95 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.77
+Request 72 | res_time: 17:00:46.31 | latency:  91.22 s | tokens: 400 | gen_time: 0.998 s | tok/s: 400.64
+Request 73 | res_time: 17:00:47.55 | latency:  92.51 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.50
+Request 74 | res_time: 17:00:48.79 | latency:  93.78 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.72
+Request 75 | res_time: 17:00:50.04 | latency:  94.80 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.08
+Request 76 | res_time: 17:00:51.27 | latency:  95.96 s | tokens: 400 | gen_time: 0.996 s | tok/s: 401.51
+Request 77 | res_time: 17:00:52.54 | latency:  97.45 s | tokens: 400 | gen_time: 0.990 s | tok/s: 403.86
+Request 78 | res_time: 17:00:53.80 | latency:  98.65 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.64
+Request 79 | res_time: 17:00:55.05 | latency:  99.76 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.63
+Request 80 | res_time: 17:00:56.28 | latency: 101.18 s | tokens: 400 | gen_time: 0.992 s | tok/s: 403.14
+Request 81 | res_time: 17:00:57.55 | latency: 102.19 s | tokens: 400 | gen_time: 0.994 s | tok/s: 402.37
+Request 82 | res_time: 17:00:58.82 | latency: 103.53 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.74
+Request 83 | res_time: 17:01:00.06 | latency: 104.33 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.69
+Request 84 | res_time: 17:01:01.33 | latency: 105.83 s | tokens: 400 | gen_time: 0.995 s | tok/s: 402.08
+Request 85 | res_time: 17:01:02.58 | latency: 106.84 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.81
+Request 86 | res_time: 17:01:03.85 | latency: 108.83 s | tokens: 400 | gen_time: 0.995 s | tok/s: 401.95
+Request 87 | res_time: 17:01:05.09 | latency: 109.99 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.08
+Request 88 | res_time: 17:01:06.36 | latency: 111.35 s | tokens: 400 | gen_time: 0.995 s | tok/s: 401.94
+Request 89 | res_time: 17:01:07.62 | latency: 112.01 s | tokens: 400 | gen_time: 0.991 s | tok/s: 403.67
+Request 90 | res_time: 17:01:08.84 | latency: 113.66 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.12
+Request 91 | res_time: 17:01:10.11 | latency: 115.06 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.23
+Request 92 | res_time: 17:01:11.37 | latency: 115.62 s | tokens: 400 | gen_time: 0.995 s | tok/s: 401.91
+Request 93 | res_time: 17:01:12.64 | latency: 116.94 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.57
+Request 94 | res_time: 17:01:13.90 | latency: 118.81 s | tokens: 400 | gen_time: 0.990 s | tok/s: 404.23
+Request 95 | res_time: 17:01:15.15 | latency: 120.06 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.55
+Request 96 | res_time: 17:01:16.41 | latency: 121.26 s | tokens: 400 | gen_time: 0.993 s | tok/s: 402.79
+Request 97 | res_time: 17:01:17.63 | latency: 121.90 s | tokens: 400 | gen_time: 0.989 s | tok/s: 404.51
+Request 98 | res_time: 17:01:18.90 | latency: 123.07 s | tokens: 400 | gen_time: 0.990 s | tok/s: 403.98
+Request 99 | res_time: 17:01:20.16 | latency: 125.06 s | tokens: 400 | gen_time: 0.988 s | tok/s: 404.66
+Request 100 | res_time: 17:01:21.45 | latency: 126.40 s | tokens: 400 | gen_time: 0.997 s | tok/s: 401.19
+
+--- TEST CONFIGURATION ---
+MIG Config: all-7g.40gb
+Ollama Replicas: 1
+Total requests: 100
+Concurrency: 100
+Requested output tokens (effort): 400
+
+Total tokens: 40000
+Wall time (s): 126.47
+GPU time (s): 99.19
+
+--- METRICS ---
+Throughput REAL (tok/s): 316.29
+Throughput GPU (tok/s): 403.27
+Avg tokens/sec per request: 403.28
+Latency avg (ms): 63983.78
+Latency p95 (ms): 121255.04
+
+Run appended to CSV table: results/results_table.csv
+Per-request stats appended to CSV table: results/result-20260610-165914-979-all-7g.40gb-replicas1-400.csv

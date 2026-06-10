@@ -1,0 +1,83 @@
+[17:48:29] Starting load test
+[17:48:29] MIG Config: all-1g.5gb
+[17:48:29] Ollama Replicas: 7
+[17:48:29] Total requests: 10
+[17:48:29] Concurrency: 10
+[17:48:29] Output tokens (effort): 25
+[17:48:29] REQUEST: 1 - STARTED in background (active_jobs=1)
+[17:48:29] REQUEST: 2 - STARTED in background (active_jobs=2)
+[17:48:29] REQUEST: 3 - STARTED in background (active_jobs=3)
+[17:48:29] REQUEST: 4 - STARTED in background (active_jobs=4)
+[17:48:29] REQUEST: 5 - STARTED in background (active_jobs=5)
+[17:48:29] REQUEST: 6 - STARTED in background (active_jobs=6)
+[17:48:29] REQUEST: 7 - STARTED in background (active_jobs=7)
+[17:48:29] REQUEST: 8 - STARTED in background (active_jobs=8)
+[17:48:29] REQUEST: 9 - STARTED in background (active_jobs=9)
+[17:48:29] REQUEST: 10 - STARTED in background (active_jobs=10)
+[17:48:29] WAITING -> active_jobs=10
+[17:48:30] REQUEST: 4 - COMPLETED
+[17:48:30] REQUEST: 3 - COMPLETED
+[17:48:30] RESUMING -> a request finished (active_jobs=9)
+[17:48:30] ALL REQUESTS LAUNCHED
+[17:48:30] WAITING for remaining requests to finish (active_jobs=9)
+[17:48:30] REQUEST COMPLETED -> remaining active_jobs=8
+[17:48:30] REQUEST: 1 - COMPLETED
+[17:48:30] REQUEST: 2 - COMPLETED
+[17:48:30] WAITING for remaining requests to finish (active_jobs=8)
+[17:48:30] REQUEST COMPLETED -> remaining active_jobs=7
+[17:48:30] WAITING for remaining requests to finish (active_jobs=7)
+[17:48:30] REQUEST COMPLETED -> remaining active_jobs=6
+[17:48:30] WAITING for remaining requests to finish (active_jobs=6)
+[17:48:30] REQUEST: 5 - COMPLETED
+[17:48:30] REQUEST COMPLETED -> remaining active_jobs=5
+[17:48:30] WAITING for remaining requests to finish (active_jobs=5)
+[17:48:30] REQUEST: 6 - COMPLETED
+[17:48:30] REQUEST COMPLETED -> remaining active_jobs=4
+[17:48:30] WAITING for remaining requests to finish (active_jobs=4)
+[17:48:30] REQUEST: 8 - COMPLETED
+[17:48:30] REQUEST COMPLETED -> remaining active_jobs=3
+[17:48:30] REQUEST: 9 - COMPLETED
+[17:48:30] WAITING for remaining requests to finish (active_jobs=3)
+[17:48:30] REQUEST COMPLETED -> remaining active_jobs=2
+[17:48:30] WAITING for remaining requests to finish (active_jobs=2)
+[17:48:30] REQUEST: 10 - COMPLETED
+[17:48:30] REQUEST COMPLETED -> remaining active_jobs=1
+[17:48:30] WAITING for remaining requests to finish (active_jobs=1)
+[17:48:30] REQUEST: 7 - COMPLETED
+[17:48:30] REQUEST COMPLETED -> remaining active_jobs=0
+[17:48:30] Load test completed
+[17:48:30] Running results evaluation
+
+
+--- PER-REQUEST STATS ---
+Request 01 | res_time: 17:48:30.01 | latency:   0.26 s | tokens: 25 | gen_time: 0.150 s | tok/s: 166.62
+Request 02 | res_time: 17:48:30.01 | latency:   0.26 s | tokens: 25 | gen_time: 0.150 s | tok/s: 166.87
+Request 03 | res_time: 17:48:30.01 | latency:   0.27 s | tokens: 25 | gen_time: 0.153 s | tok/s: 163.02
+Request 04 | res_time: 17:48:30.01 | latency:   0.27 s | tokens: 25 | gen_time: 0.151 s | tok/s: 166.00
+Request 05 | res_time: 17:48:30.03 | latency:   0.28 s | tokens: 25 | gen_time: 0.154 s | tok/s: 162.79
+Request 06 | res_time: 17:48:30.18 | latency:   0.43 s | tokens: 25 | gen_time: 0.149 s | tok/s: 167.40
+Request 07 | res_time: 17:48:30.19 | latency:   0.43 s | tokens: 25 | gen_time: 0.150 s | tok/s: 166.24
+Request 08 | res_time: 17:48:30.19 | latency:   0.43 s | tokens: 25 | gen_time: 0.153 s | tok/s: 163.31
+Request 09 | res_time: 17:48:30.21 | latency:   0.45 s | tokens: 25 | gen_time: 0.153 s | tok/s: 163.06
+Request 10 | res_time: 17:48:30.37 | latency:   0.62 s | tokens: 25 | gen_time: 0.152 s | tok/s: 164.04
+
+--- TEST CONFIGURATION ---
+MIG Config: all-1g.5gb
+Ollama Replicas: 7
+Total requests: 10
+Concurrency: 10
+Requested output tokens (effort): 25
+
+Total tokens: 250
+Wall time (s): 0.64
+GPU time (s): 1.52
+
+--- METRICS ---
+Throughput REAL (tok/s): 390.62
+Throughput GPU (tok/s): 164.92
+Avg tokens/sec per request: 164.94
+Latency avg (ms): 369.93
+Latency p95 (ms): 616.04
+
+Run appended to CSV table: results/results_table.csv
+Per-request stats appended to CSV table: results/result-20260610-174829-726-all-1g.5gb-replicas7-25.csv
