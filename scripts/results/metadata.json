@@ -1,7 +1,7 @@
 {
   "mig_config": "all-1g.5gb",
   "ollama_replicas": 7,
-  "total_requests": 500,
-  "concurrency": 500,
+  "total_requests": 1,
+  "concurrency": 1,
   "num_predict": 25
 }
