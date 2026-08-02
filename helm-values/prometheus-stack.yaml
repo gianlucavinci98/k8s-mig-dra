@@ -305,7 +305,7 @@ defaultRules:
   runbookUrl: "https://runbooks.prometheus-operator.dev/runbooks"
 
   node:
-    fsSelector: "fstype!=\"\""
+    fsSelector: 'fstype!=""'
     # fsSelector: 'fstype=~"ext[234]|btrfs|xfs|zfs"'
 
     ## Disabled PrometheusRule alerts
@@ -386,7 +386,6 @@ prometheus-windows-exporter:
 ## ref: https://prometheus.io/docs/alerting/alertmanager/
 ##
 alertmanager:
-
   ## Deploy alertmanager
   ##
   enabled: true
@@ -567,7 +566,7 @@ alertmanager:
       - target_matchers:
           - "alertname = InfoInhibitor"
     route:
-      group_by: [ "namespace" ]
+      group_by: ["namespace"]
       group_wait: 30s
       group_interval: 5m
       repeat_interval: 12h
@@ -767,7 +766,7 @@ alertmanager:
     clusterIP: ""
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
 
     ## Port for Alertmanager Service to listen on
@@ -1069,7 +1068,6 @@ alertmanager:
     #       requests:
     #         storage: 50Gi
     #     selector: {}
-
 
     ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
     ##
@@ -1788,41 +1786,43 @@ kubelet:
     ##
     cAdvisorMetricRelabelings:
       # Drop less useful container CPU metrics.
-      - sourceLabels: [ __name__ ]
+      - sourceLabels: [__name__]
         action: drop
-        regex: "container_cpu_(cfs_throttled_seconds_total|load_average_10s|system_seco\
+        regex:
+          "container_cpu_(cfs_throttled_seconds_total|load_average_10s|system_seco\
           nds_total|user_seconds_total)"
       # Drop less useful container / always zero filesystem metrics.
-      - sourceLabels: [ __name__ ]
+      - sourceLabels: [__name__]
         action: drop
-        regex: "container_fs_(io_current|io_time_seconds_total|io_time_weighted_seconds\
+        regex:
+          "container_fs_(io_current|io_time_seconds_total|io_time_weighted_seconds\
           _total|reads_merged_total|sector_reads_total|sector_writes_total|writ\
           es_merged_total)"
       # Drop less useful / always zero container memory metrics.
-      - sourceLabels: [ __name__ ]
+      - sourceLabels: [__name__]
         action: drop
         regex: "container_memory_(mapped_file|swap)"
       # Drop less useful container process metrics.
-      - sourceLabels: [ __name__ ]
+      - sourceLabels: [__name__]
         action: drop
         regex: "container_(file_descriptors|tasks_state|threads_max)"
       # Drop container_memory_failures_total{scope="hierarchy"} metrics,
       # we only need the container scope.
-      - sourceLabels: [ __name__, scope ]
+      - sourceLabels: [__name__, scope]
         action: drop
         regex: "container_memory_failures_total;hierarchy"
       # Drop container_network_... metrics that match various interfaces that
       # correspond to CNI and similar interfaces. This avoids capturing network
       # metrics for host network containers.
-      - sourceLabels: [ __name__, interface ]
+      - sourceLabels: [__name__, interface]
         action: drop
         regex: "container_network_.*;(cali|cilium|cni|lxc|nodelocaldns|tunl).*"
       # Drop container spec metrics that overlap with kube-state-metrics.
-      - sourceLabels: [ __name__ ]
+      - sourceLabels: [__name__]
         action: drop
         regex: "container_spec.*"
       # Drop cgroup metrics with no pod.
-      - sourceLabels: [ id, pod ]
+      - sourceLabels: [id, pod]
         action: drop
         regex: ".+;"
     # - sourceLabels: [__name__, image]
@@ -1857,7 +1857,7 @@ kubelet:
     ## metrics_path is required to match upstream rules and charts
     cAdvisorRelabelings:
       - action: replace
-        sourceLabels: [ __metrics_path__ ]
+        sourceLabels: [__metrics_path__]
         targetLabel: metrics_path
     # - sourceLabels: [__meta_kubernetes_pod_node_name]
     #   separator: ;
@@ -1871,7 +1871,7 @@ kubelet:
     ##
     probesRelabelings:
       - action: replace
-        sourceLabels: [ __metrics_path__ ]
+        sourceLabels: [__metrics_path__]
         targetLabel: metrics_path
     # - sourceLabels: [__meta_kubernetes_pod_node_name]
     #   separator: ;
@@ -1885,7 +1885,7 @@ kubelet:
     ##
     resourceRelabelings:
       - action: replace
-        sourceLabels: [ __metrics_path__ ]
+        sourceLabels: [__metrics_path__]
         targetLabel: metrics_path
     # - sourceLabels: [__meta_kubernetes_pod_node_name]
     #   separator: ;
@@ -1900,7 +1900,7 @@ kubelet:
     metricRelabelings:
       # Reduce bucket cardinality of kubelet storage operations.
       - action: drop
-        sourceLabels: [ __name__, le ]
+        sourceLabels: [__name__, le]
         regex: (csi_operations|storage_operation_duration)_seconds_bucket;(0.25|2.5|15|25|120|600)(\.0)?
     # - sourceLabels: [__name__, image]
     #   separator: ;
@@ -1919,7 +1919,7 @@ kubelet:
     ## metrics_path is required to match upstream rules and charts
     relabelings:
       - action: replace
-        sourceLabels: [ __metrics_path__ ]
+        sourceLabels: [__metrics_path__]
         targetLabel: metrics_path
     # - sourceLabels: [__meta_kubernetes_pod_node_name]
     #   separator: ;
@@ -1964,7 +1964,7 @@ kubeControllerManager:
     targetPort: null
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
     # selector:
     #   component: kube-controller-manager
@@ -2059,7 +2059,7 @@ coreDns:
 
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
     # selector:
     #   k8s-app: kube-dns
@@ -2148,7 +2148,7 @@ kubeDns:
       targetPort: 10055
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
     # selector:
     #   k8s-app: kube-dns
@@ -2258,7 +2258,7 @@ kubeEtcd:
     targetPort: 2381
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
     # selector:
     #   component: etcd
@@ -2379,7 +2379,7 @@ kubeScheduler:
     targetPort: null
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
     # selector:
     #   component: kube-scheduler
@@ -2484,7 +2484,7 @@ kubeProxy:
     targetPort: 10249
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
     # selector:
     #   k8s-app: kube-proxy
@@ -2571,6 +2571,9 @@ kubeStateMetrics:
 ## Configuration for kube-state-metrics subchart
 ##
 kube-state-metrics:
+  #DRA-OVERRIDE: enable label for Kueue
+  metricLabelsAllowlist:
+    - pods=[kueue.x-k8s.io/cluster-queue-name, kueue.x-k8s.io/local-queue-name]
   ## set to true to add the release label so scraping of the servicemonitor with kube-prometheus-stack works out of the box
   releaseLabel: true
 
@@ -2627,7 +2630,7 @@ prometheus-node-exporter:
     portName: http-metrics
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
     labels:
       jobLabel: node-exporter
@@ -2830,7 +2833,7 @@ prometheusOperator:
         clusterIP: ""
         ipDualStack:
           enabled: false
-          ipFamilies: [ "IPv6", "IPv4" ]
+          ipFamilies: ["IPv6", "IPv4"]
           ipFamilyPolicy: "PreferDualStack"
 
         ## Port to expose on each node
@@ -2907,7 +2910,6 @@ prometheusOperator:
 
       ## Decrease log verbosity to errors only
       # logLevel: error
-
 
       ## Liveness probe
       ##
@@ -3141,7 +3143,7 @@ prometheusOperator:
     clusterIP: ""
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
 
     ## Port to expose on each node
@@ -3464,7 +3466,8 @@ prometheusOperator:
 
   ## Set a Field Selector to filter watched secrets
   ##
-  secretFieldSelector: "type!=kubernetes.io/dockercfg,type!=kubernetes.io/service\
+  secretFieldSelector:
+    "type!=kubernetes.io/dockercfg,type!=kubernetes.io/service\
     -account-token,type!=helm.sh/release.v1"
 
   ## If false then the user will opt out of automounting API credentials.
@@ -3554,7 +3557,7 @@ prometheus:
     ##
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
 
     ## gRPC port config
@@ -3642,7 +3645,7 @@ prometheus:
     clusterIP: ""
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
 
     ## Port for Prometheus Service to listen on
@@ -3745,7 +3748,7 @@ prometheus:
     ##
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
 
   ## Configure pod disruption budgets for Prometheus
@@ -4578,7 +4581,6 @@ prometheus:
     #    relabel_configs:
     #    ...
 
-
     ## If additional scrape configurations are already deployed in a single secret file you can use this section.
     ## Expected values are the secret name and key
     ## Cannot be used with additionalScrapeConfigs
@@ -5072,7 +5074,6 @@ prometheus:
   ## ref: https://thanos.io/tip/components/rule.md/
   ##
 thanosRuler:
-
   ## Deploy thanosRuler
   ##
   enabled: false
@@ -5186,7 +5187,7 @@ thanosRuler:
     clusterIP: ""
     ipDualStack:
       enabled: false
-      ipFamilies: [ "IPv6", "IPv4" ]
+      ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
 
     ## Port for ThanosRuler Service to listen on
@@ -5623,7 +5624,8 @@ cleanPrometheusOperatorObjectNames: false
 ## Extra manifests to deploy.  Can be of type dict or list.
 ## If dict, keys are ignored and only values are used.
 ## Items contained within extraObjects can be defined as dict or string and are passed through tpl.
-extraManifests: null
+extraManifests:
+  null
   # - apiVersion: v1
   #   kind: ConfigMap
   #   metadata:
