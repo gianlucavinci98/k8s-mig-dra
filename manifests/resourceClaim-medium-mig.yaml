@@ -13,5 +13,4 @@ spec:
             count: 1
             selectors:
               - cel:
-                  expression: device.attributes["gpu.nvidia.com"].type == "mig" &&
-                    device.attributes["gpu.nvidia.com"].profile == "2g.10gb"
+                  expression: device.attributes["gpu.nvidia.com"].profile == "2g.10gb"

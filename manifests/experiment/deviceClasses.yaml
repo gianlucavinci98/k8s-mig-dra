@@ -1,0 +1,50 @@
+apiVersion: resource.k8s.io/v1
+kind: DeviceClass
+metadata:
+  name: mig-small
+spec:
+  selectors:
+    - cel:
+        expression: |-
+          device.driver == "gpu.nvidia.com" &&
+          device.attributes["gpu.nvidia.com"].type == "mig" &&
+          device.capacity["gpu.nvidia.com"].multiprocessors.compareTo(quantity("14")) == 0
+
+---
+apiVersion: resource.k8s.io/v1
+kind: DeviceClass
+metadata:
+  name: mig-medium
+spec:
+  selectors:
+    - cel:
+        expression: |-
+          device.driver == "gpu.nvidia.com" &&
+          device.attributes["gpu.nvidia.com"].type == "mig" &&
+          device.capacity["gpu.nvidia.com"].multiprocessors.compareTo(quantity("28")) == 0
+
+---
+apiVersion: resource.k8s.io/v1
+kind: DeviceClass
+metadata:
+  name: mig-large
+spec:
+  selectors:
+    - cel:
+        expression: |-
+          device.driver == "gpu.nvidia.com" &&
+          device.attributes["gpu.nvidia.com"].type == "mig" &&
+          device.capacity["gpu.nvidia.com"].multiprocessors.compareTo(quantity("42")) == 0
+
+---
+apiVersion: resource.k8s.io/v1
+kind: DeviceClass
+metadata:
+  name: mig-fast
+spec:
+  selectors:
+    - cel:
+        expression: |-
+          device.driver == "gpu.nvidia.com" &&
+          device.attributes["gpu.nvidia.com"].type == "mig" &&
+          device.capacity["gpu.nvidia.com"].multiprocessors.compareTo(quantity("28")) >= 0

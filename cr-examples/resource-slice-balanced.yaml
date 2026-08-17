@@ -1,0 +1,211 @@
+apiVersion: resource.k8s.io/v1
+kind: ResourceSlice
+metadata:
+  creationTimestamp: "2026-07-01T03:49:03Z"
+  generateName: ai-lab-a100-2-gpu.nvidia.com-
+  generation: 3
+  name: ai-lab-a100-2-gpu.nvidia.com-686gc
+  ownerReferences:
+  - apiVersion: v1
+    controller: true
+    kind: Node
+    name: ai-lab-a100-2
+    uid: c3b97e0b-bdd8-413c-8ade-531cc0709a18
+  resourceVersion: "14295195"
+  uid: 42899bb1-7b23-4688-80e0-9af76ad06a39
+spec:
+  devices:
+  - attributes:
+      addressingMode:
+        string: None
+      architecture:
+        string: Ampere
+      brand:
+        string: Nvidia
+      cudaComputeCapability:
+        version: 8.0.0
+      cudaDriverVersion:
+        version: 13.2.0
+      driverVersion:
+        version: 595.71.5
+      parentUUID:
+        string: GPU-8fb50131-6654-9551-735c-932a7c87f13c
+      productName:
+        string: NVIDIA A100-SXM4-40GB
+      profile:
+        string: 1g.5gb
+      resource.kubernetes.io/pciBusID:
+        string: "0000:00:04.0"
+      resource.kubernetes.io/pcieRoot:
+        string: pci0000:00
+      type:
+        string: mig
+      uuid:
+        string: MIG-6c6518bf-1a43-5498-afd0-a00a8f6a4e76
+    capacity:
+      copyEngines:
+        value: "1"
+      decoders:
+        value: "0"
+      encoders:
+        value: "0"
+      jpegEngines:
+        value: "0"
+      memory:
+        value: 4864Mi
+      memorySlice2:
+        value: "1"
+      multiprocessors:
+        value: "14"
+      ofaEngines:
+        value: "0"
+    name: gpu-0-mig-1g5gb-19-2
+  - attributes:
+      addressingMode:
+        string: None
+      architecture:
+        string: Ampere
+      brand:
+        string: Nvidia
+      cudaComputeCapability:
+        version: 8.0.0
+      cudaDriverVersion:
+        version: 13.2.0
+      driverVersion:
+        version: 595.71.5
+      parentUUID:
+        string: GPU-8fb50131-6654-9551-735c-932a7c87f13c
+      productName:
+        string: NVIDIA A100-SXM4-40GB
+      profile:
+        string: 1g.5gb
+      resource.kubernetes.io/pciBusID:
+        string: "0000:00:04.0"
+      resource.kubernetes.io/pcieRoot:
+        string: pci0000:00
+      type:
+        string: mig
+      uuid:
+        string: MIG-9d36cb57-d5dc-589b-bf41-eaca181733b0
+    capacity:
+      copyEngines:
+        value: "1"
+      decoders:
+        value: "0"
+      encoders:
+        value: "0"
+      jpegEngines:
+        value: "0"
+      memory:
+        value: 4864Mi
+      memorySlice3:
+        value: "1"
+      multiprocessors:
+        value: "14"
+      ofaEngines:
+        value: "0"
+    name: gpu-0-mig-1g5gb-19-3
+  - attributes:
+      addressingMode:
+        string: None
+      architecture:
+        string: Ampere
+      brand:
+        string: Nvidia
+      cudaComputeCapability:
+        version: 8.0.0
+      cudaDriverVersion:
+        version: 13.2.0
+      driverVersion:
+        version: 595.71.5
+      parentUUID:
+        string: GPU-8fb50131-6654-9551-735c-932a7c87f13c
+      productName:
+        string: NVIDIA A100-SXM4-40GB
+      profile:
+        string: 3g.20gb
+      resource.kubernetes.io/pciBusID:
+        string: "0000:00:04.0"
+      resource.kubernetes.io/pcieRoot:
+        string: pci0000:00
+      type:
+        string: mig
+      uuid:
+        string: MIG-c8c7c05f-0718-571c-b4f5-2b53aafde104
+    capacity:
+      copyEngines:
+        value: "3"
+      decoders:
+        value: "2"
+      encoders:
+        value: "0"
+      jpegEngines:
+        value: "0"
+      memory:
+        value: 20096Mi
+      memorySlice4:
+        value: "1"
+      memorySlice5:
+        value: "1"
+      memorySlice6:
+        value: "1"
+      memorySlice7:
+        value: "1"
+      multiprocessors:
+        value: "42"
+      ofaEngines:
+        value: "0"
+    name: gpu-0-mig-3g20gb-9-4
+  - attributes:
+      addressingMode:
+        string: None
+      architecture:
+        string: Ampere
+      brand:
+        string: Nvidia
+      cudaComputeCapability:
+        version: 8.0.0
+      cudaDriverVersion:
+        version: 13.2.0
+      driverVersion:
+        version: 595.71.5
+      parentUUID:
+        string: GPU-8fb50131-6654-9551-735c-932a7c87f13c
+      productName:
+        string: NVIDIA A100-SXM4-40GB
+      profile:
+        string: 2g.10gb
+      resource.kubernetes.io/pciBusID:
+        string: "0000:00:04.0"
+      resource.kubernetes.io/pcieRoot:
+        string: pci0000:00
+      type:
+        string: mig
+      uuid:
+        string: MIG-ee099eb9-e3e0-53c2-8165-07c74ace2c3a
+    capacity:
+      copyEngines:
+        value: "2"
+      decoders:
+        value: "1"
+      encoders:
+        value: "0"
+      jpegEngines:
+        value: "0"
+      memory:
+        value: 9984Mi
+      memorySlice0:
+        value: "1"
+      memorySlice1:
+        value: "1"
+      multiprocessors:
+        value: "28"
+      ofaEngines:
+        value: "0"
+    name: gpu-0-mig-2g10gb-14-0
+  driver: gpu.nvidia.com
+  nodeName: ai-lab-a100-2
+  pool:
+    generation: 1
+    name: ai-lab-a100-2
+    resourceSliceCount: 1

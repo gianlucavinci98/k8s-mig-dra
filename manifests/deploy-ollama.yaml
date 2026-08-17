@@ -46,7 +46,7 @@ spec:
 
       resourceClaims:
         - name: mig-gpu
-          resourceClaimTemplateName: whatever-mig
+          resourceClaimTemplateName: test-mig
 
       volumes:
         - name: ollama-data

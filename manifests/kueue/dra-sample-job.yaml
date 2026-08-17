@@ -1,0 +1,53 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sample-dra-job-1
+  namespace: experiment
+  labels:
+    kueue.x-k8s.io/queue-name: experiment-uq
+spec:
+  template:
+    spec:
+      containers:
+        - name: dummy-job
+          image: nvidia/cuda:12.8.2-base-ubuntu24.04
+          args: ["bash", "-c", "nvidia-smi; sleep 30"]
+          resources:
+            claims:
+              - name: gpu
+      resourceClaims:
+        - name: gpu
+          resourceClaimTemplateName: claim-fast
+      restartPolicy: Never
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sample-dra-job-2
+  namespace: experiment
+  labels:
+    kueue.x-k8s.io/queue-name: experiment-uq
+spec:
+  template:
+    spec:
+      containers:
+        - name: dummy-job
+          image: nvidia/cuda:12.8.2-base-ubuntu24.04
+          args: ["bash", "-c", "nvidia-smi; sleep 30"]
+          resources:
+            claims:
+              - name: gpu
+      resourceClaims:
+        - name: gpu
+          resourceClaimTemplateName: claim-fast
+      restartPolicy: Never
+
+---
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: LocalQueue
+metadata:
+  namespace: "experiment"
+  name: "experiment-uq"
+spec:
+  clusterQueue: "dflex-cq"

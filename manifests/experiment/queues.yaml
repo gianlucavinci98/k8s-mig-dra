@@ -1,0 +1,58 @@
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: ClusterQueue
+metadata:
+  name: "dflex-cq"
+spec:
+  namespaceSelector: { "experiment" }
+  queueingStrategy: BestEffortFIFO
+  resourceGroups:
+    - coveredResources:
+        - mig-small
+        - mig-fast
+      flavors:
+        - name: default-flavor
+          resources:
+            - name: mig-small
+              nominalQuota: 1
+            - name: mig-fast
+              nominalQuota: 2
+
+---
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: ClusterQueue
+metadata:
+  name: "baseline-large-cq"
+spec:
+  namespaceSelector: { "experiment" }
+  queueingStrategy: BestEffortFIFO
+  resourceGroups:
+    - coveredResources:
+        - mig-small
+        - mig-large
+      flavors:
+        - name: default-flavor
+          resources:
+            - name: mig-small
+              nominalQuota: 1
+            - name: mig-large
+              nominalQuota: 1
+
+---
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: ClusterQueue
+metadata:
+  name: "baseline-medium-cq"
+spec:
+  namespaceSelector: { "experiment" }
+  queueingStrategy: BestEffortFIFO
+  resourceGroups:
+    - coveredResources:
+        - mig-small
+        - mig-medium
+      flavors:
+        - name: default-flavor
+          resources:
+            - name: mig-small
+              nominalQuota: 1
+            - name: mig-medium
+              nominalQuota: 1

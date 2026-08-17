@@ -1,0 +1,25 @@
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: ClusterQueue
+metadata:
+  name: "dra-cluster-queue"
+spec:
+  namespaceSelector: {}
+  resourceGroups:
+    - coveredResources: ["cpu", "memory", "mig-gpu"]
+      flavors:
+        - name: "default-flavor"
+          resources:
+            - name: "cpu"
+              nominalQuota: 40
+            - name: "memory"
+              nominalQuota: 200Gi
+            - name: "mig-gpu"
+              nominalQuota: 3
+---
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: LocalQueue
+metadata:
+  namespace: "default"
+  name: "dra-user-queue"
+spec:
+  clusterQueue: "dra-cluster-queue"
