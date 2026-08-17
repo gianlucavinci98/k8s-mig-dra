@@ -52,15 +52,14 @@ spec:
                 fieldRef:
                   fieldPath: metadata.labels['batch.kubernetes.io/job-name']
           resources:
-            requests:
-              cpu: 500m
-              memory: 1Gi
-            limits:
-              cpu: "2"
-              memory: 4Gi
+            # requests:
+            #   cpu: 500m
+            #   memory: 1Gi
+            # limits:
+            #   cpu: "2"
+            #   memory: 4Gi
             claims:
               - name: gpu
       resourceClaims:
         - name: gpu
           resourceClaimTemplateName: claim-large
-

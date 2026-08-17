@@ -1,0 +1,118 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"gpu-matmul-benchmark","benchmark.thesis/profile":"large","kueue.x-k8s.io/priority-class":"gold-priority","kueue.x-k8s.io/queue-name":"baseline-large-uq"},"name":"gpu-calibration-large","namespace":"experiment"},"spec":{"backoffLimit":0,"suspend":true,"template":{"metadata":{"labels":{"app.kubernetes.io/name":"gpu-matmul-benchmark","benchmark.thesis/profile":"large"}},"spec":{"containers":[{"env":[{"name":"EXPECTED_PROFILE","value":"large-3g"},{"name":"EXPECTED_MULTIPROCESSORS","value":"42"},{"name":"CLAIM_TEMPLATE","value":"claim-large"},{"name":"EXPERIMENT_ARM","value":"calibration-large"},{"name":"POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}},{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"fieldPath":"metadata.namespace"}}},{"name":"NODE_NAME","valueFrom":{"fieldRef":{"fieldPath":"spec.nodeName"}}},{"name":"JOB_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.labels['batch.kubernetes.io/job-name']"}}}],"envFrom":[{"configMapRef":{"name":"gpu-matmul-benchmark-config"}}],"image":"gianlucavinci98/gpu-matmul-benchmark:0.1.0","imagePullPolicy":"IfNotPresent","name":"benchmark","resources":{"claims":[{"name":"gpu"}]}}],"resourceClaims":[{"name":"gpu","resourceClaimTemplateName":"claim-large"}],"restartPolicy":"Never","terminationGracePeriodSeconds":30}}}}
+  creationTimestamp: "2026-08-17T13:47:09Z"
+  generation: 2
+  labels:
+    app.kubernetes.io/name: gpu-matmul-benchmark
+    benchmark.thesis/profile: large
+    kueue.x-k8s.io/priority-class: gold-priority
+    kueue.x-k8s.io/queue-name: baseline-large-uq
+  name: gpu-calibration-large
+  namespace: experiment
+  resourceVersion: "14425412"
+  uid: 8c32e9bc-d3d4-420f-a65e-f64a6c31500e
+spec:
+  backoffLimit: 0
+  completionMode: NonIndexed
+  completions: 1
+  manualSelector: false
+  parallelism: 1
+  podReplacementPolicy: TerminatingOrFailed
+  selector:
+    matchLabels:
+      batch.kubernetes.io/controller-uid: 8c32e9bc-d3d4-420f-a65e-f64a6c31500e
+  suspend: false
+  template:
+    metadata:
+      annotations:
+        kueue.x-k8s.io/workload: job-gpu-calibration-large-6cc91
+      labels:
+        app.kubernetes.io/name: gpu-matmul-benchmark
+        batch.kubernetes.io/controller-uid: 8c32e9bc-d3d4-420f-a65e-f64a6c31500e
+        batch.kubernetes.io/job-name: gpu-calibration-large
+        benchmark.thesis/profile: large
+        controller-uid: 8c32e9bc-d3d4-420f-a65e-f64a6c31500e
+        job-name: gpu-calibration-large
+        kueue.x-k8s.io/cluster-queue-name: baseline-large-cq
+        kueue.x-k8s.io/local-queue-name: baseline-large-uq
+        kueue.x-k8s.io/podset: main
+    spec:
+      containers:
+      - env:
+        - name: EXPECTED_PROFILE
+          value: large-3g
+        - name: EXPECTED_MULTIPROCESSORS
+          value: "42"
+        - name: CLAIM_TEMPLATE
+          value: claim-large
+        - name: EXPERIMENT_ARM
+          value: calibration-large
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        - name: JOB_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.labels['batch.kubernetes.io/job-name']
+        envFrom:
+        - configMapRef:
+            name: gpu-matmul-benchmark-config
+        image: gianlucavinci98/gpu-matmul-benchmark:0.1.0
+        imagePullPolicy: IfNotPresent
+        name: benchmark
+        resources:
+          claims:
+          - name: gpu
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      resourceClaims:
+      - name: gpu
+        resourceClaimTemplateName: claim-large
+      restartPolicy: Never
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  completionTime: "2026-08-17T13:47:31Z"
+  conditions:
+  - lastProbeTime: "2026-08-17T13:47:09Z"
+    lastTransitionTime: "2026-08-17T13:47:09Z"
+    message: Job resumed
+    reason: JobResumed
+    status: "False"
+    type: Suspended
+  - lastProbeTime: "2026-08-17T13:47:31Z"
+    lastTransitionTime: "2026-08-17T13:47:31Z"
+    message: Reached expected number of succeeded pods
+    reason: CompletionsReached
+    status: "True"
+    type: SuccessCriteriaMet
+  - lastProbeTime: "2026-08-17T13:47:31Z"
+    lastTransitionTime: "2026-08-17T13:47:31Z"
+    message: Reached expected number of succeeded pods
+    reason: CompletionsReached
+    status: "True"
+    type: Complete
+  ready: 0
+  startTime: "2026-08-17T13:47:09Z"
+  succeeded: 1
+  terminating: 0
+  uncountedTerminatedPods: {}
