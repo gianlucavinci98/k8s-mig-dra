@@ -1,0 +1,65 @@
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: ClusterQueue
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"kueue.x-k8s.io/v1beta2","kind":"ClusterQueue","metadata":{"annotations":{},"name":"dflex-cq"},"spec":{"namespaceSelector":{"experiment":null},"queueingStrategy":"BestEffortFIFO","resourceGroups":[{"coveredResources":["mig-small","mig-fast"],"flavors":[{"name":"default-flavor","resources":[{"name":"mig-small","nominalQuota":1},{"name":"mig-fast","nominalQuota":2}]}]}]}}
+  creationTimestamp: "2026-08-16T19:25:07Z"
+  finalizers:
+  - kueue.x-k8s.io/resource-in-use
+  generation: 2
+  name: dflex-cq
+  resourceVersion: "14447530"
+  uid: 37da791f-a141-490c-8103-99d375645c3a
+spec:
+  flavorFungibility:
+    whenCanBorrow: MayStopSearch
+    whenCanPreempt: TryNextFlavor
+  namespaceSelector: {}
+  preemption:
+    borrowWithinCohort:
+      policy: Never
+    reclaimWithinCohort: Never
+    withinClusterQueue: Never
+  queueingStrategy: BestEffortFIFO
+  resourceGroups:
+  - coveredResources:
+    - mig-small
+    - mig-fast
+    flavors:
+    - name: default-flavor
+      resources:
+      - name: mig-small
+        nominalQuota: 1
+      - name: mig-fast
+        nominalQuota: 2
+  stopPolicy: None
+status:
+  admittedWorkloads: 0
+  conditions:
+  - lastTransitionTime: "2026-08-16T19:25:07Z"
+    message: Can admit new workloads
+    observedGeneration: 2
+    reason: Ready
+    status: "True"
+    type: Active
+  flavorsReservation:
+  - name: default-flavor
+    resources:
+    - borrowed: "0"
+      name: mig-fast
+      total: "0"
+    - borrowed: "0"
+      name: mig-small
+      total: "0"
+  flavorsUsage:
+  - name: default-flavor
+    resources:
+    - borrowed: "0"
+      name: mig-fast
+      total: "0"
+    - borrowed: "0"
+      name: mig-small
+      total: "0"
+  pendingWorkloads: 0
+  reservingWorkloads: 0

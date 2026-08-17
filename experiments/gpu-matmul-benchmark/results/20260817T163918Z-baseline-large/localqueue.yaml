@@ -1,0 +1,40 @@
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: LocalQueue
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"kueue.x-k8s.io/v1beta2","kind":"LocalQueue","metadata":{"annotations":{},"name":"baseline-large-uq","namespace":"experiment"},"spec":{"clusterQueue":"baseline-large-cq"}}
+  creationTimestamp: "2026-08-17T09:58:53Z"
+  generation: 1
+  name: baseline-large-uq
+  namespace: experiment
+  resourceVersion: "14446147"
+  uid: 17b51bbf-3e4a-43e6-8652-301d3b948fbc
+spec:
+  clusterQueue: baseline-large-cq
+  stopPolicy: None
+status:
+  admittedWorkloads: 0
+  conditions:
+  - lastTransitionTime: "2026-08-17T09:58:53Z"
+    message: Can submit new workloads to localQueue
+    observedGeneration: 1
+    reason: Ready
+    status: "True"
+    type: Active
+  flavorsReservation:
+  - name: default-flavor
+    resources:
+    - name: mig-large
+      total: "0"
+    - name: mig-small
+      total: "0"
+  flavorsUsage:
+  - name: default-flavor
+    resources:
+    - name: mig-large
+      total: "0"
+    - name: mig-small
+      total: "0"
+  pendingWorkloads: 0
+  reservingWorkloads: 0

@@ -1,0 +1,40 @@
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: LocalQueue
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"kueue.x-k8s.io/v1beta2","kind":"LocalQueue","metadata":{"annotations":{},"name":"dflex-uq","namespace":"experiment"},"spec":{"clusterQueue":"dflex-cq"}}
+  creationTimestamp: "2026-08-17T09:58:53Z"
+  generation: 1
+  name: dflex-uq
+  namespace: experiment
+  resourceVersion: "14447529"
+  uid: 459448b1-ad72-45de-981c-2c593663d22f
+spec:
+  clusterQueue: dflex-cq
+  stopPolicy: None
+status:
+  admittedWorkloads: 0
+  conditions:
+  - lastTransitionTime: "2026-08-17T09:58:53Z"
+    message: Can submit new workloads to localQueue
+    observedGeneration: 1
+    reason: Ready
+    status: "True"
+    type: Active
+  flavorsReservation:
+  - name: default-flavor
+    resources:
+    - name: mig-fast
+      total: "0"
+    - name: mig-small
+      total: "0"
+  flavorsUsage:
+  - name: default-flavor
+    resources:
+    - name: mig-fast
+      total: "0"
+    - name: mig-small
+      total: "0"
+  pendingWorkloads: 0
+  reservingWorkloads: 0
