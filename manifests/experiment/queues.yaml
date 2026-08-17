@@ -56,3 +56,30 @@ spec:
               nominalQuota: 1
             - name: mig-medium
               nominalQuota: 1
+
+---
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: LocalQueue
+metadata:
+  namespace: "experiment"
+  name: "dflex-uq"
+spec:
+  clusterQueue: "dflex-cq"
+
+---
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: LocalQueue
+metadata:
+  namespace: "experiment"
+  name: "baseline-large-uq"
+spec:
+  clusterQueue: "baseline-large-cq"
+
+---
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: LocalQueue
+metadata:
+  namespace: "experiment"
+  name: "baseline-medium-uq"
+spec:
+  clusterQueue: "baseline-medium-cq"

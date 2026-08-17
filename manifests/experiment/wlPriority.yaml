@@ -1,0 +1,14 @@
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: WorkloadPriorityClass
+metadata:
+  name: gold-priority
+value: 1000
+description: "Gold priority"
+
+---
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: WorkloadPriorityClass
+metadata:
+  name: bronze-priority
+value: 100
+description: "Bronze priority"
