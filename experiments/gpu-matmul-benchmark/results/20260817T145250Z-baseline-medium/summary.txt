@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "experiment_arm": "baseline-medium",
+  "jobs_submitted": 14,
+  "jobs_completed": 14,
+  "jobs_failed": 0,
+  "pool_start": "2026-08-17T14:52:51Z",
+  "pool_end": "2026-08-17T14:59:01Z",
+  "submission_span_seconds": 1.0,
+  "makespan_seconds": 370.0,
+  "throughput_jobs_per_second": 0.03783783783783784,
+  "classes": {
+    "bronze": {
+      "jobs": 2,
+      "completed": 2,
+      "end_to_end": {
+        "count": 2,
+        "min_seconds": 52.0,
+        "p50_seconds": 78.5,
+        "p95_seconds": 102.35,
+        "max_seconds": 105.0,
+        "mean_seconds": 78.5
+      },
+      "queue_wait": {
+        "count": 2,
+        "min_seconds": 0.0,
+        "p50_seconds": 26.5,
+        "p95_seconds": 50.349999999999994,
+        "max_seconds": 53.0,
+        "mean_seconds": 26.5
+      },
+      "execution": {
+        "count": 2,
+        "min_seconds": 52.0,
+        "p50_seconds": 52.0,
+        "p95_seconds": 52.0,
+        "max_seconds": 52.0,
+        "mean_seconds": 52.0
+      },
+      "gpu_cuda": {
+        "count": 2,
+        "min_seconds": 44.61197265625,
+        "p50_seconds": 44.622580078125,
+        "p95_seconds": 44.6321267578125,
+        "max_seconds": 44.6331875,
+        "mean_seconds": 44.622580078125
+      }
+    },
+    "gold": {
+      "jobs": 12,
+      "completed": 12,
+      "end_to_end": {
+        "count": 12,
+        "min_seconds": 30.0,
+        "p50_seconds": 198.5,
+        "p95_seconds": 351.95,
+        "max_seconds": 369.0,
+        "mean_seconds": 198.5
+      },
+      "queue_wait": {
+        "count": 12,
+        "min_seconds": 0.0,
+        "p50_seconds": 168.0,
+        "p95_seconds": 321.95,
+        "max_seconds": 339.0,
+        "mean_seconds": 168.58333333333334
+      },
+      "execution": {
+        "count": 12,
+        "min_seconds": 29.0,
+        "p50_seconds": 29.0,
+        "p95_seconds": 30.0,
+        "max_seconds": 30.0,
+        "mean_seconds": 29.333333333333332
+      },
+      "gpu_cuda": {
+        "count": 12,
+        "min_seconds": 22.312015625,
+        "p50_seconds": 22.3379814453125,
+        "p95_seconds": 22.34120546875,
+        "max_seconds": 22.34178125,
+        "mean_seconds": 22.334713216145833
+      }
+    }
+  },
+  "definitions": {
+    "makespan_seconds": "max(Job completionTime) - min(Job creationTimestamp)",
+    "queue_wait_seconds": "Workload admitted time - Job creationTimestamp",
+    "startup_seconds": "Pod startTime - Workload admitted time",
+    "execution_seconds": "Job completionTime - Pod startTime",
+    "end_to_end_seconds": "Job completionTime - Job creationTimestamp"
+  }
+}
