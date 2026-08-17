@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gpu-matmul-benchmark-config
+  namespace: experiment
+data:
+  # Fixed-work mode is required when comparing completion times across S/M/L.
+  MATRIX_SIZE: "8192"
+  ITERATIONS: "100"
+  WARMUP_ITERATIONS: "5"
+  TRIALS: "1"
+  DTYPE: "float32"
+  ALLOW_TF32: "false"
+  SEED: "42"
+
+  # Set to a positive number only for a duration-based stress/throughput test.
+  # A fixed duration must not be used to compare completion times.
+  DURATION_SECONDS: "0"
+  DURATION_CHECK_INTERVAL: "5"
+  STRICT_DEVICE_CHECK: "true"
+
