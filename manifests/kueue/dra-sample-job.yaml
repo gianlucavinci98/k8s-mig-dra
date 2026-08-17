@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: sample-dra-job-1
+  name: sample-gold-job-1
   namespace: experiment
   labels:
     kueue.x-k8s.io/queue-name: baseline-medium-uq
@@ -25,7 +25,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: sample-dra-job-2
+  name: sample-bronze-job-1
   namespace: experiment
   labels:
     kueue.x-k8s.io/queue-name: baseline-medium-uq
@@ -36,20 +36,20 @@ spec:
       containers:
         - name: dummy-job
           image: nvidia/cuda:12.8.2-base-ubuntu24.04
-          args: ["bash", "-c", "nvidia-smi; sleep 10"]
+          args: ["bash", "-c", "nvidia-smi; sleep 20"]
           resources:
             claims:
               - name: gpu
       resourceClaims:
         - name: gpu
-          resourceClaimTemplateName: claim-medium
+          resourceClaimTemplateName: claim-small
       restartPolicy: Never
 
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: sample-dra-job-3
+  name: sample-bronze-job-2
   namespace: experiment
   labels:
     kueue.x-k8s.io/queue-name: baseline-medium-uq
@@ -60,20 +60,20 @@ spec:
       containers:
         - name: dummy-job
           image: nvidia/cuda:12.8.2-base-ubuntu24.04
-          args: ["bash", "-c", "nvidia-smi; sleep 10"]
+          args: ["bash", "-c", "nvidia-smi; sleep 20"]
           resources:
             claims:
               - name: gpu
       resourceClaims:
         - name: gpu
-          resourceClaimTemplateName: claim-medium
+          resourceClaimTemplateName: claim-small
       restartPolicy: Never
 
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: sample-dra-job-4
+  name: sample-bronze-job-3
   namespace: experiment
   labels:
     kueue.x-k8s.io/queue-name: baseline-medium-uq
@@ -84,20 +84,20 @@ spec:
       containers:
         - name: dummy-job
           image: nvidia/cuda:12.8.2-base-ubuntu24.04
-          args: ["bash", "-c", "nvidia-smi; sleep 10"]
+          args: ["bash", "-c", "nvidia-smi; sleep 20"]
           resources:
             claims:
               - name: gpu
       resourceClaims:
         - name: gpu
-          resourceClaimTemplateName: claim-medium
+          resourceClaimTemplateName: claim-small
       restartPolicy: Never
 
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: sample-dra-job-5
+  name: sample-gold-job-2
   namespace: experiment
   labels:
     kueue.x-k8s.io/queue-name: baseline-medium-uq

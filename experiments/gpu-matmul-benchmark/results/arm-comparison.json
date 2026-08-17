@@ -1,0 +1,56 @@
+{
+  "comparison_basis": "p50 of independent pool-replica makespans",
+  "arms": {
+    "baseline-large": {
+      "replicas": 1,
+      "min_seconds": 275.0,
+      "p50_seconds": 275.0,
+      "p95_seconds": 275.0,
+      "max_seconds": 275.0,
+      "mean_seconds": 275.0
+    },
+    "baseline-medium": {
+      "replicas": 1,
+      "min_seconds": 370.0,
+      "p50_seconds": 370.0,
+      "p95_seconds": 370.0,
+      "max_seconds": 370.0,
+      "mean_seconds": 370.0
+    },
+    "d-flex": {
+      "replicas": 1,
+      "min_seconds": 156.0,
+      "p50_seconds": 156.0,
+      "p95_seconds": 156.0,
+      "max_seconds": 156.0,
+      "mean_seconds": 156.0
+    }
+  },
+  "comparisons": {
+    "d-flex_vs_baseline-medium": {
+      "baseline_p50_seconds": 370.0,
+      "dflex_p50_seconds": 156.0,
+      "seconds_saved": 214.0,
+      "makespan_reduction_percent": 57.83783783783784,
+      "speedup": 2.371794871794872
+    },
+    "d-flex_vs_baseline-large": {
+      "baseline_p50_seconds": 275.0,
+      "dflex_p50_seconds": 156.0,
+      "seconds_saved": 119.0,
+      "makespan_reduction_percent": 43.27272727272727,
+      "speedup": 1.7628205128205128
+    }
+  },
+  "sources": {
+    "baseline-medium": [
+      "/home/gianluca/workspace/k8s-mig-dra/experiments/gpu-matmul-benchmark/results/20260817T145250Z-baseline-medium/summary.json"
+    ],
+    "baseline-large": [
+      "/home/gianluca/workspace/k8s-mig-dra/experiments/gpu-matmul-benchmark/results/20260817T163918Z-baseline-large/summary.json"
+    ],
+    "d-flex": [
+      "/home/gianluca/workspace/k8s-mig-dra/experiments/gpu-matmul-benchmark/results/20260817T164753Z-d-flex/summary.json"
+    ]
+  }
+}
