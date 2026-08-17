@@ -206,14 +206,6 @@ def main() -> int:
             ),
         }
 
-    device_distribution: dict[str, dict[str, int]] = {}
-    for row in rows:
-        service_class = str(row["service_class"])
-        multiprocessors = row.get("gpu_multiprocessors")
-        key = str(multiprocessors) if multiprocessors is not None else "unknown"
-        class_distribution = device_distribution.setdefault(service_class, {})
-        class_distribution[key] = class_distribution.get(key, 0) + 1
-
     report = {
         "schema_version": "1.0",
         "experiment_arm": args.experiment,
