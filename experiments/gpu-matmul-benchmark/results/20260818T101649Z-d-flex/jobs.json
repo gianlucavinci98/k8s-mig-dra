@@ -1,0 +1,2599 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"small\",\"benchmark.thesis/service-class\":\"bronze\",\"kueue.x-k8s.io/priority-class\":\"bronze-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-bronze-01\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"small\",\"benchmark.thesis/service-class\":\"bronze\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"small-1g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"14\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-small\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"bronze\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-small\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "small",
+                    "benchmark.thesis/service-class": "bronze",
+                    "kueue.x-k8s.io/priority-class": "bronze-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-bronze-01",
+                "namespace": "experiment",
+                "resourceVersion": "14563475",
+                "uid": "347118cc-f288-457f-8f42-8e4885c6ddf7"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "347118cc-f288-457f-8f42-8e4885c6ddf7"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-bronze-01-4dcc8"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "347118cc-f288-457f-8f42-8e4885c6ddf7",
+                            "batch.kubernetes.io/job-name": "d-flex-bronze-01",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "small",
+                            "benchmark.thesis/service-class": "bronze",
+                            "controller-uid": "347118cc-f288-457f-8f42-8e4885c6ddf7",
+                            "job-name": "d-flex-bronze-01",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "small-1g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "14"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-small"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "bronze"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-small"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:17:43Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:16:50Z",
+                        "lastTransitionTime": "2026-08-18T10:16:50Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:43Z",
+                        "lastTransitionTime": "2026-08-18T10:17:43Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:44Z",
+                        "lastTransitionTime": "2026-08-18T10:17:44Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:16:50Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"small\",\"benchmark.thesis/service-class\":\"bronze\",\"kueue.x-k8s.io/priority-class\":\"bronze-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-bronze-02\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"small\",\"benchmark.thesis/service-class\":\"bronze\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"small-1g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"14\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-small\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"bronze\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-small\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "small",
+                    "benchmark.thesis/service-class": "bronze",
+                    "kueue.x-k8s.io/priority-class": "bronze-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-bronze-02",
+                "namespace": "experiment",
+                "resourceVersion": "14563781",
+                "uid": "4027b5bc-e6f7-459e-97cc-7a8a9d8a143b"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "4027b5bc-e6f7-459e-97cc-7a8a9d8a143b"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-bronze-02-6275c"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "4027b5bc-e6f7-459e-97cc-7a8a9d8a143b",
+                            "batch.kubernetes.io/job-name": "d-flex-bronze-02",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "small",
+                            "benchmark.thesis/service-class": "bronze",
+                            "controller-uid": "4027b5bc-e6f7-459e-97cc-7a8a9d8a143b",
+                            "job-name": "d-flex-bronze-02",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "small-1g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "14"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-small"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "bronze"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-small"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:18:37Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:45Z",
+                        "lastTransitionTime": "2026-08-18T10:17:45Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:37Z",
+                        "lastTransitionTime": "2026-08-18T10:18:37Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:37Z",
+                        "lastTransitionTime": "2026-08-18T10:18:37Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:17:45Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-01\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-01",
+                "namespace": "experiment",
+                "resourceVersion": "14563351",
+                "uid": "73a9b930-504c-4612-b45e-1981b7cdf573"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "73a9b930-504c-4612-b45e-1981b7cdf573"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-01-83c69"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "73a9b930-504c-4612-b45e-1981b7cdf573",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-01",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "73a9b930-504c-4612-b45e-1981b7cdf573",
+                            "job-name": "d-flex-gold-01",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:17:20Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:16:50Z",
+                        "lastTransitionTime": "2026-08-18T10:16:50Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:20Z",
+                        "lastTransitionTime": "2026-08-18T10:17:20Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:20Z",
+                        "lastTransitionTime": "2026-08-18T10:17:20Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:16:50Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-02\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-02",
+                "namespace": "experiment",
+                "resourceVersion": "14563294",
+                "uid": "c6871302-5432-4b74-bd70-9e08d6075295"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "c6871302-5432-4b74-bd70-9e08d6075295"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-02-2cebf"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "c6871302-5432-4b74-bd70-9e08d6075295",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-02",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "c6871302-5432-4b74-bd70-9e08d6075295",
+                            "job-name": "d-flex-gold-02",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:17:12Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:16:50Z",
+                        "lastTransitionTime": "2026-08-18T10:16:50Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:12Z",
+                        "lastTransitionTime": "2026-08-18T10:17:12Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:12Z",
+                        "lastTransitionTime": "2026-08-18T10:17:12Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:16:50Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-03\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-03",
+                "namespace": "experiment",
+                "resourceVersion": "14564031",
+                "uid": "93f418e7-3ade-4c06-ae18-4399e384db49"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "93f418e7-3ade-4c06-ae18-4399e384db49"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-03-61314"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "93f418e7-3ade-4c06-ae18-4399e384db49",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-03",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "93f418e7-3ade-4c06-ae18-4399e384db49",
+                            "job-name": "d-flex-gold-03",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:19:28Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:19:07Z",
+                        "lastTransitionTime": "2026-08-18T10:19:07Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:19:28Z",
+                        "lastTransitionTime": "2026-08-18T10:19:28Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:19:28Z",
+                        "lastTransitionTime": "2026-08-18T10:19:28Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:19:07Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-04\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-04",
+                "namespace": "experiment",
+                "resourceVersion": "14563684",
+                "uid": "b539630d-d615-43a6-b833-7becd96e71f3"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "b539630d-d615-43a6-b833-7becd96e71f3"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-04-5e83c"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "b539630d-d615-43a6-b833-7becd96e71f3",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-04",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "b539630d-d615-43a6-b833-7becd96e71f3",
+                            "job-name": "d-flex-gold-04",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:18:21Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:52Z",
+                        "lastTransitionTime": "2026-08-18T10:17:52Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:21Z",
+                        "lastTransitionTime": "2026-08-18T10:18:21Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:21Z",
+                        "lastTransitionTime": "2026-08-18T10:18:21Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:17:52Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-05\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-05",
+                "namespace": "experiment",
+                "resourceVersion": "14563531",
+                "uid": "dbcbdcaf-f79b-4689-9b2b-8a8a702d7020"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "dbcbdcaf-f79b-4689-9b2b-8a8a702d7020"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-05-e91e8"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "dbcbdcaf-f79b-4689-9b2b-8a8a702d7020",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-05",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "dbcbdcaf-f79b-4689-9b2b-8a8a702d7020",
+                            "job-name": "d-flex-gold-05",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:17:51Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:22Z",
+                        "lastTransitionTime": "2026-08-18T10:17:22Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:51Z",
+                        "lastTransitionTime": "2026-08-18T10:17:51Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:51Z",
+                        "lastTransitionTime": "2026-08-18T10:17:51Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:17:22Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-06\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-06",
+                "namespace": "experiment",
+                "resourceVersion": "14563809",
+                "uid": "60d7fb47-4517-466e-966a-1ee004a66ed9"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "60d7fb47-4517-466e-966a-1ee004a66ed9"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-06-bea69"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "60d7fb47-4517-466e-966a-1ee004a66ed9",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-06",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "60d7fb47-4517-466e-966a-1ee004a66ed9",
+                            "job-name": "d-flex-gold-06",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:18:43Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:21Z",
+                        "lastTransitionTime": "2026-08-18T10:18:21Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:43Z",
+                        "lastTransitionTime": "2026-08-18T10:18:43Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:43Z",
+                        "lastTransitionTime": "2026-08-18T10:18:43Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:18:21Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-07\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-07",
+                "namespace": "experiment",
+                "resourceVersion": "14563866",
+                "uid": "e6718654-7512-411a-a0ad-83703f46068d"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "e6718654-7512-411a-a0ad-83703f46068d"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-07-6fc0c"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "e6718654-7512-411a-a0ad-83703f46068d",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-07",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "e6718654-7512-411a-a0ad-83703f46068d",
+                            "job-name": "d-flex-gold-07",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:18:51Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:22Z",
+                        "lastTransitionTime": "2026-08-18T10:18:22Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:51Z",
+                        "lastTransitionTime": "2026-08-18T10:18:51Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:51Z",
+                        "lastTransitionTime": "2026-08-18T10:18:51Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:18:22Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-08\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-08",
+                "namespace": "experiment",
+                "resourceVersion": "14563669",
+                "uid": "14bd4309-2f35-4d15-b139-6d25745f8fd1"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "14bd4309-2f35-4d15-b139-6d25745f8fd1"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-08-cd06e"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "14bd4309-2f35-4d15-b139-6d25745f8fd1",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-08",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "14bd4309-2f35-4d15-b139-6d25745f8fd1",
+                            "job-name": "d-flex-gold-08",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:18:20Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:58Z",
+                        "lastTransitionTime": "2026-08-18T10:17:58Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:20Z",
+                        "lastTransitionTime": "2026-08-18T10:18:20Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:20Z",
+                        "lastTransitionTime": "2026-08-18T10:18:20Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:17:58Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-09\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-09",
+                "namespace": "experiment",
+                "resourceVersion": "14563419",
+                "uid": "29eced1d-f2d6-4546-8201-1b3c0bac1d8e"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "29eced1d-f2d6-4546-8201-1b3c0bac1d8e"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-09-f0fce"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "29eced1d-f2d6-4546-8201-1b3c0bac1d8e",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-09",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "29eced1d-f2d6-4546-8201-1b3c0bac1d8e",
+                            "job-name": "d-flex-gold-09",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:17:34Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:13Z",
+                        "lastTransitionTime": "2026-08-18T10:17:13Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:34Z",
+                        "lastTransitionTime": "2026-08-18T10:17:34Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:34Z",
+                        "lastTransitionTime": "2026-08-18T10:17:34Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:17:13Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-10\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-10",
+                "namespace": "experiment",
+                "resourceVersion": "14563936",
+                "uid": "14a9dde1-68cf-4b16-8319-c39ee3568de0"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "14a9dde1-68cf-4b16-8319-c39ee3568de0"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-10-f2555"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "14a9dde1-68cf-4b16-8319-c39ee3568de0",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-10",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "14a9dde1-68cf-4b16-8319-c39ee3568de0",
+                            "job-name": "d-flex-gold-10",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:19:06Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:45Z",
+                        "lastTransitionTime": "2026-08-18T10:18:45Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:19:06Z",
+                        "lastTransitionTime": "2026-08-18T10:19:06Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:19:06Z",
+                        "lastTransitionTime": "2026-08-18T10:19:06Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:18:45Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-11\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-11",
+                "namespace": "experiment",
+                "resourceVersion": "14564001",
+                "uid": "08c21847-9f59-4b63-9359-15cf8c021ca3"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "08c21847-9f59-4b63-9359-15cf8c021ca3"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-11-3b088"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "08c21847-9f59-4b63-9359-15cf8c021ca3",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-11",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "08c21847-9f59-4b63-9359-15cf8c021ca3",
+                            "job-name": "d-flex-gold-11",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:19:21Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:18:52Z",
+                        "lastTransitionTime": "2026-08-18T10:18:52Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:19:21Z",
+                        "lastTransitionTime": "2026-08-18T10:19:21Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:19:21Z",
+                        "lastTransitionTime": "2026-08-18T10:19:21Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:18:52Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\",\"kueue.x-k8s.io/priority-class\":\"gold-priority\",\"kueue.x-k8s.io/queue-name\":\"dflex-uq\"},\"name\":\"d-flex-gold-12\",\"namespace\":\"experiment\"},\"spec\":{\"backoffLimit\":0,\"suspend\":true,\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"gpu-matmul-benchmark\",\"benchmark.thesis/experiment\":\"d-flex\",\"benchmark.thesis/profile\":\"fast\",\"benchmark.thesis/service-class\":\"gold\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"EXPECTED_PROFILE\",\"value\":\"fast-2g-or-3g\"},{\"name\":\"EXPECTED_MULTIPROCESSORS\",\"value\":\"0\"},{\"name\":\"CLAIM_TEMPLATE\",\"value\":\"claim-fast\"},{\"name\":\"EXPERIMENT_ARM\",\"value\":\"d-flex\"},{\"name\":\"SERVICE_CLASS\",\"value\":\"gold\"},{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"JOB_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.labels['batch.kubernetes.io/job-name']\"}}}],\"envFrom\":[{\"configMapRef\":{\"name\":\"gpu-matmul-benchmark-config\"}}],\"image\":\"gianlucavinci98/gpu-matmul-benchmark:0.1.0\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"benchmark\",\"resources\":{\"claims\":[{\"name\":\"gpu\"}]}}],\"resourceClaims\":[{\"name\":\"gpu\",\"resourceClaimTemplateName\":\"claim-fast\"}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":30}}}}\n"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "kueue.x-k8s.io/priority-class": "gold-priority",
+                    "kueue.x-k8s.io/queue-name": "dflex-uq"
+                },
+                "name": "d-flex-gold-12",
+                "namespace": "experiment",
+                "resourceVersion": "14563583",
+                "uid": "9168a227-35aa-4dad-8af7-e753c313252b"
+            },
+            "spec": {
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "9168a227-35aa-4dad-8af7-e753c313252b"
+                    }
+                },
+                "suspend": false,
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kueue.x-k8s.io/workload": "job-d-flex-gold-12-bc628"
+                        },
+                        "labels": {
+                            "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                            "batch.kubernetes.io/controller-uid": "9168a227-35aa-4dad-8af7-e753c313252b",
+                            "batch.kubernetes.io/job-name": "d-flex-gold-12",
+                            "benchmark.thesis/experiment": "d-flex",
+                            "benchmark.thesis/profile": "fast",
+                            "benchmark.thesis/service-class": "gold",
+                            "controller-uid": "9168a227-35aa-4dad-8af7-e753c313252b",
+                            "job-name": "d-flex-gold-12",
+                            "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                            "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                            "kueue.x-k8s.io/podset": "main"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "EXPECTED_PROFILE",
+                                        "value": "fast-2g-or-3g"
+                                    },
+                                    {
+                                        "name": "EXPECTED_MULTIPROCESSORS",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "name": "CLAIM_TEMPLATE",
+                                        "value": "claim-fast"
+                                    },
+                                    {
+                                        "name": "EXPERIMENT_ARM",
+                                        "value": "d-flex"
+                                    },
+                                    {
+                                        "name": "SERVICE_CLASS",
+                                        "value": "gold"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NODE_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.nodeName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "JOB_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "envFrom": [
+                                    {
+                                        "configMapRef": {
+                                            "name": "gpu-matmul-benchmark-config"
+                                        }
+                                    }
+                                ],
+                                "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "benchmark",
+                                "resources": {
+                                    "claims": [
+                                        {
+                                            "name": "gpu"
+                                        }
+                                    ]
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "resourceClaims": [
+                            {
+                                "name": "gpu",
+                                "resourceClaimTemplateName": "claim-fast"
+                            }
+                        ],
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-08-18T10:17:57Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:35Z",
+                        "lastTransitionTime": "2026-08-18T10:17:35Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:57Z",
+                        "lastTransitionTime": "2026-08-18T10:17:57Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-08-18T10:17:57Z",
+                        "lastTransitionTime": "2026-08-18T10:17:57Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-08-18T10:17:35Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

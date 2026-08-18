@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "experiment_arm": "d-flex",
+  "jobs_submitted": 14,
+  "jobs_completed": 14,
+  "jobs_failed": 0,
+  "pool_start": "2026-08-18T10:16:50Z",
+  "pool_end": "2026-08-18T10:19:28Z",
+  "submission_span_seconds": 0.0,
+  "makespan_seconds": 158.0,
+  "throughput_jobs_per_second": 0.08860759493670886,
+  "device_distribution_by_class_and_sm": {
+    "bronze": {
+      "14": 2
+    },
+    "gold": {
+      "28": 5,
+      "42": 7
+    }
+  },
+  "classes": {
+    "bronze": {
+      "jobs": 2,
+      "completed": 2,
+      "end_to_end": {
+        "count": 2,
+        "min_seconds": 53.0,
+        "p50_seconds": 80.0,
+        "p95_seconds": 104.3,
+        "max_seconds": 107.0,
+        "mean_seconds": 80.0
+      },
+      "queue_wait": {
+        "count": 2,
+        "min_seconds": 0.0,
+        "p50_seconds": 27.5,
+        "p95_seconds": 52.25,
+        "max_seconds": 55.0,
+        "mean_seconds": 27.5
+      },
+      "execution": {
+        "count": 2,
+        "min_seconds": 52.0,
+        "p50_seconds": 52.5,
+        "p95_seconds": 52.95,
+        "max_seconds": 53.0,
+        "mean_seconds": 52.5
+      },
+      "gpu_cuda": {
+        "count": 2,
+        "min_seconds": 44.66609375,
+        "p50_seconds": 44.672322265625,
+        "p95_seconds": 44.677927929687506,
+        "max_seconds": 44.67855078125,
+        "mean_seconds": 44.672322265625
+      }
+    },
+    "gold": {
+      "jobs": 12,
+      "completed": 12,
+      "end_to_end": {
+        "count": 12,
+        "min_seconds": 22.0,
+        "p50_seconds": 90.5,
+        "p95_seconds": 154.15,
+        "max_seconds": 158.0,
+        "mean_seconds": 90.33333333333333
+      },
+      "queue_wait": {
+        "count": 12,
+        "min_seconds": 0.0,
+        "p50_seconds": 65.0,
+        "p95_seconds": 128.75,
+        "max_seconds": 137.0,
+        "mean_seconds": 65.41666666666667
+      },
+      "execution": {
+        "count": 12,
+        "min_seconds": 21.0,
+        "p50_seconds": 22.0,
+        "p95_seconds": 29.45,
+        "max_seconds": 30.0,
+        "mean_seconds": 24.666666666666668
+      },
+      "gpu_cuda": {
+        "count": 12,
+        "min_seconds": 14.8902216796875,
+        "p50_seconds": 14.912232421875,
+        "p95_seconds": 22.3383423828125,
+        "max_seconds": 22.340505859375,
+        "mean_seconds": 17.998059733072918
+      }
+    }
+  },
+  "definitions": {
+    "makespan_seconds": "max(Job completionTime) - min(Job creationTimestamp)",
+    "queue_wait_seconds": "Workload admitted time - Job creationTimestamp",
+    "startup_seconds": "Pod startTime - Workload admitted time",
+    "execution_seconds": "Job completionTime - Pod startTime",
+    "end_to_end_seconds": "Job completionTime - Job creationTimestamp"
+  }
+}

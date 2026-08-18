@@ -1,0 +1,74 @@
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: ClusterQueue
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"kueue.x-k8s.io/v1beta2","kind":"ClusterQueue","metadata":{"annotations":{},"name":"baseline-mix-cq"},"spec":{"namespaceSelector":{"experiment":null},"queueingStrategy":"BestEffortFIFO","resourceGroups":[{"coveredResources":["mig-small","mig-medium","mig-large"],"flavors":[{"name":"default-flavor","resources":[{"name":"mig-small","nominalQuota":1},{"name":"mig-medium","nominalQuota":1},{"name":"mig-large","nominalQuota":1}]}]}]}}
+  creationTimestamp: "2026-08-18T10:11:11Z"
+  finalizers:
+  - kueue.x-k8s.io/resource-in-use
+  generation: 1
+  name: baseline-mix-cq
+  resourceVersion: "14562968"
+  uid: d0824883-5cb1-4bc2-a9c1-da3e58bdab59
+spec:
+  flavorFungibility:
+    whenCanBorrow: MayStopSearch
+    whenCanPreempt: TryNextFlavor
+  namespaceSelector: {}
+  preemption:
+    borrowWithinCohort:
+      policy: Never
+    reclaimWithinCohort: Never
+    withinClusterQueue: Never
+  queueingStrategy: BestEffortFIFO
+  resourceGroups:
+  - coveredResources:
+    - mig-small
+    - mig-medium
+    - mig-large
+    flavors:
+    - name: default-flavor
+      resources:
+      - name: mig-small
+        nominalQuota: "1"
+      - name: mig-medium
+        nominalQuota: "1"
+      - name: mig-large
+        nominalQuota: "1"
+  stopPolicy: None
+status:
+  admittedWorkloads: 0
+  conditions:
+  - lastTransitionTime: "2026-08-18T10:11:11Z"
+    message: Can admit new workloads
+    observedGeneration: 1
+    reason: Ready
+    status: "True"
+    type: Active
+  flavorsReservation:
+  - name: default-flavor
+    resources:
+    - borrowed: "0"
+      name: mig-large
+      total: "0"
+    - borrowed: "0"
+      name: mig-medium
+      total: "0"
+    - borrowed: "0"
+      name: mig-small
+      total: "0"
+  flavorsUsage:
+  - name: default-flavor
+    resources:
+    - borrowed: "0"
+      name: mig-large
+      total: "0"
+    - borrowed: "0"
+      name: mig-medium
+      total: "0"
+    - borrowed: "0"
+      name: mig-small
+      total: "0"
+  pendingWorkloads: 0
+  reservingWorkloads: 0

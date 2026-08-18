@@ -1,0 +1,4335 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-bronze-01-4dcc8"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generateName": "d-flex-bronze-01-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "347118cc-f288-457f-8f42-8e4885c6ddf7",
+                    "batch.kubernetes.io/job-name": "d-flex-bronze-01",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "small",
+                    "benchmark.thesis/service-class": "bronze",
+                    "controller-uid": "347118cc-f288-457f-8f42-8e4885c6ddf7",
+                    "job-name": "d-flex-bronze-01",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-bronze-01-lbvq7",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-bronze-01",
+                        "uid": "347118cc-f288-457f-8f42-8e4885c6ddf7"
+                    }
+                ],
+                "resourceVersion": "14563474",
+                "uid": "8d61c3a3-8d79-4ed9-9229-8caacd88a572"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "small-1g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "14"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-small"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "bronze"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-v7mqr",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-small"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-v7mqr",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:43Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:16:50Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:41Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:41Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:16:50Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://59178728fafcd5a56b7adf76eb70ab98ea81abd7b88010d838f0328e5bea01eb",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://59178728fafcd5a56b7adf76eb70ab98ea81abd7b88010d838f0328e5bea01eb",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:17:41Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:16:51Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-v7mqr",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.45",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.45"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-bronze-01-lbvq7-gpu-9p62c"
+                    }
+                ],
+                "startTime": "2026-08-18T10:16:50Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-bronze-02-6275c"
+                },
+                "creationTimestamp": "2026-08-18T10:17:45Z",
+                "generateName": "d-flex-bronze-02-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "4027b5bc-e6f7-459e-97cc-7a8a9d8a143b",
+                    "batch.kubernetes.io/job-name": "d-flex-bronze-02",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "small",
+                    "benchmark.thesis/service-class": "bronze",
+                    "controller-uid": "4027b5bc-e6f7-459e-97cc-7a8a9d8a143b",
+                    "job-name": "d-flex-bronze-02",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-bronze-02-4w46h",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-bronze-02",
+                        "uid": "4027b5bc-e6f7-459e-97cc-7a8a9d8a143b"
+                    }
+                ],
+                "resourceVersion": "14563780",
+                "uid": "e9ccfe85-e383-4718-b426-06d7f9446ddc"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "small-1g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "14"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-small"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "bronze"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-rhltd",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-small"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-rhltd",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:36Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:45Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:35Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:35Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:45Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://8acaa58bb7648a8fcb0fc1ecb6b9311815a2b99caed16ed62e15a33bf47ab33e",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://8acaa58bb7648a8fcb0fc1ecb6b9311815a2b99caed16ed62e15a33bf47ab33e",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:18:35Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:17:45Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-rhltd",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.49",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.49"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-bronze-02-4w46h-gpu-q5cvk"
+                    }
+                ],
+                "startTime": "2026-08-18T10:17:45Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-01-83c69"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generateName": "d-flex-gold-01-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "73a9b930-504c-4612-b45e-1981b7cdf573",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-01",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "73a9b930-504c-4612-b45e-1981b7cdf573",
+                    "job-name": "d-flex-gold-01",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-01-dxjfx",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-01",
+                        "uid": "73a9b930-504c-4612-b45e-1981b7cdf573"
+                    }
+                ],
+                "resourceVersion": "14563350",
+                "uid": "e6f193a2-4074-4d69-8e81-e0097e62a0bd"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-9lgl5",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-9lgl5",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:19Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:16:50Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:18Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:18Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:16:50Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://9fd9c012013f33ece1eefceb0cf0fda516d775df80a7ca303d7516389e11fa00",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://9fd9c012013f33ece1eefceb0cf0fda516d775df80a7ca303d7516389e11fa00",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:17:17Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:16:51Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-9lgl5",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.44",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.44"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-01-dxjfx-gpu-g9h6t"
+                    }
+                ],
+                "startTime": "2026-08-18T10:16:50Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-02-2cebf"
+                },
+                "creationTimestamp": "2026-08-18T10:16:50Z",
+                "generateName": "d-flex-gold-02-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "c6871302-5432-4b74-bd70-9e08d6075295",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-02",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "c6871302-5432-4b74-bd70-9e08d6075295",
+                    "job-name": "d-flex-gold-02",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-02-5b5qn",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-02",
+                        "uid": "c6871302-5432-4b74-bd70-9e08d6075295"
+                    }
+                ],
+                "resourceVersion": "14563293",
+                "uid": "ae350136-2f60-4378-83ef-5584ac75d7a7"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-g82zs",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-g82zs",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:11Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:16:50Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:10Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:10Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:16:50Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://a44b14d8f811050e169512d313730966120e6bda0cfbddb6766c9f190e262079",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://a44b14d8f811050e169512d313730966120e6bda0cfbddb6766c9f190e262079",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:17:09Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:16:51Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-g82zs",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.43",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.43"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-02-5b5qn-gpu-zjzqp"
+                    }
+                ],
+                "startTime": "2026-08-18T10:16:50Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-03-61314"
+                },
+                "creationTimestamp": "2026-08-18T10:19:07Z",
+                "generateName": "d-flex-gold-03-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "93f418e7-3ade-4c06-ae18-4399e384db49",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-03",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "93f418e7-3ade-4c06-ae18-4399e384db49",
+                    "job-name": "d-flex-gold-03",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-03-zx4rm",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-03",
+                        "uid": "93f418e7-3ade-4c06-ae18-4399e384db49"
+                    }
+                ],
+                "resourceVersion": "14564030",
+                "uid": "b7dee094-ff0c-4370-8113-8b510dd10a7d"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-4tk6h",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-4tk6h",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:27Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:07Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:26Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:26Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:07Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://be5023951573ad342ba9db6a942496d1fe55a2ff7200b9003b8d4c3871a19e70",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://be5023951573ad342ba9db6a942496d1fe55a2ff7200b9003b8d4c3871a19e70",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:19:26Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:19:08Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-4tk6h",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.56",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.56"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-03-zx4rm-gpu-hm5l2"
+                    }
+                ],
+                "startTime": "2026-08-18T10:19:07Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-04-5e83c"
+                },
+                "creationTimestamp": "2026-08-18T10:17:52Z",
+                "generateName": "d-flex-gold-04-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "b539630d-d615-43a6-b833-7becd96e71f3",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-04",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "b539630d-d615-43a6-b833-7becd96e71f3",
+                    "job-name": "d-flex-gold-04",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-04-7j7xp",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-04",
+                        "uid": "b539630d-d615-43a6-b833-7becd96e71f3"
+                    }
+                ],
+                "resourceVersion": "14563683",
+                "uid": "743ddc4b-6fc2-46e2-9909-56e59ceac02b"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-zgb74",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-zgb74",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:20Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:52Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:19Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:19Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:52Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://1487a2271468a28e9d7eea13fae6617bc535b85c44f725c49806ce009b13affa",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://1487a2271468a28e9d7eea13fae6617bc535b85c44f725c49806ce009b13affa",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:18:18Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:17:52Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-zgb74",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.50",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.50"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-04-7j7xp-gpu-k59ss"
+                    }
+                ],
+                "startTime": "2026-08-18T10:17:52Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-05-e91e8"
+                },
+                "creationTimestamp": "2026-08-18T10:17:22Z",
+                "generateName": "d-flex-gold-05-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "dbcbdcaf-f79b-4689-9b2b-8a8a702d7020",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-05",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "dbcbdcaf-f79b-4689-9b2b-8a8a702d7020",
+                    "job-name": "d-flex-gold-05",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-05-f6t5s",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-05",
+                        "uid": "dbcbdcaf-f79b-4689-9b2b-8a8a702d7020"
+                    }
+                ],
+                "resourceVersion": "14563530",
+                "uid": "455b02fb-0884-4d73-858e-804a3ef0da33"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-shxd6",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-shxd6",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:50Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:22Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:49Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:49Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:22Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://960b41bf592e26a4e502a64dccbac44ed73135c51dff910e3b05e72f862f8e7c",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://960b41bf592e26a4e502a64dccbac44ed73135c51dff910e3b05e72f862f8e7c",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:17:48Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:17:22Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-shxd6",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.47",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.47"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-05-f6t5s-gpu-fbtf2"
+                    }
+                ],
+                "startTime": "2026-08-18T10:17:22Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-06-bea69"
+                },
+                "creationTimestamp": "2026-08-18T10:18:21Z",
+                "generateName": "d-flex-gold-06-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "60d7fb47-4517-466e-966a-1ee004a66ed9",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-06",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "60d7fb47-4517-466e-966a-1ee004a66ed9",
+                    "job-name": "d-flex-gold-06",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-06-xprhw",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-06",
+                        "uid": "60d7fb47-4517-466e-966a-1ee004a66ed9"
+                    }
+                ],
+                "resourceVersion": "14563808",
+                "uid": "d80493d6-1e37-45cb-b6c7-73c6d283a927"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-knjkf",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-knjkf",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:42Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:21Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:41Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:41Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:21Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://a8b8f33f48ec3a611be0f971477d9396d9ca38a30199e8387d483e5fa4c93bad",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://a8b8f33f48ec3a611be0f971477d9396d9ca38a30199e8387d483e5fa4c93bad",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:18:40Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:18:22Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-knjkf",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.52",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.52"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-06-xprhw-gpu-dvxjh"
+                    }
+                ],
+                "startTime": "2026-08-18T10:18:21Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-07-6fc0c"
+                },
+                "creationTimestamp": "2026-08-18T10:18:22Z",
+                "generateName": "d-flex-gold-07-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "e6718654-7512-411a-a0ad-83703f46068d",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-07",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "e6718654-7512-411a-a0ad-83703f46068d",
+                    "job-name": "d-flex-gold-07",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-07-fbwnb",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-07",
+                        "uid": "e6718654-7512-411a-a0ad-83703f46068d"
+                    }
+                ],
+                "resourceVersion": "14563865",
+                "uid": "fa783c0f-fd4d-43a1-910e-edde4c8c3b22"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-dggpr",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-dggpr",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:50Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:22Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:49Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:49Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:22Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://e8a4215d7c130b85f1635e99931dbdfd09a28db0fffff8f3f322629f5a95f7f8",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://e8a4215d7c130b85f1635e99931dbdfd09a28db0fffff8f3f322629f5a95f7f8",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:18:49Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:18:23Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-dggpr",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.53",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.53"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-07-fbwnb-gpu-g5r2h"
+                    }
+                ],
+                "startTime": "2026-08-18T10:18:22Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-08-cd06e"
+                },
+                "creationTimestamp": "2026-08-18T10:17:58Z",
+                "generateName": "d-flex-gold-08-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "14bd4309-2f35-4d15-b139-6d25745f8fd1",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-08",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "14bd4309-2f35-4d15-b139-6d25745f8fd1",
+                    "job-name": "d-flex-gold-08",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-08-mg4hz",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-08",
+                        "uid": "14bd4309-2f35-4d15-b139-6d25745f8fd1"
+                    }
+                ],
+                "resourceVersion": "14563668",
+                "uid": "a96f2b19-8f0b-402e-8e5e-3c11a6068e03"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-8wxfx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-8wxfx",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:19Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:58Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:18Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:18Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:58Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://95049758105931d57d1cefcc149d1657ce779717dd768dc67eae49bbd4a62a60",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://95049758105931d57d1cefcc149d1657ce779717dd768dc67eae49bbd4a62a60",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:18:17Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:17:58Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-8wxfx",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.51",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.51"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-08-mg4hz-gpu-xfwxs"
+                    }
+                ],
+                "startTime": "2026-08-18T10:17:58Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-09-f0fce"
+                },
+                "creationTimestamp": "2026-08-18T10:17:13Z",
+                "generateName": "d-flex-gold-09-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "29eced1d-f2d6-4546-8201-1b3c0bac1d8e",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-09",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "29eced1d-f2d6-4546-8201-1b3c0bac1d8e",
+                    "job-name": "d-flex-gold-09",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-09-8dgkd",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-09",
+                        "uid": "29eced1d-f2d6-4546-8201-1b3c0bac1d8e"
+                    }
+                ],
+                "resourceVersion": "14563418",
+                "uid": "7b8679ac-0803-4b6e-9e48-860333cd0cbc"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-5rgwt",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-5rgwt",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:34Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:13Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:32Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:32Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:13Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://bb67c49b768538a511f6d62cd3213625e6cc188aba2f49a7d69c5be8a9ca8324",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://bb67c49b768538a511f6d62cd3213625e6cc188aba2f49a7d69c5be8a9ca8324",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:17:32Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:17:14Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-5rgwt",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.46",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.46"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-09-8dgkd-gpu-jw4wr"
+                    }
+                ],
+                "startTime": "2026-08-18T10:17:13Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-10-f2555"
+                },
+                "creationTimestamp": "2026-08-18T10:18:45Z",
+                "generateName": "d-flex-gold-10-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "14a9dde1-68cf-4b16-8319-c39ee3568de0",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-10",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "14a9dde1-68cf-4b16-8319-c39ee3568de0",
+                    "job-name": "d-flex-gold-10",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-10-gmp6n",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-10",
+                        "uid": "14a9dde1-68cf-4b16-8319-c39ee3568de0"
+                    }
+                ],
+                "resourceVersion": "14563935",
+                "uid": "5e5cece4-6342-468a-9fd5-c80989fdbe19"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-5jtcl",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-5jtcl",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:05Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:45Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:04Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:04Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:45Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://56d7fa75fd3d5b272bf76bb0529fbfc413a1163be3a259e775fb64716e95d307",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://56d7fa75fd3d5b272bf76bb0529fbfc413a1163be3a259e775fb64716e95d307",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:19:04Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:18:46Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-5jtcl",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.54",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.54"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-10-gmp6n-gpu-vkdkf"
+                    }
+                ],
+                "startTime": "2026-08-18T10:18:45Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-11-3b088"
+                },
+                "creationTimestamp": "2026-08-18T10:18:52Z",
+                "generateName": "d-flex-gold-11-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "08c21847-9f59-4b63-9359-15cf8c021ca3",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-11",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "08c21847-9f59-4b63-9359-15cf8c021ca3",
+                    "job-name": "d-flex-gold-11",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-11-87dqp",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-11",
+                        "uid": "08c21847-9f59-4b63-9359-15cf8c021ca3"
+                    }
+                ],
+                "resourceVersion": "14564000",
+                "uid": "df26cd9a-85b1-4003-8fdc-dac19cdd6997"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-2dr7g",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-2dr7g",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:20Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:52Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:19Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:19:19Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:18:52Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://5eaa1ccd8b41242bb6d42a90b8ec8fb603e60c581ea787f72b6a17120a4d204a",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://5eaa1ccd8b41242bb6d42a90b8ec8fb603e60c581ea787f72b6a17120a4d204a",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:19:19Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:18:53Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-2dr7g",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.55",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.55"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-11-87dqp-gpu-prcj8"
+                    }
+                ],
+                "startTime": "2026-08-18T10:18:52Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kueue.x-k8s.io/workload": "job-d-flex-gold-12-bc628"
+                },
+                "creationTimestamp": "2026-08-18T10:17:35Z",
+                "generateName": "d-flex-gold-12-",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/name": "gpu-matmul-benchmark",
+                    "batch.kubernetes.io/controller-uid": "9168a227-35aa-4dad-8af7-e753c313252b",
+                    "batch.kubernetes.io/job-name": "d-flex-gold-12",
+                    "benchmark.thesis/experiment": "d-flex",
+                    "benchmark.thesis/profile": "fast",
+                    "benchmark.thesis/service-class": "gold",
+                    "controller-uid": "9168a227-35aa-4dad-8af7-e753c313252b",
+                    "job-name": "d-flex-gold-12",
+                    "kueue.x-k8s.io/cluster-queue-name": "dflex-cq",
+                    "kueue.x-k8s.io/local-queue-name": "dflex-uq",
+                    "kueue.x-k8s.io/podset": "main"
+                },
+                "name": "d-flex-gold-12-jfh9k",
+                "namespace": "experiment",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "d-flex-gold-12",
+                        "uid": "9168a227-35aa-4dad-8af7-e753c313252b"
+                    }
+                ],
+                "resourceVersion": "14563582",
+                "uid": "97c8572b-6c13-46e0-b5a2-5d8f3894bbed"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "EXPECTED_PROFILE",
+                                "value": "fast-2g-or-3g"
+                            },
+                            {
+                                "name": "EXPECTED_MULTIPROCESSORS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "CLAIM_TEMPLATE",
+                                "value": "claim-fast"
+                            },
+                            {
+                                "name": "EXPERIMENT_ARM",
+                                "value": "d-flex"
+                            },
+                            {
+                                "name": "SERVICE_CLASS",
+                                "value": "gold"
+                            },
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "JOB_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.labels['batch.kubernetes.io/job-name']"
+                                    }
+                                }
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "gpu-matmul-benchmark-config"
+                                }
+                            }
+                        ],
+                        "image": "gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "benchmark",
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-zp2vz",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "ai-lab-a100-2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "resourceClaims": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimTemplateName": "claim-fast"
+                    }
+                ],
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-zp2vz",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:56Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:36Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:55Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:55Z",
+                        "observedGeneration": 1,
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-08-18T10:17:36Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://34596e2ee55c37ea1a95aa1893a1787b7cac48766aca5b9bab7c18b5555b4477",
+                        "image": "docker.io/gianlucavinci98/gpu-matmul-benchmark:0.1.0",
+                        "imageID": "docker.io/gianlucavinci98/gpu-matmul-benchmark@sha256:7e9980967c2090757f837f619f19ec2d2f2d130ca95d7ef229cbd8b45984699c",
+                        "lastState": {},
+                        "name": "benchmark",
+                        "ready": false,
+                        "resources": {
+                            "claims": [
+                                {
+                                    "name": "gpu"
+                                }
+                            ]
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://34596e2ee55c37ea1a95aa1893a1787b7cac48766aca5b9bab7c18b5555b4477",
+                                "exitCode": 0,
+                                "finishedAt": "2026-08-18T10:17:55Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-08-18T10:17:36Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-zp2vz",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.146.0.55",
+                "hostIPs": [
+                    {
+                        "ip": "10.146.0.55"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Succeeded",
+                "podIP": "10.42.1.48",
+                "podIPs": [
+                    {
+                        "ip": "10.42.1.48"
+                    }
+                ],
+                "qosClass": "BestEffort",
+                "resourceClaimStatuses": [
+                    {
+                        "name": "gpu",
+                        "resourceClaimName": "d-flex-gold-12-jfh9k-gpu-k5rp8"
+                    }
+                ],
+                "startTime": "2026-08-18T10:17:36Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
