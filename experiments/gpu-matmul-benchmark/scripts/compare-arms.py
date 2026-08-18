@@ -57,7 +57,7 @@ def main() -> int:
     comparisons: dict[str, dict[str, float]] = {}
     if "d-flex" in arms:
         dflex_p50 = float(arms["d-flex"]["p50_seconds"])
-        for baseline in ("baseline-medium", "baseline-large"):
+        for baseline in ("baseline-medium", "baseline-large", "baseline-mix"):
             if baseline not in arms:
                 continue
             baseline_p50 = float(arms[baseline]["p50_seconds"])

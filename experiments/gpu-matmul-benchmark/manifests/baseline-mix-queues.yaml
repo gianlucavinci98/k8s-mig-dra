@@ -1,0 +1,30 @@
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: ClusterQueue
+metadata:
+  name: baseline-mix-cq
+spec:
+  namespaceSelector: { "experiment" }
+  queueingStrategy: BestEffortFIFO
+  resourceGroups:
+    - coveredResources:
+        - mig-small
+        - mig-medium
+        - mig-large
+      flavors:
+        - name: default-flavor
+          resources:
+            - name: mig-small
+              nominalQuota: 1
+            - name: mig-medium
+              nominalQuota: 1
+            - name: mig-large
+              nominalQuota: 1
+
+---
+apiVersion: kueue.x-k8s.io/v1beta2
+kind: LocalQueue
+metadata:
+  name: baseline-mix-uq
+  namespace: experiment
+spec:
+  clusterQueue: baseline-mix-cq
