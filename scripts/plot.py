@@ -12,10 +12,24 @@ OUTPUT_DIR = BASE_DIR / "results" / "plots"
 
 
 def format_configuration_label(mig_config: str, ollama_replicas: int) -> str:
-	match = re.search(r"(\d+)g", mig_config)
-	ce_count = match.group(1) if match else mig_config
-	replica_word = "replica" if ollama_replicas == 1 else "repliche"
-	return f"{mig_config}+{ollama_replicas} {replica_word} = {ce_count} CE + {ollama_replicas} Rep"
+	# "all-balanced" is the 3g.20gb profile used in the experiment.
+	profile = "3g.20gb" if mig_config == "all-balanced" else mig_config.removeprefix("all-")
+	match = re.fullmatch(r"(\d+)g\.(\d+)gb", profile)
+	if not match:
+		return f"{mig_config}: {ollama_replicas} Replicas"
+
+	compute_engines, memory_gb = match.groups()
+	nicknames = {
+		("1g.5gb", 7): "Multiple Instances",
+		("3g.20gb", 1): "Restricted Instance",
+		("7g.40gb", 7): "Time-Sharing",
+		("7g.40gb", 1): "Baseline",
+	}
+	nickname = nicknames.get((profile, ollama_replicas))
+	engine_word = "Compute Engine" if compute_engines == "1" else "Compute Engines"
+	replica_word = "Replica" if ollama_replicas == 1 else "Replicas"
+	label = f"{compute_engines} {engine_word} | {memory_gb} GB | {ollama_replicas} {replica_word}"
+	return f"{nickname} - {label}" if nickname else label
 
 
 def load_results() -> pd.DataFrame:
