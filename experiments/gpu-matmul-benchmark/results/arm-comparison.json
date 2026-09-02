@@ -17,29 +17,44 @@
       "max_seconds": 370.0,
       "mean_seconds": 370.0
     },
-    "d-flex": {
+    "baseline-mix": {
       "replicas": 1,
+      "min_seconds": 185.0,
+      "p50_seconds": 185.0,
+      "p95_seconds": 185.0,
+      "max_seconds": 185.0,
+      "mean_seconds": 185.0
+    },
+    "d-flex": {
+      "replicas": 2,
       "min_seconds": 156.0,
-      "p50_seconds": 156.0,
-      "p95_seconds": 156.0,
-      "max_seconds": 156.0,
-      "mean_seconds": 156.0
+      "p50_seconds": 157.0,
+      "p95_seconds": 157.9,
+      "max_seconds": 158.0,
+      "mean_seconds": 157.0
     }
   },
   "comparisons": {
     "d-flex_vs_baseline-medium": {
       "baseline_p50_seconds": 370.0,
-      "dflex_p50_seconds": 156.0,
-      "seconds_saved": 214.0,
-      "makespan_reduction_percent": 57.83783783783784,
-      "speedup": 2.371794871794872
+      "dflex_p50_seconds": 157.0,
+      "seconds_saved": 213.0,
+      "makespan_reduction_percent": 57.567567567567565,
+      "speedup": 2.356687898089172
     },
     "d-flex_vs_baseline-large": {
       "baseline_p50_seconds": 275.0,
-      "dflex_p50_seconds": 156.0,
-      "seconds_saved": 119.0,
-      "makespan_reduction_percent": 43.27272727272727,
-      "speedup": 1.7628205128205128
+      "dflex_p50_seconds": 157.0,
+      "seconds_saved": 118.0,
+      "makespan_reduction_percent": 42.90909090909091,
+      "speedup": 1.7515923566878981
+    },
+    "d-flex_vs_baseline-mix": {
+      "baseline_p50_seconds": 185.0,
+      "dflex_p50_seconds": 157.0,
+      "seconds_saved": 28.0,
+      "makespan_reduction_percent": 15.135135135135137,
+      "speedup": 1.178343949044586
     }
   },
   "sources": {
@@ -49,8 +64,12 @@
     "baseline-large": [
       "/home/gianluca/workspace/k8s-mig-dra/experiments/gpu-matmul-benchmark/results/20260817T163918Z-baseline-large/summary.json"
     ],
+    "baseline-mix": [
+      "/home/gianluca/workspace/k8s-mig-dra/experiments/gpu-matmul-benchmark/results/20260818T101230Z-baseline-mix/summary.json"
+    ],
     "d-flex": [
-      "/home/gianluca/workspace/k8s-mig-dra/experiments/gpu-matmul-benchmark/results/20260817T164753Z-d-flex/summary.json"
+      "/home/gianluca/workspace/k8s-mig-dra/experiments/gpu-matmul-benchmark/results/20260817T164753Z-d-flex/summary.json",
+      "/home/gianluca/workspace/k8s-mig-dra/experiments/gpu-matmul-benchmark/results/20260818T101649Z-d-flex/summary.json"
     ]
   }
 }

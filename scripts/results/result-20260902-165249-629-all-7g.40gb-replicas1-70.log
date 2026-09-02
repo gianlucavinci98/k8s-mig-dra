@@ -1,0 +1,58 @@
+[16:52:49] Starting load test
+[16:52:49] MIG Config: all-7g.40gb
+[16:52:49] Ollama Replicas: 1
+[16:52:49] Total requests: 5
+[16:52:49] Concurrency: 5
+[16:52:49] Output tokens (effort): 70
+[16:52:49] REQUEST: 1 - STARTED in background (active_jobs=1)
+[16:52:49] REQUEST: 2 - STARTED in background (active_jobs=2)
+[16:52:49] REQUEST: 3 - STARTED in background (active_jobs=3)
+[16:52:49] REQUEST: 4 - STARTED in background (active_jobs=4)
+[16:52:49] REQUEST: 5 - STARTED in background (active_jobs=5)
+[16:52:49] WAITING -> active_jobs=5
+[16:52:49] REQUEST: 1 - COMPLETED
+[16:52:49] RESUMING -> a request finished (active_jobs=4)
+[16:52:49] ALL REQUESTS LAUNCHED
+[16:52:49] WAITING for remaining requests to finish (active_jobs=4)
+[16:52:50] REQUEST: 2 - COMPLETED
+[16:52:50] REQUEST COMPLETED -> remaining active_jobs=3
+[16:52:50] WAITING for remaining requests to finish (active_jobs=3)
+[16:52:50] REQUEST: 3 - COMPLETED
+[16:52:50] REQUEST COMPLETED -> remaining active_jobs=2
+[16:52:50] WAITING for remaining requests to finish (active_jobs=2)
+[16:52:50] REQUEST: 4 - COMPLETED
+[16:52:50] REQUEST COMPLETED -> remaining active_jobs=1
+[16:52:50] WAITING for remaining requests to finish (active_jobs=1)
+[16:52:50] REQUEST: 5 - COMPLETED
+[16:52:50] REQUEST COMPLETED -> remaining active_jobs=0
+[16:52:50] Load test completed
+[16:52:50] Running results evaluation
+
+
+--- PER-REQUEST STATS ---
+Request 01 | res_time: 16:52:49.92 | latency:   0.28 s | tokens: 70 | gen_time: 0.165 s | tok/s: 424.65
+Request 02 | res_time: 16:52:50.14 | latency:   0.49 s | tokens: 70 | gen_time: 0.164 s | tok/s: 426.28
+Request 03 | res_time: 16:52:50.36 | latency:   0.71 s | tokens: 70 | gen_time: 0.165 s | tok/s: 424.42
+Request 04 | res_time: 16:52:50.58 | latency:   0.93 s | tokens: 70 | gen_time: 0.165 s | tok/s: 423.41
+Request 05 | res_time: 16:52:50.80 | latency:   1.15 s | tokens: 70 | gen_time: 0.165 s | tok/s: 424.01
+
+--- TEST CONFIGURATION ---
+MIG Config: all-7g.40gb
+Ollama Replicas: 1
+Total requests: 5
+Concurrency: 5
+Requested output tokens (effort): 70
+
+Total tokens: 350
+Wall time (s): 1.17
+GPU time (s): 0.82
+
+--- METRICS ---
+Throughput REAL (tok/s): 299.40
+Throughput GPU (tok/s): 424.55
+Avg tokens/sec per request: 424.55
+Latency avg (ms): 711.68
+Latency p95 (ms): 1147.40
+
+Run appended to CSV table: results/results_table.csv
+Per-request stats appended to CSV table: results/result-20260902-165249-629-all-7g.40gb-replicas1-70.csv

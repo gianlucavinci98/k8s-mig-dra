@@ -1,0 +1,83 @@
+[18:11:17] Starting load test
+[18:11:17] MIG Config: all-balanced
+[18:11:17] Ollama Replicas: 1
+[18:11:17] Total requests: 10
+[18:11:17] Concurrency: 10
+[18:11:17] Output tokens (effort): 25
+[18:11:17] REQUEST: 1 - STARTED in background (active_jobs=1)
+[18:11:17] REQUEST: 2 - STARTED in background (active_jobs=2)
+[18:11:17] REQUEST: 3 - STARTED in background (active_jobs=3)
+[18:11:17] REQUEST: 4 - STARTED in background (active_jobs=4)
+[18:11:17] REQUEST: 5 - STARTED in background (active_jobs=5)
+[18:11:17] REQUEST: 6 - STARTED in background (active_jobs=6)
+[18:11:17] REQUEST: 7 - STARTED in background (active_jobs=7)
+[18:11:17] REQUEST: 8 - STARTED in background (active_jobs=8)
+[18:11:17] REQUEST: 9 - STARTED in background (active_jobs=9)
+[18:11:17] REQUEST: 10 - STARTED in background (active_jobs=10)
+[18:11:17] WAITING -> active_jobs=10
+[18:11:17] REQUEST: 1 - COMPLETED
+[18:11:17] RESUMING -> a request finished (active_jobs=9)
+[18:11:17] ALL REQUESTS LAUNCHED
+[18:11:17] WAITING for remaining requests to finish (active_jobs=9)
+[18:11:17] REQUEST: 3 - COMPLETED
+[18:11:17] REQUEST COMPLETED -> remaining active_jobs=8
+[18:11:17] WAITING for remaining requests to finish (active_jobs=8)
+[18:11:18] REQUEST: 4 - COMPLETED
+[18:11:18] REQUEST COMPLETED -> remaining active_jobs=7
+[18:11:18] WAITING for remaining requests to finish (active_jobs=7)
+[18:11:18] REQUEST: 8 - COMPLETED
+[18:11:18] REQUEST COMPLETED -> remaining active_jobs=6
+[18:11:18] WAITING for remaining requests to finish (active_jobs=6)
+[18:11:18] REQUEST: 2 - COMPLETED
+[18:11:18] REQUEST COMPLETED -> remaining active_jobs=5
+[18:11:18] WAITING for remaining requests to finish (active_jobs=5)
+[18:11:18] REQUEST: 7 - COMPLETED
+[18:11:18] REQUEST COMPLETED -> remaining active_jobs=4
+[18:11:18] WAITING for remaining requests to finish (active_jobs=4)
+[18:11:18] REQUEST: 5 - COMPLETED
+[18:11:18] REQUEST COMPLETED -> remaining active_jobs=3
+[18:11:18] WAITING for remaining requests to finish (active_jobs=3)
+[18:11:18] REQUEST: 6 - COMPLETED
+[18:11:18] REQUEST COMPLETED -> remaining active_jobs=2
+[18:11:18] WAITING for remaining requests to finish (active_jobs=2)
+[18:11:18] REQUEST: 9 - COMPLETED
+[18:11:18] REQUEST COMPLETED -> remaining active_jobs=1
+[18:11:18] WAITING for remaining requests to finish (active_jobs=1)
+[18:11:18] REQUEST: 10 - COMPLETED
+[18:11:18] REQUEST COMPLETED -> remaining active_jobs=0
+[18:11:18] Load test completed
+[18:11:18] Running results evaluation
+
+
+--- PER-REQUEST STATS ---
+Request 01 | res_time: 18:11:17.83 | latency:   0.18 s | tokens: 25 | gen_time: 0.073 s | tok/s: 343.67
+Request 02 | res_time: 18:11:17.92 | latency:   0.26 s | tokens: 25 | gen_time: 0.072 s | tok/s: 346.91
+Request 03 | res_time: 18:11:18.01 | latency:   0.36 s | tokens: 25 | gen_time: 0.072 s | tok/s: 345.44
+Request 04 | res_time: 18:11:18.11 | latency:   0.44 s | tokens: 25 | gen_time: 0.073 s | tok/s: 343.87
+Request 05 | res_time: 18:11:18.20 | latency:   0.55 s | tokens: 25 | gen_time: 0.072 s | tok/s: 346.15
+Request 06 | res_time: 18:11:18.30 | latency:   0.63 s | tokens: 25 | gen_time: 0.072 s | tok/s: 345.88
+Request 07 | res_time: 18:11:18.39 | latency:   0.73 s | tokens: 25 | gen_time: 0.072 s | tok/s: 345.86
+Request 08 | res_time: 18:11:18.49 | latency:   0.82 s | tokens: 25 | gen_time: 0.072 s | tok/s: 345.89
+Request 09 | res_time: 18:11:18.58 | latency:   0.91 s | tokens: 25 | gen_time: 0.073 s | tok/s: 343.67
+Request 10 | res_time: 18:11:18.67 | latency:   1.00 s | tokens: 25 | gen_time: 0.072 s | tok/s: 347.93
+
+--- TEST CONFIGURATION ---
+MIG Config: all-balanced
+Ollama Replicas: 1
+Total requests: 10
+Concurrency: 10
+Requested output tokens (effort): 25
+
+Total tokens: 250
+Wall time (s): 1.04
+GPU time (s): 0.72
+
+--- METRICS ---
+Throughput REAL (tok/s): 241.31
+Throughput GPU (tok/s): 345.52
+Avg tokens/sec per request: 345.53
+Latency avg (ms): 588.14
+Latency p95 (ms): 998.76
+
+Run appended to CSV table: results/results_table.csv
+Per-request stats appended to CSV table: results/result-20260902-181117-630-all-balanced-replicas1-25.csv

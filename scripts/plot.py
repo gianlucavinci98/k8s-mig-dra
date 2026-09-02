@@ -71,7 +71,7 @@ def plot_throughput(df: pd.DataFrame, token_output: int) -> Path:
 		)
 
 	plt.title(f"Output tokens: {token_output}")
-	plt.xlabel("Concurrency (number of simultaneous requests).")
+	plt.xlabel("Concurrent Requests")
 	plt.ylabel("User Throughput (tok/s)")
 	plt.legend(title="Configuration", frameon=True)
 	plt.tight_layout()
