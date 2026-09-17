@@ -624,6 +624,51 @@ def same_timestamp_pairs(
     return pairs
 
 
+def median_or_none(values: Iterable[float]) -> float | None:
+    values = list(values)
+    return statistics.median(values) if values else None
+
+
+def estimate_sample_interval(points: list[tuple[float, float]]) -> float | None:
+    differences = [
+        right[0] - left[0]
+        for left, right in zip(points, points[1:])
+        if right[0] > left[0]
+    ]
+    return statistics.median(differences) if differences else None
+
+
+def detect_activity_episode(
+    points: list[tuple[float, float]],
+    workload_start: float,
+    threshold_pct: float,
+) -> dict | None:
+    """Bound the delayed non-idle pulse with its adjacent idle samples."""
+    active_positions = [
+        index
+        for index, (timestamp, value) in enumerate(points)
+        if timestamp >= workload_start and value > threshold_pct
+    ]
+    if not active_positions:
+        return None
+
+    first_active = active_positions[0]
+    last_active = active_positions[-1]
+    start_position = max(0, first_active - 1)
+    end_position = min(len(points) - 1, last_active + 1)
+    return {
+        "start_unix_s": points[start_position][0],
+        "end_unix_s": points[end_position][0],
+        "first_active_unix_s": points[first_active][0],
+        "last_active_unix_s": points[last_active][0],
+        "active_sample_count": len(active_positions),
+        "has_leading_idle_sample": first_active > 0
+        and points[first_active - 1][1] <= threshold_pct,
+        "has_trailing_idle_sample": last_active + 1 < len(points)
+        and points[last_active + 1][1] <= threshold_pct,
+    }
+
+
 def summarize_gpu_metrics(
     raw_document: dict,
     rows: dict[str, list[dict]],
@@ -651,52 +696,123 @@ def summarize_gpu_metrics(
         )
     }
 
-    energy_j = window_integral(points["power_w"], workload_start, workload_end)
-    sm_active_pct_seconds = window_integral(
-        points["sm_physical_pct"], workload_start, workload_end
+    activity_capture = raw_document.get("activity_capture", {})
+    partition_threshold_pct = (
+        finite_float(activity_capture.get("threshold_pct_per_partition")) or 0.1
     )
-    dram_active_pct_seconds = window_integral(
-        points["dram_physical_pct"], workload_start, workload_end
+    physical_threshold_pct = partition_threshold_pct / TOTAL_MIG_COMPUTE_SLICES
+    episode = detect_activity_episode(
+        points["sm_physical_pct"], workload_start, physical_threshold_pct
     )
-    fb_used_mib_seconds = window_integral(
-        points["fb_used_mib"], workload_start, workload_end
+    sample_interval = estimate_sample_interval(points["sm_physical_pct"])
+    configured_sample_interval = finite_float(
+        raw_document.get("query_window", {}).get("step_seconds")
+    )
+    nominal_interval = sample_interval or configured_sample_interval
+
+    episode_start = finite_float(episode.get("start_unix_s")) if episode else None
+    episode_end = finite_float(episode.get("end_unix_s")) if episode else None
+    episode_duration = (
+        episode_end - episode_start
+        if episode_start is not None
+        and episode_end is not None
+        and episode_end > episode_start
+        else None
+    )
+    episode_complete = bool(
+        episode
+        and episode["has_leading_idle_sample"]
+        and episode["has_trailing_idle_sample"]
     )
 
     query_window = raw_document.get("query_window", {})
-    idle_start = max(
-        finite_float(query_window.get("start_unix_s")) or workload_start,
-        workload_start
-        - (finite_float(query_window.get("padding_before_seconds")) or 0.0),
-    )
-    idle_power_w = window_average(points["power_w"], idle_start, workload_start)
-    dynamic_energy_j = None
-    if idle_power_w is not None:
-        dynamic_power_points = [
-            (timestamp, max(0.0, value - idle_power_w))
-            for timestamp, value in points["power_w"]
-        ]
-        dynamic_energy_j = window_integral(
-            dynamic_power_points, workload_start, workload_end
-        )
+    query_start = finite_float(query_window.get("start_unix_s")) or workload_start
+    query_end = finite_float(query_window.get("end_unix_s")) or workload_end
+    observation_start = episode_start if episode_start is not None else workload_start
+    observation_end = episode_end if episode_end is not None else query_end
 
-    power_samples = window_sample_values(
-        points["power_w"], workload_start, workload_end
+    sm_active_pct_seconds = (
+        window_integral(points["sm_physical_pct"], episode_start, episode_end)
+        if episode_start is not None and episode_end is not None
+        else None
     )
-    sm_samples = window_sample_values(
-        points["sm_physical_pct"], workload_start, workload_end
+    sm_configured_pct_seconds = (
+        window_integral(points["sm_configured_pct"], episode_start, episode_end)
+        if episode_start is not None and episode_end is not None
+        else None
+    )
+    dram_active_pct_seconds = (
+        window_integral(points["dram_physical_pct"], episode_start, episode_end)
+        if episode_start is not None and episode_end is not None
+        else None
+    )
+    dram_configured_pct_seconds = (
+        window_integral(points["dram_configured_pct"], episode_start, episode_end)
+        if episode_start is not None and episode_end is not None
+        else None
+    )
+
+    # Samples before the delayed activity pulse are still idle observations for
+    # this run, even if their timestamps fall after the HTTP workload ended.
+    idle_end = episode_start if episode_start is not None else workload_start
+    idle_power_samples = [
+        value
+        for timestamp, value in points["power_w"]
+        if query_start <= timestamp < idle_end
+    ]
+    idle_power_w = median_or_none(idle_power_samples)
+
+    dynamic_energy_j = None
+    observed_episode_energy_j = None
+    if episode_start is not None and episode_end is not None:
+        observed_episode_energy_j = window_integral(
+            points["power_w"], episode_start, episode_end
+        )
+        if idle_power_w is not None:
+            dynamic_power_points = [
+                (timestamp, max(0.0, value - idle_power_w))
+                for timestamp, value in points["power_w"]
+            ]
+            dynamic_energy_j = window_integral(
+                dynamic_power_points, episode_start, episode_end
+            )
+
+    # The excess-power pulse is delayed but its area remains useful. Baseline
+    # energy is charged only for the actual request wall time, not for the wait.
+    energy_j = (
+        idle_power_w * duration + dynamic_energy_j
+        if idle_power_w is not None and dynamic_energy_j is not None
+        else None
+    )
+    energy_wh = energy_j / 3600.0 if energy_j is not None else None
+
+    sm_samples = (
+        window_sample_values(points["sm_physical_pct"], episode_start, episode_end)
+        if episode_start is not None and episode_end is not None
+        else []
+    )
+    power_samples = (
+        window_sample_values(points["power_w"], episode_start, episode_end)
+        if episode_start is not None and episode_end is not None
+        else []
     )
     fb_used_samples = window_sample_values(
-        points["fb_used_mib"], workload_start, workload_end
+        points["fb_used_mib"], observation_start, observation_end
+    )
+    fb_used_mib_seconds = window_integral(
+        points["fb_used_mib"], observation_start, observation_end
     )
 
-    power_sm_pairs = same_timestamp_pairs(
-        system_rows, "sm_physical_pct", "power_w", workload_start, workload_end
-    )
-    load_sm_pairs = same_timestamp_pairs(
-        system_rows, "active_requests", "sm_physical_pct", workload_start, workload_end
-    )
-    load_power_pairs = same_timestamp_pairs(
-        system_rows, "active_requests", "power_w", workload_start, workload_end
+    power_sm_pairs = (
+        same_timestamp_pairs(
+            system_rows,
+            "sm_physical_pct",
+            "power_w",
+            episode_start,
+            episode_end,
+        )
+        if episode_start is not None and episode_end is not None
+        else []
     )
 
     unique_partitions = {
@@ -704,7 +820,20 @@ def summarize_gpu_metrics(
         for row in rows["partition"]
     }
     physical_gpus = {row["gpu_uuid"] for row in rows["physical_gpu"]}
-    energy_wh = energy_j / 3600.0 if energy_j is not None else None
+    active_sample_count = int(episode["active_sample_count"]) if episode else 0
+    coarse = bool(
+        nominal_interval
+        and (duration < 2.0 * nominal_interval or active_sample_count < 2)
+    )
+    capture_status = str(activity_capture.get("status", "unknown"))
+    if not episode:
+        quality = "invalid_no_activity_episode"
+    elif not episode_complete or capture_status == "activity_not_settled":
+        quality = "incomplete_episode"
+    elif coarse:
+        quality = "coarse_but_comparable"
+    else:
+        quality = "good"
 
     return {
         "workload_window": {
@@ -712,24 +841,50 @@ def summarize_gpu_metrics(
             "end_unix_s": workload_end,
             "duration_seconds": duration,
         },
-        "sampling": {
-            "prometheus_step_seconds": raw_document.get("query_window", {}).get(
-                "step_seconds"
+        "telemetry_episode": {
+            "detected": episode is not None,
+            "complete": episode_complete,
+            "capture_status": capture_status,
+            "quality": quality,
+            "start_unix_s": episode_start,
+            "end_unix_s": episode_end,
+            "duration_seconds": episode_duration,
+            "first_active_delay_from_workload_start_s": (
+                episode["first_active_unix_s"] - workload_start if episode else None
             ),
-            "system_samples_in_workload": sum(
+            "active_sample_count": active_sample_count,
+            "physical_activity_threshold_pct": physical_threshold_pct,
+            "pointwise_alignment_supported": False,
+        },
+        "sampling": {
+            "prometheus_step_seconds": configured_sample_interval,
+            "observed_median_interval_seconds": sample_interval,
+            "raw_samples_used": raw_document.get("schema_version") == 2,
+            "system_samples_in_episode": sum(
                 1
                 for row in system_rows
-                if workload_start <= row["timestamp_unix_s"] <= workload_end
+                if episode_start is not None
+                and episode_end is not None
+                and episode_start <= row["timestamp_unix_s"] <= episode_end
             ),
             "partition_count": len(unique_partitions),
             "physical_gpu_count": len(physical_gpus),
         },
         "sm_activity": {
-            "configured_capacity_avg_pct": window_average(
-                points["sm_configured_pct"], workload_start, workload_end
+            "configured_capacity_avg_pct": (
+                sm_configured_pct_seconds / duration
+                if sm_configured_pct_seconds is not None and duration > 0
+                else None
             ),
-            "physical_gpu_avg_pct": window_average(
-                points["sm_physical_pct"], workload_start, workload_end
+            "physical_gpu_avg_pct": (
+                sm_active_pct_seconds / duration
+                if sm_active_pct_seconds is not None and duration > 0
+                else None
+            ),
+            "observed_episode_physical_avg_pct": (
+                sm_active_pct_seconds / episode_duration
+                if sm_active_pct_seconds is not None and episode_duration
+                else None
             ),
             "physical_gpu_p95_pct": percentile(sm_samples, 0.95),
             "physical_gpu_peak_pct": max(sm_samples) if sm_samples else None,
@@ -740,11 +895,20 @@ def summarize_gpu_metrics(
             ),
         },
         "dram_activity": {
-            "configured_capacity_avg_pct": window_average(
-                points["dram_configured_pct"], workload_start, workload_end
+            "configured_capacity_avg_pct": (
+                dram_configured_pct_seconds / duration
+                if dram_configured_pct_seconds is not None and duration > 0
+                else None
             ),
-            "physical_gpu_avg_pct": window_average(
-                points["dram_physical_pct"], workload_start, workload_end
+            "physical_gpu_avg_pct": (
+                dram_active_pct_seconds / duration
+                if dram_active_pct_seconds is not None and duration > 0
+                else None
+            ),
+            "observed_episode_physical_avg_pct": (
+                dram_active_pct_seconds / episode_duration
+                if dram_active_pct_seconds is not None and episode_duration
+                else None
             ),
             "capacity_equivalent_active_seconds": (
                 dram_active_pct_seconds / 100.0
@@ -754,23 +918,28 @@ def summarize_gpu_metrics(
         },
         "framebuffer": {
             "used_avg_mib": window_average(
-                points["fb_used_mib"], workload_start, workload_end
+                points["fb_used_mib"], observation_start, observation_end
             ),
             "used_peak_mib": max(fb_used_samples) if fb_used_samples else None,
             "used_mib_seconds": fb_used_mib_seconds,
             "configured_capacity_utilization_avg_pct": window_average(
-                points["fb_util_configured_pct"], workload_start, workload_end
+                points["fb_util_configured_pct"], observation_start, observation_end
             ),
             "physical_capacity_utilization_avg_pct": window_average(
-                points["fb_util_physical_pct"], workload_start, workload_end
+                points["fb_util_physical_pct"], observation_start, observation_end
             ),
             "configured_physical_memory_avg_pct": window_average(
-                points["configured_memory_pct"], workload_start, workload_end
+                points["configured_memory_pct"], observation_start, observation_end
             ),
         },
         "power": {
             "idle_avg_w": idle_power_w,
             "avg_w": energy_j / duration if energy_j is not None and duration > 0 else None,
+            "observed_episode_avg_w": (
+                observed_episode_energy_j / episode_duration
+                if observed_episode_energy_j is not None and episode_duration
+                else None
+            ),
             "p95_w": percentile(power_samples, 0.95),
             "peak_w": max(power_samples) if power_samples else None,
             "deduplication": "mean per physical GPU UUID, then sum across physical GPUs",
@@ -780,9 +949,7 @@ def summarize_gpu_metrics(
             "total_wh": energy_wh,
             "dynamic_above_idle_j": dynamic_energy_j,
             "dynamic_above_idle_wh": (
-                dynamic_energy_j / 3600.0
-                if dynamic_energy_j is not None
-                else None
+                dynamic_energy_j / 3600.0 if dynamic_energy_j is not None else None
             ),
             "per_generated_token_j": (
                 energy_j / total_tokens
@@ -802,6 +969,7 @@ def summarize_gpu_metrics(
                 if energy_wh is not None and energy_wh > 0
                 else None
             ),
+            "method": "idle power times workload duration plus the delayed above-idle power-pulse integral",
         },
         "useful_work": {
             "generated_tokens": total_tokens,
@@ -820,39 +988,32 @@ def summarize_gpu_metrics(
                 if regression_slope(power_sm_pairs) is not None
                 else None
             ),
-            "active_requests_vs_physical_sm_utilization_pearson_r": pearson_correlation(
-                load_sm_pairs
-            ),
-            "active_requests_vs_power_pearson_r": pearson_correlation(
-                load_power_pairs
-            ),
+            "active_requests_vs_physical_sm_utilization_pearson_r": None,
+            "active_requests_vs_power_pearson_r": None,
         },
         "method_notes": [
+            "Raw Prometheus samples are used; query_range evaluation timestamps are avoided.",
+            "The delayed GPU pulse is bounded by adjacent idle SM samples and integrated independently of HTTP timestamps.",
+            "Run-average SM and DRAM values equal the delayed pulse area divided by the actual workload wall time.",
             "GR_ENGINE_ACTIVE is weighted by MIG compute slices and normalized to seven A100 compute slices for the physical-GPU view.",
             "DRAM_ACTIVE is weighted by the memory capacity encoded in GPU_I_PROFILE for the physical-GPU view.",
             "DCGM board-power copies exposed for each MIG instance are averaged per UUID and are never added together.",
-            "Energy is the trapezoidal integral of deduplicated board power over the first-request-start to last-request-end window.",
-            "Per-request GPU averages describe a shared overlapping GPU window; energy is attributed only at run level.",
+            "Energy combines idle baseline over actual wall time with the delayed above-idle power-pulse integral.",
+            "Runs shorter than two telemetry intervals are coarse comparative measurements, not pointwise traces.",
+            "Per-request GPU attribution and request-to-GPU time correlation are disabled because delayed 5-second telemetry cannot support them.",
         ],
     }
-
 
 def add_request_gpu_windows(
     per_request_stats: list[dict], rows: dict[str, list[dict]]
 ) -> None:
-    system_rows = rows["system"]
-    sm_points = series_points(system_rows, "sm_physical_pct")
-    dram_points = series_points(system_rows, "dram_physical_pct")
-    fb_points = series_points(system_rows, "fb_used_mib")
-    power_points = series_points(system_rows, "power_w")
-
+    # Five-second DCGM telemetry arrives after the HTTP activity. Mapping it to
+    # individual, overlapping requests would fabricate pointwise precision.
     for request in per_request_stats:
-        start = request["start_unix_s"]
-        end = request["end_unix_s"]
-        request["gpu_sm_avg_pct"] = window_average(sm_points, start, end)
-        request["gpu_dram_avg_pct"] = window_average(dram_points, start, end)
-        request["gpu_fb_used_avg_mib"] = window_average(fb_points, start, end)
-        request["gpu_power_avg_w"] = window_average(power_points, start, end)
+        request["gpu_sm_avg_pct"] = None
+        request["gpu_dram_avg_pct"] = None
+        request["gpu_fb_used_avg_mib"] = None
+        request["gpu_power_avg_w"] = None
 
 
 def write_gpu_csv(rows: dict[str, list[dict]], output_file: Path) -> None:
@@ -970,6 +1131,19 @@ def append_run_to_table(
         "Throughput GPU": round(request_summary["throughput_gpu_tok_s"], 2),
         "Latency avg": round(request_summary["latency_avg_ms"], 2),
         "Latency p95": round(request_summary["latency_p95_ms"], 2),
+        "GPU telemetry quality": nested(gpu_summary, "telemetry_episode", "quality"),
+        "GPU active samples": nested(
+            gpu_summary, "telemetry_episode", "active_sample_count"
+        ),
+        "GPU first-active delay (s)": round_or_blank(
+            finite_float(
+                nested(
+                    gpu_summary,
+                    "telemetry_episode",
+                    "first_active_delay_from_workload_start_s",
+                )
+            )
+        ),
         "GPU SM physical avg (%)": round_or_blank(
             finite_float(nested(gpu_summary, "sm_activity", "physical_gpu_avg_pct"))
         ),
@@ -1161,21 +1335,65 @@ def main() -> int:
     print(f"Latency p95 (ms): {latency_p95_ms:.2f}")
 
     if gpu_summary:
+        print("\n--- GPU TELEMETRY CAPTURE ---")
+        print(
+            "Quality: "
+            f"{nested(gpu_summary, 'telemetry_episode', 'quality')}"
+        )
+        print_value(
+            "First active sample delay",
+            finite_float(
+                nested(
+                    gpu_summary,
+                    "telemetry_episode",
+                    "first_active_delay_from_workload_start_s",
+                )
+            ),
+            " s",
+        )
+        print_value(
+            "Observed GPU episode duration",
+            finite_float(
+                nested(gpu_summary, "telemetry_episode", "duration_seconds")
+            ),
+            " s",
+        )
+        print(
+            "Active telemetry samples: "
+            f"{nested(gpu_summary, 'telemetry_episode', 'active_sample_count')}"
+        )
+
         print("\n--- GPU UTILIZATION AND MEMORY ---")
         print_value(
-            "Physical GPU SM utilization avg",
+            "Workload-normalized physical GPU SM utilization",
             finite_float(nested(gpu_summary, "sm_activity", "physical_gpu_avg_pct")),
             "%",
         )
         print_value(
-            "Configured MIG capacity SM utilization avg",
+            "Observed-episode physical GPU SM avg",
+            finite_float(
+                nested(
+                    gpu_summary,
+                    "sm_activity",
+                    "observed_episode_physical_avg_pct",
+                )
+            ),
+            "%",
+        )
+        print_value(
+            "Physical GPU SM peak",
+            finite_float(nested(gpu_summary, "sm_activity", "physical_gpu_peak_pct")),
+            "%",
+        )
+        print_value(
+            "Workload-normalized configured MIG SM utilization",
             finite_float(
                 nested(gpu_summary, "sm_activity", "configured_capacity_avg_pct")
             ),
             "%",
         )
         print_value(
-            "Physical GPU DRAM activity avg",
+            "Workload-normalized physical GPU DRAM activity",
             finite_float(nested(gpu_summary, "dram_activity", "physical_gpu_avg_pct")),
             "%",
         )
@@ -1203,8 +1421,13 @@ def main() -> int:
             " W",
         )
         print_value(
-            "Power avg",
+            "Workload-equivalent power avg",
             finite_float(nested(gpu_summary, "power", "avg_w")),
+            " W",
+        )
+        print_value(
+            "Observed-episode power avg",
+            finite_float(nested(gpu_summary, "power", "observed_episode_avg_w")),
             " W",
         )
         print_value(
@@ -1217,6 +1440,12 @@ def main() -> int:
             finite_float(nested(gpu_summary, "energy", "total_wh")),
             " Wh",
             6,
+        )
+        print_value(
+            "Dynamic energy above idle",
+            finite_float(nested(gpu_summary, "energy", "dynamic_above_idle_j")),
+            " J",
+            3,
         )
         print_value(
             "Energy per generated token",

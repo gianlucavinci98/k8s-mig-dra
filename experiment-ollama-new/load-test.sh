@@ -8,10 +8,12 @@ MODEL="tinyllama"
 NUM_PREDICT="${NUM_PREDICT:-25}"
 
 PROMETHEUS_URL="${PROMETHEUS_URL:-http://10.146.0.55:30090}"
-PROMETHEUS_STEP_SECONDS="${PROMETHEUS_STEP_SECONDS:-5}"
-PROMETHEUS_PADDING_BEFORE_SECONDS="${PROMETHEUS_PADDING_BEFORE_SECONDS:-15}"
-PROMETHEUS_PADDING_AFTER_SECONDS="${PROMETHEUS_PADDING_AFTER_SECONDS:-5}"
-PROMETHEUS_SCRAPE_WAIT_SECONDS="${PROMETHEUS_SCRAPE_WAIT_SECONDS:-6}"
+PROMETHEUS_SAMPLE_INTERVAL_SECONDS="${PROMETHEUS_SAMPLE_INTERVAL_SECONDS:-${PROMETHEUS_STEP_SECONDS:-5}}"
+PROMETHEUS_PADDING_BEFORE_SECONDS="${PROMETHEUS_PADDING_BEFORE_SECONDS:-20}"
+PROMETHEUS_ACTIVITY_WAIT_TIMEOUT_SECONDS="${PROMETHEUS_ACTIVITY_WAIT_TIMEOUT_SECONDS:-25}"
+PROMETHEUS_POLL_SECONDS="${PROMETHEUS_POLL_SECONDS:-2}"
+PROMETHEUS_SETTLE_SAMPLES="${PROMETHEUS_SETTLE_SAMPLES:-1}"
+GPU_ACTIVITY_THRESHOLD_PCT="${GPU_ACTIVITY_THRESHOLD_PCT:-0.1}"
 
 TEST_MIG_CONFIG="$(kubectl get nodes -o json | jq -r '.items[].metadata.labels["nvidia.com/mig.config"] // empty' | awk 'NF { print; exit }')"
 TEST_OLLAMA_REPLICAS="$(kubectl -n ollama-test get deploy ollama-mig -o jsonpath='{.spec.replicas}' 2>/dev/null)"
@@ -37,7 +39,6 @@ if [[ "$SAVE_RESULT_LOG" == "1" || "$SAVE_RESULT_LOG" == "true" || "$SAVE_RESULT
   exec > >(tee -a "$RESULT_LOG") 2>&1
 fi
 
-# Save metadata for the report. The workload timestamps are added after the run.
 cat > "$METADATA_FILE" <<EOF
 {
   "mig_config": "$TEST_MIG_CONFIG",
@@ -47,7 +48,9 @@ cat > "$METADATA_FILE" <<EOF
   "num_predict": $NUM_PREDICT,
   "run_timestamp": "$RUN_TS",
   "prometheus_url": "$PROMETHEUS_URL",
-  "prometheus_step_seconds": $PROMETHEUS_STEP_SECONDS
+  "prometheus_sample_interval_seconds": $PROMETHEUS_SAMPLE_INTERVAL_SECONDS,
+  "prometheus_activity_wait_timeout_seconds": $PROMETHEUS_ACTIVITY_WAIT_TIMEOUT_SECONDS,
+  "prometheus_activity_threshold_pct": $GPU_ACTIVITY_THRESHOLD_PCT
 }
 EOF
 
@@ -66,7 +69,8 @@ log "Total requests: $TOTAL_REQUESTS"
 log "Concurrency: $CONCURRENCY"
 log "Output tokens (effort): $NUM_PREDICT"
 log "Prometheus URL: $PROMETHEUS_URL"
-log "Prometheus step: ${PROMETHEUS_STEP_SECONDS}s"
+log "DCGM/Prometheus nominal sample interval: ${PROMETHEUS_SAMPLE_INTERVAL_SECONDS}s"
+log "Delayed activity wait timeout: ${PROMETHEUS_ACTIVITY_WAIT_TIMEOUT_SECONDS}s"
 
 log "Checking required DCGM metrics"
 if ! python3 collect_gpu_metrics.py \
@@ -78,9 +82,7 @@ fi
 
 run_request() {
   local id=$1
-
   start=$(date +%s%3N)
-
   response=$(curl -s -H "Connection: close" "$URL" -d "{
     \"model\": \"$MODEL\",
     \"prompt\": \"Write a very long and detailed explanation about distributed systems, Kubernetes scheduling, GPU partitioning with MIG, and performance tradeoffs. Include examples and technical depth.\",
@@ -89,7 +91,6 @@ run_request() {
       \"num_predict\": $NUM_PREDICT
     }
   }")
-
   end=$(date +%s%3N)
 
   echo "$response" | jq -c --arg start "$start" \
@@ -107,7 +108,6 @@ run_request() {
     start_time: ($start|tonumber),
     end_time: ($end|tonumber)
   }' >> "$OUT_FILE"
-
   log "REQUEST: $id - COMPLETED"
 }
 
@@ -116,11 +116,8 @@ EXPERIMENT_START_S="$(date +%s.%N)"
 
 for ((i=1; i<=TOTAL_REQUESTS; i++)); do
   run_request "$i" &
-
   ((active_jobs++))
-
   log "REQUEST: $i - STARTED in background (active_jobs=$active_jobs)"
-
   if ((active_jobs >= CONCURRENCY)); then
     log "WAITING -> active_jobs=$active_jobs"
     wait -n
@@ -155,19 +152,19 @@ else
   log "WARNING: could not add workload timestamps to metadata"
 fi
 
-log "Waiting ${PROMETHEUS_SCRAPE_WAIT_SECONDS}s for the final Prometheus scrape"
-sleep "$PROMETHEUS_SCRAPE_WAIT_SECONDS"
-
 gpu_collection_status=0
-log "Collecting GPU telemetry from Prometheus"
+log "Waiting for and collecting the delayed GPU activity episode"
 if ! python3 collect_gpu_metrics.py \
   --prometheus-url "$PROMETHEUS_URL" \
   collect \
   --start "$EXPERIMENT_START_S" \
   --end "$EXPERIMENT_END_S" \
-  --step "$PROMETHEUS_STEP_SECONDS" \
+  --sample-interval "$PROMETHEUS_SAMPLE_INTERVAL_SECONDS" \
   --padding-before "$PROMETHEUS_PADDING_BEFORE_SECONDS" \
-  --padding-after "$PROMETHEUS_PADDING_AFTER_SECONDS" \
+  --wait-timeout "$PROMETHEUS_ACTIVITY_WAIT_TIMEOUT_SECONDS" \
+  --poll-seconds "$PROMETHEUS_POLL_SECONDS" \
+  --settle-samples "$PROMETHEUS_SETTLE_SAMPLES" \
+  --activity-threshold-pct "$GPU_ACTIVITY_THRESHOLD_PCT" \
   --output "$GPU_METRICS_FILE"; then
   gpu_collection_status=1
   log "ERROR: GPU telemetry collection failed; request analysis will still run"
