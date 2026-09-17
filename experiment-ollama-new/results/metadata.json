@@ -1,0 +1,14 @@
+{
+  "mig_config": "all-3g.20gb",
+  "ollama_replicas": 1,
+  "total_requests": 500,
+  "concurrency": 500,
+  "num_predict": 25,
+  "run_timestamp": "20260917-173112-862",
+  "prometheus_url": "http://10.146.0.55:30090",
+  "prometheus_sample_interval_seconds": 5,
+  "prometheus_activity_wait_timeout_seconds": 25,
+  "prometheus_activity_threshold_pct": 0.1,
+  "experiment_start_unix_s": 1789666273.022453268,
+  "experiment_end_unix_s": 1789666322.349050198
+}

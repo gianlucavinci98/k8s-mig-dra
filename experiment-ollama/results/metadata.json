@@ -1,7 +1,7 @@
 {
   "mig_config": "all-balanced",
   "ollama_replicas": 1,
-  "total_requests": 500,
-  "concurrency": 500,
+  "total_requests": 10,
+  "concurrency": 10,
   "num_predict": 25
 }

@@ -1,0 +1,124 @@
+[17:25:41] Starting load test
+[17:25:41] MIG Config: all-3g.20gb
+[17:25:41] Ollama Replicas: 1
+[17:25:41] Total requests: 10
+[17:25:41] Concurrency: 10
+[17:25:41] Output tokens (effort): 25
+[17:25:41] Prometheus URL: http://10.146.0.55:30090
+[17:25:41] DCGM/Prometheus nominal sample interval: 5s
+[17:25:41] Delayed activity wait timeout: 25s
+[17:25:41] Checking required DCGM metrics
+Prometheus preflight OK (DCGM_FI_PROF_GR_ENGINE_ACTIVE=2, DCGM_FI_PROF_DRAM_ACTIVE=2, DCGM_FI_DEV_FB_USED=2, DCGM_FI_DEV_FB_FREE=2, DCGM_FI_DEV_POWER_USAGE=2)
+[17:25:41] REQUEST: 1 - STARTED in background (active_jobs=1)
+[17:25:41] REQUEST: 2 - STARTED in background (active_jobs=2)
+[17:25:41] REQUEST: 3 - STARTED in background (active_jobs=3)
+[17:25:41] REQUEST: 4 - STARTED in background (active_jobs=4)
+[17:25:41] REQUEST: 5 - STARTED in background (active_jobs=5)
+[17:25:41] REQUEST: 6 - STARTED in background (active_jobs=6)
+[17:25:41] REQUEST: 7 - STARTED in background (active_jobs=7)
+[17:25:41] REQUEST: 8 - STARTED in background (active_jobs=8)
+[17:25:41] REQUEST: 9 - STARTED in background (active_jobs=9)
+[17:25:41] REQUEST: 10 - STARTED in background (active_jobs=10)
+[17:25:41] WAITING -> active_jobs=10
+[17:25:42] REQUEST: 4 - COMPLETED
+[17:25:42] RESUMING -> a request finished (active_jobs=9)
+[17:25:42] ALL REQUESTS LAUNCHED
+[17:25:42] WAITING for remaining requests to finish (active_jobs=9)
+[17:25:42] REQUEST: 1 - COMPLETED
+[17:25:42] REQUEST COMPLETED -> remaining active_jobs=8
+[17:25:42] WAITING for remaining requests to finish (active_jobs=8)
+[17:25:42] REQUEST: 2 - COMPLETED
+[17:25:42] REQUEST COMPLETED -> remaining active_jobs=7
+[17:25:42] WAITING for remaining requests to finish (active_jobs=7)
+[17:25:42] REQUEST: 8 - COMPLETED
+[17:25:42] REQUEST COMPLETED -> remaining active_jobs=6
+[17:25:42] WAITING for remaining requests to finish (active_jobs=6)
+[17:25:42] REQUEST: 3 - COMPLETED
+[17:25:42] REQUEST COMPLETED -> remaining active_jobs=5
+[17:25:42] WAITING for remaining requests to finish (active_jobs=5)
+[17:25:42] REQUEST: 10 - COMPLETED
+[17:25:42] REQUEST COMPLETED -> remaining active_jobs=4
+[17:25:42] WAITING for remaining requests to finish (active_jobs=4)
+[17:25:42] REQUEST: 6 - COMPLETED
+[17:25:42] REQUEST COMPLETED -> remaining active_jobs=3
+[17:25:42] WAITING for remaining requests to finish (active_jobs=3)
+[17:25:42] REQUEST: 5 - COMPLETED
+[17:25:42] REQUEST COMPLETED -> remaining active_jobs=2
+[17:25:42] WAITING for remaining requests to finish (active_jobs=2)
+[17:25:42] REQUEST: 7 - COMPLETED
+[17:25:42] REQUEST COMPLETED -> remaining active_jobs=1
+[17:25:42] WAITING for remaining requests to finish (active_jobs=1)
+[17:25:42] REQUEST: 9 - COMPLETED
+[17:25:42] REQUEST COMPLETED -> remaining active_jobs=0
+[17:25:42] Load test completed
+[17:25:42] Waiting for and collecting the delayed GPU activity episode
+GPU telemetry: waiting for delayed activity ...
+GPU telemetry: waiting for delayed activity ...
+GPU telemetry: waiting for delayed activity ...
+GPU telemetry: waiting for delayed activity ...
+GPU telemetry: waiting for return to idle ...
+GPU telemetry: waiting for return to idle ...
+Saved 5 metrics / 10 series to results/gpu-metrics.json (activity capture: settled, wait 12.0s)
+[17:25:55] Running results evaluation
+
+
+--- PER-REQUEST STATS ---
+Request 01 | res_time: 17:25:42.08 | latency:   0.17 s | tokens: 25 | gen_time: 0.070 s | tok/s: 355.61
+Request 02 | res_time: 17:25:42.17 | latency:   0.26 s | tokens: 25 | gen_time: 0.070 s | tok/s: 359.17
+Request 03 | res_time: 17:25:42.26 | latency:   0.35 s | tokens: 25 | gen_time: 0.070 s | tok/s: 359.07
+Request 04 | res_time: 17:25:42.35 | latency:   0.43 s | tokens: 25 | gen_time: 0.070 s | tok/s: 355.20
+Request 05 | res_time: 17:25:42.44 | latency:   0.53 s | tokens: 25 | gen_time: 0.070 s | tok/s: 359.16
+Request 06 | res_time: 17:25:42.53 | latency:   0.61 s | tokens: 25 | gen_time: 0.070 s | tok/s: 358.91
+Request 07 | res_time: 17:25:42.62 | latency:   0.71 s | tokens: 25 | gen_time: 0.070 s | tok/s: 358.91
+Request 08 | res_time: 17:25:42.71 | latency:   0.80 s | tokens: 25 | gen_time: 0.070 s | tok/s: 356.89
+Request 09 | res_time: 17:25:42.81 | latency:   0.89 s | tokens: 25 | gen_time: 0.070 s | tok/s: 356.88
+Request 10 | res_time: 17:25:42.90 | latency:   0.98 s | tokens: 25 | gen_time: 0.070 s | tok/s: 358.32
+
+--- TEST CONFIGURATION ---
+MIG Config: all-3g.20gb
+Ollama Replicas: 1
+Total requests: 10
+Concurrency: 10
+Requested output tokens (effort): 25
+
+Total tokens: 250
+Wall time (s): 1.01
+GPU time (s): 0.70
+
+--- REQUEST METRICS ---
+Throughput REAL (tok/s): 248.26
+Throughput GPU (tok/s): 357.81
+Avg tokens/sec per request: 357.81
+Latency avg (ms): 574.18
+Latency p95 (ms): 977.88
+
+--- GPU TELEMETRY CAPTURE ---
+Quality: coarse_but_comparable
+First active sample delay: 7.80 s
+Observed GPU episode duration: 10.00 s
+Active telemetry samples: 1
+
+--- GPU UTILIZATION AND MEMORY ---
+Workload-normalized physical GPU SM utilization: 29.02%
+Observed-episode physical GPU SM avg: 2.92%
+Physical GPU SM peak: 5.84%
+Workload-normalized configured MIG SM utilization: 33.85%
+Workload-normalized physical GPU DRAM activity: 9.70%
+Framebuffer used avg: 1263.00 MiB
+Physical framebuffer utilization avg: 3.08%
+
+--- POWER, ENERGY, AND USEFUL WORK ---
+Idle power avg: 96.50 W
+Workload-equivalent power avg: 96.50 W
+Observed-episode power avg: 96.00 W
+Power p95: 96.10 W
+Energy: 0.026992 Wh
+Dynamic energy above idle: 0.000 J
+Energy per generated token: 0.388690 J/token
+Generated tokens per joule: 2.572745 token/J
+Power-SM Pearson correlation: 0.7327
+
+Run appended to CSV table: /home/gianluca/workspace/k8s-mig-dra/experiment-ollama-new/results/results_table.csv
+Per-request stats appended to CSV table: results/result-20260917-172541-754-all-3g.20gb-replicas1-25.csv
+GPU time series written to: /home/gianluca/workspace/k8s-mig-dra/experiment-ollama-new/results/gpu-metrics.csv
+Run summary written to: /home/gianluca/workspace/k8s-mig-dra/experiment-ollama-new/results/run-summary.json

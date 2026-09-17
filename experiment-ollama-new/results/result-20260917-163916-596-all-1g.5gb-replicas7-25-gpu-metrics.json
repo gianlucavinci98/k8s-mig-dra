@@ -1,0 +1,1986 @@
+{
+  "activity_capture": {
+    "active_sample_count": 2,
+    "metric": "DCGM_FI_PROF_GR_ENGINE_ACTIVE",
+    "poll_seconds": 2.0,
+    "settle_samples_required": 1,
+    "status": "settled",
+    "threshold_pct_per_partition": 0.1,
+    "trailing_idle_samples": 1,
+    "wait_seconds": 12.047362089157104,
+    "wait_timeout_seconds": 25.0
+  },
+  "collected_at_utc": "2026-09-17T16:39:33.514933Z",
+  "metrics": {
+    "DCGM_FI_DEV_FB_FREE": {
+      "query": "DCGM_FI_DEV_FB_FREE[38s]",
+      "result_type": "matrix",
+      "series": [
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "10",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_FREE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "3882"
+            ],
+            [
+              1789663142.687,
+              "3882"
+            ],
+            [
+              1789663147.687,
+              "3882"
+            ],
+            [
+              1789663152.687,
+              "3882"
+            ],
+            [
+              1789663157.687,
+              "3882"
+            ],
+            [
+              1789663162.687,
+              "3882"
+            ],
+            [
+              1789663167.687,
+              "3882"
+            ],
+            [
+              1789663172.687,
+              "3882"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "11",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_FREE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "3880"
+            ],
+            [
+              1789663142.687,
+              "3880"
+            ],
+            [
+              1789663147.687,
+              "3880"
+            ],
+            [
+              1789663152.687,
+              "3880"
+            ],
+            [
+              1789663157.687,
+              "3880"
+            ],
+            [
+              1789663162.687,
+              "3880"
+            ],
+            [
+              1789663167.687,
+              "3880"
+            ],
+            [
+              1789663172.687,
+              "3880"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "12",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_FREE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "3882"
+            ],
+            [
+              1789663142.687,
+              "3882"
+            ],
+            [
+              1789663147.687,
+              "3882"
+            ],
+            [
+              1789663152.687,
+              "3882"
+            ],
+            [
+              1789663157.687,
+              "3882"
+            ],
+            [
+              1789663162.687,
+              "3882"
+            ],
+            [
+              1789663167.687,
+              "3882"
+            ],
+            [
+              1789663172.687,
+              "3882"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "13",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_FREE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "3882"
+            ],
+            [
+              1789663142.687,
+              "3882"
+            ],
+            [
+              1789663147.687,
+              "3882"
+            ],
+            [
+              1789663152.687,
+              "3882"
+            ],
+            [
+              1789663157.687,
+              "3882"
+            ],
+            [
+              1789663162.687,
+              "3882"
+            ],
+            [
+              1789663167.687,
+              "3882"
+            ],
+            [
+              1789663172.687,
+              "3882"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "7",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_FREE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "3882"
+            ],
+            [
+              1789663142.687,
+              "3882"
+            ],
+            [
+              1789663147.687,
+              "3882"
+            ],
+            [
+              1789663152.687,
+              "3882"
+            ],
+            [
+              1789663157.687,
+              "3882"
+            ],
+            [
+              1789663162.687,
+              "3882"
+            ],
+            [
+              1789663167.687,
+              "3882"
+            ],
+            [
+              1789663172.687,
+              "3882"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "8",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_FREE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "3882"
+            ],
+            [
+              1789663142.687,
+              "3882"
+            ],
+            [
+              1789663147.687,
+              "3882"
+            ],
+            [
+              1789663152.687,
+              "3882"
+            ],
+            [
+              1789663157.687,
+              "3882"
+            ],
+            [
+              1789663162.687,
+              "3882"
+            ],
+            [
+              1789663167.687,
+              "3882"
+            ],
+            [
+              1789663172.687,
+              "3882"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "9",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_FREE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "3882"
+            ],
+            [
+              1789663142.687,
+              "3882"
+            ],
+            [
+              1789663147.687,
+              "3882"
+            ],
+            [
+              1789663152.687,
+              "3882"
+            ],
+            [
+              1789663157.687,
+              "3882"
+            ],
+            [
+              1789663162.687,
+              "3882"
+            ],
+            [
+              1789663167.687,
+              "3882"
+            ],
+            [
+              1789663172.687,
+              "3882"
+            ]
+          ]
+        }
+      ]
+    },
+    "DCGM_FI_DEV_FB_USED": {
+      "query": "DCGM_FI_DEV_FB_USED[38s]",
+      "result_type": "matrix",
+      "series": [
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "10",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_USED",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "981"
+            ],
+            [
+              1789663142.687,
+              "981"
+            ],
+            [
+              1789663147.687,
+              "981"
+            ],
+            [
+              1789663152.687,
+              "981"
+            ],
+            [
+              1789663157.687,
+              "981"
+            ],
+            [
+              1789663162.687,
+              "981"
+            ],
+            [
+              1789663167.687,
+              "981"
+            ],
+            [
+              1789663172.687,
+              "981"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "11",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_USED",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "983"
+            ],
+            [
+              1789663142.687,
+              "983"
+            ],
+            [
+              1789663147.687,
+              "983"
+            ],
+            [
+              1789663152.687,
+              "983"
+            ],
+            [
+              1789663157.687,
+              "983"
+            ],
+            [
+              1789663162.687,
+              "983"
+            ],
+            [
+              1789663167.687,
+              "983"
+            ],
+            [
+              1789663172.687,
+              "983"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "12",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_USED",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "981"
+            ],
+            [
+              1789663142.687,
+              "981"
+            ],
+            [
+              1789663147.687,
+              "981"
+            ],
+            [
+              1789663152.687,
+              "981"
+            ],
+            [
+              1789663157.687,
+              "981"
+            ],
+            [
+              1789663162.687,
+              "981"
+            ],
+            [
+              1789663167.687,
+              "981"
+            ],
+            [
+              1789663172.687,
+              "981"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "13",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_USED",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "981"
+            ],
+            [
+              1789663142.687,
+              "981"
+            ],
+            [
+              1789663147.687,
+              "981"
+            ],
+            [
+              1789663152.687,
+              "981"
+            ],
+            [
+              1789663157.687,
+              "981"
+            ],
+            [
+              1789663162.687,
+              "981"
+            ],
+            [
+              1789663167.687,
+              "981"
+            ],
+            [
+              1789663172.687,
+              "981"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "7",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_USED",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "981"
+            ],
+            [
+              1789663142.687,
+              "981"
+            ],
+            [
+              1789663147.687,
+              "981"
+            ],
+            [
+              1789663152.687,
+              "981"
+            ],
+            [
+              1789663157.687,
+              "981"
+            ],
+            [
+              1789663162.687,
+              "981"
+            ],
+            [
+              1789663167.687,
+              "981"
+            ],
+            [
+              1789663172.687,
+              "981"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "8",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_USED",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "981"
+            ],
+            [
+              1789663142.687,
+              "981"
+            ],
+            [
+              1789663147.687,
+              "981"
+            ],
+            [
+              1789663152.687,
+              "981"
+            ],
+            [
+              1789663157.687,
+              "981"
+            ],
+            [
+              1789663162.687,
+              "981"
+            ],
+            [
+              1789663167.687,
+              "981"
+            ],
+            [
+              1789663172.687,
+              "981"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "9",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_FB_USED",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "981"
+            ],
+            [
+              1789663142.687,
+              "981"
+            ],
+            [
+              1789663147.687,
+              "981"
+            ],
+            [
+              1789663152.687,
+              "981"
+            ],
+            [
+              1789663157.687,
+              "981"
+            ],
+            [
+              1789663162.687,
+              "981"
+            ],
+            [
+              1789663167.687,
+              "981"
+            ],
+            [
+              1789663172.687,
+              "981"
+            ]
+          ]
+        }
+      ]
+    },
+    "DCGM_FI_DEV_POWER_USAGE": {
+      "query": "DCGM_FI_DEV_POWER_USAGE[38s]",
+      "result_type": "matrix",
+      "series": [
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "10",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_POWER_USAGE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "97.759"
+            ],
+            [
+              1789663142.687,
+              "97.86"
+            ],
+            [
+              1789663147.687,
+              "97.759"
+            ],
+            [
+              1789663152.687,
+              "96.714"
+            ],
+            [
+              1789663157.687,
+              "97.86"
+            ],
+            [
+              1789663162.687,
+              "255.706"
+            ],
+            [
+              1789663167.687,
+              "98.366"
+            ],
+            [
+              1789663172.687,
+              "96.987"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "11",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_POWER_USAGE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "96.714"
+            ],
+            [
+              1789663142.687,
+              "97.759"
+            ],
+            [
+              1789663147.687,
+              "97.759"
+            ],
+            [
+              1789663152.687,
+              "97.86"
+            ],
+            [
+              1789663157.687,
+              "97.86"
+            ],
+            [
+              1789663162.687,
+              "256.585"
+            ],
+            [
+              1789663167.687,
+              "98.468"
+            ],
+            [
+              1789663172.687,
+              "98.039"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "12",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_POWER_USAGE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "97.86"
+            ],
+            [
+              1789663142.687,
+              "97.759"
+            ],
+            [
+              1789663147.687,
+              "97.759"
+            ],
+            [
+              1789663152.687,
+              "97.86"
+            ],
+            [
+              1789663157.687,
+              "97.86"
+            ],
+            [
+              1789663162.687,
+              "250.653"
+            ],
+            [
+              1789663167.687,
+              "98.14"
+            ],
+            [
+              1789663172.687,
+              "98.14"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "13",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_POWER_USAGE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "96.714"
+            ],
+            [
+              1789663142.687,
+              "97.759"
+            ],
+            [
+              1789663147.687,
+              "97.759"
+            ],
+            [
+              1789663152.687,
+              "97.86"
+            ],
+            [
+              1789663157.687,
+              "97.86"
+            ],
+            [
+              1789663162.687,
+              "250.653"
+            ],
+            [
+              1789663167.687,
+              "98.14"
+            ],
+            [
+              1789663172.687,
+              "98.14"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "7",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_POWER_USAGE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "96.987"
+            ],
+            [
+              1789663142.687,
+              "97.86"
+            ],
+            [
+              1789663147.687,
+              "97.86"
+            ],
+            [
+              1789663152.687,
+              "97.86"
+            ],
+            [
+              1789663157.687,
+              "97.86"
+            ],
+            [
+              1789663162.687,
+              "252.145"
+            ],
+            [
+              1789663167.687,
+              "98.468"
+            ],
+            [
+              1789663172.687,
+              "98.14"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "8",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_POWER_USAGE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "96.987"
+            ],
+            [
+              1789663142.687,
+              "97.86"
+            ],
+            [
+              1789663147.687,
+              "97.86"
+            ],
+            [
+              1789663152.687,
+              "97.86"
+            ],
+            [
+              1789663157.687,
+              "97.86"
+            ],
+            [
+              1789663162.687,
+              "258.062"
+            ],
+            [
+              1789663167.687,
+              "98.366"
+            ],
+            [
+              1789663172.687,
+              "98.14"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "9",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_DEV_POWER_USAGE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "96.714"
+            ],
+            [
+              1789663142.687,
+              "97.759"
+            ],
+            [
+              1789663147.687,
+              "97.759"
+            ],
+            [
+              1789663152.687,
+              "97.86"
+            ],
+            [
+              1789663157.687,
+              "97.86"
+            ],
+            [
+              1789663162.687,
+              "256.585"
+            ],
+            [
+              1789663167.687,
+              "98.468"
+            ],
+            [
+              1789663172.687,
+              "98.039"
+            ]
+          ]
+        }
+      ]
+    },
+    "DCGM_FI_PROF_DRAM_ACTIVE": {
+      "query": "DCGM_FI_PROF_DRAM_ACTIVE[38s]",
+      "result_type": "matrix",
+      "series": [
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "10",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_DRAM_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.036332"
+            ],
+            [
+              1789663167.687,
+              "0.277221"
+            ],
+            [
+              1789663172.687,
+              "0.000001"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "11",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_DRAM_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.015099"
+            ],
+            [
+              1789663167.687,
+              "0.251452"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "12",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_DRAM_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0.000001"
+            ],
+            [
+              1789663142.687,
+              "0.000001"
+            ],
+            [
+              1789663147.687,
+              "0.000001"
+            ],
+            [
+              1789663152.687,
+              "0.000001"
+            ],
+            [
+              1789663157.687,
+              "0.000001"
+            ],
+            [
+              1789663162.687,
+              "0.02574"
+            ],
+            [
+              1789663167.687,
+              "0.131029"
+            ],
+            [
+              1789663172.687,
+              "0.000001"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "13",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_DRAM_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.010024"
+            ],
+            [
+              1789663167.687,
+              "0.303576"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "7",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_DRAM_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.037999"
+            ],
+            [
+              1789663167.687,
+              "0.103063"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "8",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_DRAM_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0.000001"
+            ],
+            [
+              1789663142.687,
+              "0.000001"
+            ],
+            [
+              1789663147.687,
+              "0.000001"
+            ],
+            [
+              1789663152.687,
+              "0.000001"
+            ],
+            [
+              1789663157.687,
+              "0.000001"
+            ],
+            [
+              1789663162.687,
+              "0.036205"
+            ],
+            [
+              1789663167.687,
+              "0.167594"
+            ],
+            [
+              1789663172.687,
+              "0.000001"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "9",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_DRAM_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.05512"
+            ],
+            [
+              1789663167.687,
+              "0.117281"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        }
+      ]
+    },
+    "DCGM_FI_PROF_GR_ENGINE_ACTIVE": {
+      "query": "DCGM_FI_PROF_GR_ENGINE_ACTIVE[38s]",
+      "result_type": "matrix",
+      "series": [
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "10",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_GR_ENGINE_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.069996"
+            ],
+            [
+              1789663167.687,
+              "0.534584"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "11",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_GR_ENGINE_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.029827"
+            ],
+            [
+              1789663167.687,
+              "0.49691"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "12",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_GR_ENGINE_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.050628"
+            ],
+            [
+              1789663167.687,
+              "0.258142"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "13",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_GR_ENGINE_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.01967"
+            ],
+            [
+              1789663167.687,
+              "0.596078"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "7",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_GR_ENGINE_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.072896"
+            ],
+            [
+              1789663167.687,
+              "0.197851"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "8",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_GR_ENGINE_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.069391"
+            ],
+            [
+              1789663167.687,
+              "0.321404"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "DCGM_FI_DRIVER_VERSION": "595.71.05",
+            "GPU_I_ID": "9",
+            "GPU_I_PROFILE": "1g.5gb",
+            "Hostname": "ai-lab-a100-2",
+            "UUID": "GPU-8fb50131-6654-9551-735c-932a7c87f13c",
+            "__name__": "DCGM_FI_PROF_GR_ENGINE_ACTIVE",
+            "container": "nvidia-dcgm-exporter",
+            "device": "nvidia0",
+            "endpoint": "gpu-metrics",
+            "gpu": "0",
+            "instance": "10.42.1.95:9400",
+            "job": "nvidia-dcgm-exporter",
+            "modelName": "NVIDIA A100-SXM4-40GB",
+            "namespace": "gpu-operator",
+            "pci_bus_id": "00000000:00:04.0",
+            "pod": "nvidia-dcgm-exporter-nblxq",
+            "service": "nvidia-dcgm-exporter"
+          },
+          "values": [
+            [
+              1789663137.687,
+              "0"
+            ],
+            [
+              1789663142.687,
+              "0"
+            ],
+            [
+              1789663147.687,
+              "0"
+            ],
+            [
+              1789663152.687,
+              "0"
+            ],
+            [
+              1789663157.687,
+              "0"
+            ],
+            [
+              1789663162.687,
+              "0.105818"
+            ],
+            [
+              1789663167.687,
+              "0.225413"
+            ],
+            [
+              1789663172.687,
+              "0"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "prometheus_url": "http://10.146.0.55:30090",
+  "query_window": {
+    "end_unix_s": 1789663173.5089104,
+    "padding_after_seconds": 12.129169940948486,
+    "padding_before_seconds": 20.0,
+    "sample_source": "raw Prometheus samples via instant range-vector query",
+    "start_unix_s": 1789663136.7526224,
+    "step_seconds": 5.0
+  },
+  "schema_version": 2,
+  "workload_window": {
+    "duration_seconds": 4.627118110656738,
+    "end_unix_s": 1789663161.3797405,
+    "start_unix_s": 1789663156.7526224
+  }
+}

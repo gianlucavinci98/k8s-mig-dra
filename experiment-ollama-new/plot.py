@@ -204,7 +204,7 @@ def plot_useful_work_efficiency(
     )
     plt.title(f"Useful work and energy efficiency — {token_output} output tokens")
     plt.xlabel("User Throughput (token/s)")
-    plt.ylabel("GPU Energy per Generated Token (J/token, lower is better)")
+    plt.ylabel("GPU Energy per Generated Token (J/token)")
     plt.tight_layout()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     output_file = OUTPUT_DIR / f"throughput-vs-energy-per-token-{token_output}.png"

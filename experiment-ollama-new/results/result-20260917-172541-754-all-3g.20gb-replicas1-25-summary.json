@@ -1,0 +1,119 @@
+{
+  "generated_at_utc": "2026-09-17T17:25:55.120253Z",
+  "gpu_metrics": {
+    "correlations": {
+      "active_requests_vs_physical_sm_utilization_pearson_r": null,
+      "active_requests_vs_power_pearson_r": null,
+      "power_vs_physical_sm_slope_w_per_100_percentage_points": 3.6533732283157163,
+      "power_vs_physical_sm_utilization_pearson_r": 0.7326740112523307
+    },
+    "dram_activity": {
+      "capacity_equivalent_active_seconds": 0.097705,
+      "configured_capacity_avg_pct": 9.702582220555422,
+      "observed_episode_physical_avg_pct": 0.97705,
+      "physical_gpu_avg_pct": 9.702582220555422
+    },
+    "energy": {
+      "dynamic_above_idle_j": 0.0,
+      "dynamic_above_idle_wh": 0.0,
+      "generated_tokens_per_j": 2.5727449803597193,
+      "generated_tokens_per_wh": 9261.881929294988,
+      "method": "idle power times workload duration plus the delayed above-idle power-pulse integral",
+      "per_completed_request_j": 9.717247605514526,
+      "per_generated_token_j": 0.3886899042205811,
+      "total_j": 97.17247605514527,
+      "total_wh": 0.026992354459762575
+    },
+    "framebuffer": {
+      "configured_capacity_utilization_avg_pct": 3.142572779298333,
+      "configured_physical_memory_avg_pct": 98.1201171875,
+      "physical_capacity_utilization_avg_pct": 3.08349609375,
+      "used_avg_mib": 1263.0,
+      "used_mib_seconds": 12630.0,
+      "used_peak_mib": 1263.0
+    },
+    "method_notes": [
+      "Raw Prometheus samples are used; query_range evaluation timestamps are avoided.",
+      "The delayed GPU pulse is bounded by adjacent idle SM samples and integrated independently of HTTP timestamps.",
+      "Run-average SM and DRAM values equal the delayed pulse area divided by the actual workload wall time.",
+      "GR_ENGINE_ACTIVE is weighted by MIG compute slices and normalized to seven A100 compute slices for the physical-GPU view.",
+      "DRAM_ACTIVE is weighted by the memory capacity encoded in GPU_I_PROFILE for the physical-GPU view.",
+      "DCGM board-power copies exposed for each MIG instance are averaged per UUID and are never added together.",
+      "Energy combines idle baseline over actual wall time with the delayed above-idle power-pulse integral.",
+      "Runs shorter than two telemetry intervals are coarse comparative measurements, not pointwise traces.",
+      "Per-request GPU attribution and request-to-GPU time correlation are disabled because delayed 5-second telemetry cannot support them."
+    ],
+    "power": {
+      "avg_w": 96.497,
+      "deduplication": "mean per physical GPU UUID, then sum across physical GPUs",
+      "idle_avg_w": 96.497,
+      "observed_episode_avg_w": 96.00025000000001,
+      "p95_w": 96.0971,
+      "peak_w": 96.107
+    },
+    "sampling": {
+      "observed_median_interval_seconds": 5.0,
+      "partition_count": 2,
+      "physical_gpu_count": 1,
+      "prometheus_step_seconds": 5.0,
+      "raw_samples_used": true,
+      "system_samples_in_episode": 3
+    },
+    "sm_activity": {
+      "capacity_equivalent_active_seconds": 0.2921957142857143,
+      "configured_capacity_avg_pct": 33.85253329999735,
+      "observed_episode_physical_avg_pct": 2.921957142857143,
+      "physical_gpu_avg_pct": 29.01645711428344,
+      "physical_gpu_p95_pct": 5.259522857142857,
+      "physical_gpu_peak_pct": 5.843914285714286
+    },
+    "telemetry_episode": {
+      "active_sample_count": 1,
+      "capture_status": "settled",
+      "complete": true,
+      "detected": true,
+      "duration_seconds": 10.0,
+      "end_unix_s": 1789665954.694,
+      "first_active_delay_from_workload_start_s": 7.796000003814697,
+      "physical_activity_threshold_pct": 0.014285714285714287,
+      "pointwise_alignment_supported": false,
+      "quality": "coarse_but_comparable",
+      "start_unix_s": 1789665944.694
+    },
+    "useful_work": {
+      "generated_tokens": 250,
+      "tokens_per_capacity_equivalent_sm_second": 855.590919980248
+    },
+    "workload_window": {
+      "duration_seconds": 1.0069999694824219,
+      "end_unix_s": 1789665942.905,
+      "start_unix_s": 1789665941.898
+    }
+  },
+  "request_metrics": {
+    "average_tokens_per_second_per_request": 357.8129639168493,
+    "completed_requests": 10,
+    "gpu_time_s": 0.698700718,
+    "latency_avg_ms": 574.1767721,
+    "latency_p95_ms": 977.876628,
+    "throughput_gpu_tok_s": 357.80698882865613,
+    "throughput_real_tok_s": 248.2621648460775,
+    "total_tokens": 250,
+    "wall_time_s": 1.007
+  },
+  "schema_version": 1,
+  "test_configuration": {
+    "concurrency": 10,
+    "experiment_end_unix_s": 1789665942.9141936,
+    "experiment_start_unix_s": 1789665941.8965614,
+    "mig_config": "all-3g.20gb",
+    "num_predict": 25,
+    "ollama_replicas": 1,
+    "prometheus_activity_threshold_pct": 0.1,
+    "prometheus_activity_wait_timeout_seconds": 25,
+    "prometheus_sample_interval_seconds": 5,
+    "prometheus_url": "http://10.146.0.55:30090",
+    "run_timestamp": "20260917-172541-754",
+    "total_requests": 10
+  }
+}

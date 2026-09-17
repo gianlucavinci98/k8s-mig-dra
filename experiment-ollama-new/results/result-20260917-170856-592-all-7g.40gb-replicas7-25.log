@@ -1,0 +1,123 @@
+[17:08:56] Starting load test
+[17:08:56] MIG Config: all-7g.40gb
+[17:08:56] Ollama Replicas: 7
+[17:08:56] Total requests: 10
+[17:08:56] Concurrency: 10
+[17:08:56] Output tokens (effort): 25
+[17:08:56] Prometheus URL: http://10.146.0.55:30090
+[17:08:56] DCGM/Prometheus nominal sample interval: 5s
+[17:08:56] Delayed activity wait timeout: 25s
+[17:08:56] Checking required DCGM metrics
+Prometheus preflight OK (DCGM_FI_PROF_GR_ENGINE_ACTIVE=1, DCGM_FI_PROF_DRAM_ACTIVE=1, DCGM_FI_DEV_FB_USED=1, DCGM_FI_DEV_FB_FREE=1, DCGM_FI_DEV_POWER_USAGE=1)
+[17:08:56] REQUEST: 1 - STARTED in background (active_jobs=1)
+[17:08:56] REQUEST: 2 - STARTED in background (active_jobs=2)
+[17:08:56] REQUEST: 3 - STARTED in background (active_jobs=3)
+[17:08:56] REQUEST: 4 - STARTED in background (active_jobs=4)
+[17:08:56] REQUEST: 5 - STARTED in background (active_jobs=5)
+[17:08:56] REQUEST: 6 - STARTED in background (active_jobs=6)
+[17:08:56] REQUEST: 7 - STARTED in background (active_jobs=7)
+[17:08:56] REQUEST: 8 - STARTED in background (active_jobs=8)
+[17:08:56] REQUEST: 9 - STARTED in background (active_jobs=9)
+[17:08:56] REQUEST: 10 - STARTED in background (active_jobs=10)
+[17:08:56] WAITING -> active_jobs=10
+[17:08:57] REQUEST: 1 - COMPLETED
+[17:08:57] RESUMING -> a request finished (active_jobs=9)
+[17:08:57] ALL REQUESTS LAUNCHED
+[17:08:57] WAITING for remaining requests to finish (active_jobs=9)
+[17:08:57] REQUEST: 2 - COMPLETED
+[17:08:57] REQUEST COMPLETED -> remaining active_jobs=8
+[17:08:57] WAITING for remaining requests to finish (active_jobs=8)
+[17:08:57] REQUEST: 3 - COMPLETED
+[17:08:57] REQUEST COMPLETED -> remaining active_jobs=7
+[17:08:57] WAITING for remaining requests to finish (active_jobs=7)
+[17:08:57] REQUEST: 4 - COMPLETED
+[17:08:57] REQUEST COMPLETED -> remaining active_jobs=6
+[17:08:57] REQUEST: 10 - COMPLETED
+[17:08:57] WAITING for remaining requests to finish (active_jobs=6)
+[17:08:57] REQUEST COMPLETED -> remaining active_jobs=5
+[17:08:57] WAITING for remaining requests to finish (active_jobs=5)
+[17:08:57] REQUEST: 8 - COMPLETED
+[17:08:57] REQUEST COMPLETED -> remaining active_jobs=4
+[17:08:57] WAITING for remaining requests to finish (active_jobs=4)
+[17:08:57] REQUEST: 7 - COMPLETED
+[17:08:57] REQUEST COMPLETED -> remaining active_jobs=3
+[17:08:57] WAITING for remaining requests to finish (active_jobs=3)
+[17:08:57] REQUEST: 5 - COMPLETED
+[17:08:57] REQUEST COMPLETED -> remaining active_jobs=2
+[17:08:57] WAITING for remaining requests to finish (active_jobs=2)
+[17:08:57] REQUEST: 6 - COMPLETED
+[17:08:57] REQUEST COMPLETED -> remaining active_jobs=1
+[17:08:57] WAITING for remaining requests to finish (active_jobs=1)
+[17:08:57] REQUEST: 9 - COMPLETED
+[17:08:57] REQUEST COMPLETED -> remaining active_jobs=0
+[17:08:57] Load test completed
+[17:08:57] Waiting for and collecting the delayed GPU activity episode
+GPU telemetry: waiting for delayed activity ...
+GPU telemetry: waiting for delayed activity ...
+GPU telemetry: waiting for return to idle ...
+GPU telemetry: waiting for return to idle ...
+GPU telemetry: waiting for return to idle ...
+Saved 5 metrics / 5 series to results/gpu-metrics.json (activity capture: settled, wait 10.0s)
+[17:09:07] Running results evaluation
+
+
+--- PER-REQUEST STATS ---
+Request 01 | res_time: 17:08:57.23 | latency:   0.44 s | tokens: 25 | gen_time: 0.331 s | tok/s: 75.47
+Request 02 | res_time: 17:08:57.24 | latency:   0.45 s | tokens: 25 | gen_time: 0.344 s | tok/s: 72.62
+Request 03 | res_time: 17:08:57.25 | latency:   0.46 s | tokens: 25 | gen_time: 0.342 s | tok/s: 73.18
+Request 04 | res_time: 17:08:57.27 | latency:   0.48 s | tokens: 25 | gen_time: 0.346 s | tok/s: 72.29
+Request 05 | res_time: 17:08:57.27 | latency:   0.47 s | tokens: 25 | gen_time: 0.346 s | tok/s: 72.35
+Request 06 | res_time: 17:08:57.48 | latency:   0.68 s | tokens: 25 | gen_time: 0.213 s | tok/s: 117.42
+Request 07 | res_time: 17:08:57.49 | latency:   0.69 s | tokens: 25 | gen_time: 0.209 s | tok/s: 119.76
+Request 08 | res_time: 17:08:57.50 | latency:   0.71 s | tokens: 25 | gen_time: 0.203 s | tok/s: 123.40
+Request 09 | res_time: 17:08:57.57 | latency:   0.77 s | tokens: 25 | gen_time: 0.057 s | tok/s: 440.09
+Request 10 | res_time: 17:08:57.64 | latency:   0.84 s | tokens: 25 | gen_time: 0.054 s | tok/s: 465.10
+
+--- TEST CONFIGURATION ---
+MIG Config: all-7g.40gb
+Ollama Replicas: 7
+Total requests: 10
+Concurrency: 10
+Requested output tokens (effort): 25
+
+Total tokens: 250
+Wall time (s): 0.87
+GPU time (s): 2.44
+
+--- REQUEST METRICS ---
+Throughput REAL (tok/s): 287.36
+Throughput GPU (tok/s): 102.32
+Avg tokens/sec per request: 163.17
+Latency avg (ms): 600.06
+Latency p95 (ms): 839.28
+
+--- GPU TELEMETRY CAPTURE ---
+Quality: coarse_but_comparable
+First active sample delay: 4.39 s
+Observed GPU episode duration: 10.00 s
+Active telemetry samples: 1
+
+--- GPU UTILIZATION AND MEMORY ---
+Workload-normalized physical GPU SM utilization: 82.57%
+Observed-episode physical GPU SM avg: 7.18%
+Physical GPU SM peak: 14.37%
+Workload-normalized configured MIG SM utilization: 82.57%
+Workload-normalized physical GPU DRAM activity: 11.31%
+Framebuffer used avg: 8980.50 MiB
+Physical framebuffer utilization avg: 21.93%
+
+--- POWER, ENERGY, AND USEFUL WORK ---
+Idle power avg: 97.86 W
+Workload-equivalent power avg: 97.86 W
+Observed-episode power avg: 97.78 W
+Power p95: 97.85 W
+Energy: 0.023649 Wh
+Dynamic energy above idle: 0.000 J
+Energy per generated token: 0.340553 J/token
+Generated tokens per joule: 2.936403 token/J
+Power-SM Pearson correlation: -0.5000
+
+Run appended to CSV table: /home/gianluca/workspace/k8s-mig-dra/experiment-ollama-new/results/results_table.csv
+Per-request stats appended to CSV table: results/result-20260917-170856-592-all-7g.40gb-replicas7-25.csv
+GPU time series written to: /home/gianluca/workspace/k8s-mig-dra/experiment-ollama-new/results/gpu-metrics.csv
+Run summary written to: /home/gianluca/workspace/k8s-mig-dra/experiment-ollama-new/results/run-summary.json
