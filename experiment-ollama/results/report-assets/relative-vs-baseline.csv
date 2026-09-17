@@ -1,0 +1,19 @@
+case,concurrency,throughput_change_pct,wall_time_change_pct,latency_avg_change_pct,latency_p95_change_pct
+Restricted instance,10,-19.211,23.810,23.062,23.823
+Time-sharing,10,-1.530,1.190,20.876,1.514
+Multiple instances,10,30.778,-23.810,-22.596,-23.625
+Restricted instance,100,-19.002,23.443,23.236,23.430
+Time-sharing,100,0.724,-0.733,1.964,1.125
+Multiple instances,100,51.983,-34.188,-50.892,-44.009
+Restricted instance,200,-20.275,25.496,29.092,26.844
+Time-sharing,200,0.832,-0.806,0.756,0.818
+Multiple instances,200,86.458,-46.340,-51.351,-54.631
+Restricted instance,300,-18.557,22.813,24.200,27.593
+Time-sharing,300,2.802,-2.701,-3.918,0.612
+Multiple instances,300,118.944,-54.333,-54.584,-57.078
+Restricted instance,400,-18.454,22.649,22.355,23.485
+Time-sharing,400,-0.192,0.212,-1.473,1.486
+Multiple instances,400,122.978,-55.156,-55.740,-58.659
+Restricted instance,500,-17.418,21.073,17.762,20.888
+Time-sharing,500,-5.376,5.679,12.669,6.887
+Multiple instances,500,121.304,-54.809,-55.594,-58.588

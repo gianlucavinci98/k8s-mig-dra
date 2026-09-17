@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="680" viewBox="0 0 1120 680">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="560.0" y="36.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#243042">Tail latency (25 output tokens)</text>
+<line x1="105" y1="575.0" x2="1085" y2="575.0" stroke="#dfe5ec" stroke-width="1"/>
+<text x="93.0" y="580.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">0</text>
+<line x1="105" y1="475.0" x2="1085" y2="475.0" stroke="#dfe5ec" stroke-width="1"/>
+<text x="93.0" y="480.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">10</text>
+<line x1="105" y1="375.0" x2="1085" y2="375.0" stroke="#dfe5ec" stroke-width="1"/>
+<text x="93.0" y="380.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">20</text>
+<line x1="105" y1="275.0" x2="1085" y2="275.0" stroke="#dfe5ec" stroke-width="1"/>
+<text x="93.0" y="280.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">30</text>
+<line x1="105" y1="175.0" x2="1085" y2="175.0" stroke="#dfe5ec" stroke-width="1"/>
+<text x="93.0" y="180.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">40</text>
+<line x1="105" y1="75.0" x2="1085" y2="75.0" stroke="#dfe5ec" stroke-width="1"/>
+<text x="93.0" y="80.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">50</text>
+<line x1="105.0" y1="75" x2="105.0" y2="575" stroke="#eff2f6" stroke-width="1"/>
+<text x="105.0" y="602.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">10</text>
+<line x1="285.0" y1="75" x2="285.0" y2="575" stroke="#eff2f6" stroke-width="1"/>
+<text x="285.0" y="602.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">100</text>
+<line x1="485.0" y1="75" x2="485.0" y2="575" stroke="#eff2f6" stroke-width="1"/>
+<text x="485.0" y="602.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">200</text>
+<line x1="685.0" y1="75" x2="685.0" y2="575" stroke="#eff2f6" stroke-width="1"/>
+<text x="685.0" y="602.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">300</text>
+<line x1="885.0" y1="75" x2="885.0" y2="575" stroke="#eff2f6" stroke-width="1"/>
+<text x="885.0" y="602.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">400</text>
+<line x1="1085.0" y1="75" x2="1085.0" y2="575" stroke="#eff2f6" stroke-width="1"/>
+<text x="1085.0" y="602.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">500</text>
+<line x1="105" y1="575" x2="1085" y2="575" stroke="#526273" stroke-width="1.5"/>
+<line x1="105" y1="75" x2="105" y2="575" stroke="#526273" stroke-width="1.5"/>
+<text x="595.0" y="650.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#243042">Concurrent requests</text>
+<text x="27.0" y="325.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#243042" transform="rotate(-90 27.0 325.0)">Reported latency p95 (s)</text>
+<polyline points="105.0,566.9 285.0,498.8 485.0,425.8 685.0,350.6 885.0,273.0 1085.0,194.7" fill="none" stroke="#3b5b92" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="105.0" cy="566.9" r="5" fill="#ffffff" stroke="#3b5b92" stroke-width="3"/>
+<circle cx="285.0" cy="498.8" r="5" fill="#ffffff" stroke="#3b5b92" stroke-width="3"/>
+<circle cx="485.0" cy="425.8" r="5" fill="#ffffff" stroke="#3b5b92" stroke-width="3"/>
+<circle cx="685.0" cy="350.6" r="5" fill="#ffffff" stroke="#3b5b92" stroke-width="3"/>
+<circle cx="885.0" cy="273.0" r="5" fill="#ffffff" stroke="#3b5b92" stroke-width="3"/>
+<circle cx="1085.0" cy="194.7" r="5" fill="#ffffff" stroke="#3b5b92" stroke-width="3"/>
+<polyline points="105.0,565.0 285.0,480.9 485.0,385.8 685.0,288.7 885.0,202.1 1085.0,115.3" fill="none" stroke="#d17b0f" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="105.0" cy="565.0" r="5" fill="#ffffff" stroke="#d17b0f" stroke-width="3"/>
+<circle cx="285.0" cy="480.9" r="5" fill="#ffffff" stroke="#d17b0f" stroke-width="3"/>
+<circle cx="485.0" cy="385.8" r="5" fill="#ffffff" stroke="#d17b0f" stroke-width="3"/>
+<circle cx="685.0" cy="288.7" r="5" fill="#ffffff" stroke="#d17b0f" stroke-width="3"/>
+<circle cx="885.0" cy="202.1" r="5" fill="#ffffff" stroke="#d17b0f" stroke-width="3"/>
+<circle cx="1085.0" cy="115.3" r="5" fill="#ffffff" stroke="#d17b0f" stroke-width="3"/>
+<polyline points="105.0,566.8 285.0,497.9 485.0,424.6 685.0,349.2 885.0,268.6 1085.0,168.5" fill="none" stroke="#8c5aa8" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="105.0" cy="566.8" r="5" fill="#ffffff" stroke="#8c5aa8" stroke-width="3"/>
+<circle cx="285.0" cy="497.9" r="5" fill="#ffffff" stroke="#8c5aa8" stroke-width="3"/>
+<circle cx="485.0" cy="424.6" r="5" fill="#ffffff" stroke="#8c5aa8" stroke-width="3"/>
+<circle cx="685.0" cy="349.2" r="5" fill="#ffffff" stroke="#8c5aa8" stroke-width="3"/>
+<circle cx="885.0" cy="268.6" r="5" fill="#ffffff" stroke="#8c5aa8" stroke-width="3"/>
+<circle cx="1085.0" cy="168.5" r="5" fill="#ffffff" stroke="#8c5aa8" stroke-width="3"/>
+<polyline points="105.0,568.8 285.0,532.3 485.0,507.3 685.0,478.7 885.0,450.2 1085.0,417.5" fill="none" stroke="#17855b" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="105.0" cy="568.8" r="5" fill="#ffffff" stroke="#17855b" stroke-width="3"/>
+<circle cx="285.0" cy="532.3" r="5" fill="#ffffff" stroke="#17855b" stroke-width="3"/>
+<circle cx="485.0" cy="507.3" r="5" fill="#ffffff" stroke="#17855b" stroke-width="3"/>
+<circle cx="685.0" cy="478.7" r="5" fill="#ffffff" stroke="#17855b" stroke-width="3"/>
+<circle cx="885.0" cy="450.2" r="5" fill="#ffffff" stroke="#17855b" stroke-width="3"/>
+<circle cx="1085.0" cy="417.5" r="5" fill="#ffffff" stroke="#17855b" stroke-width="3"/>
+<rect x="123" y="93" width="265" height="130" rx="6" fill="#ffffff" fill-opacity="0.94" stroke="#c8d0da"/>
+<line x1="137" y1="117" x2="171" y2="117" stroke="#3b5b92" stroke-width="4"/>
+<text x="181.0" y="122.0" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">Baseline</text>
+<line x1="137" y1="145" x2="171" y2="145" stroke="#d17b0f" stroke-width="4"/>
+<text x="181.0" y="150.0" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">Restricted instance</text>
+<line x1="137" y1="173" x2="171" y2="173" stroke="#8c5aa8" stroke-width="4"/>
+<text x="181.0" y="178.0" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">Time-sharing</text>
+<line x1="137" y1="201" x2="171" y2="201" stroke="#17855b" stroke-width="4"/>
+<text x="181.0" y="206.0" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#243042">Multiple instances</text>
+</svg>
