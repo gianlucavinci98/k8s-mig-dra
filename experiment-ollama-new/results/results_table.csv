@@ -1,7 +1,6 @@
 MIG config,repliche Ollama,concorrenza,token output,Total tokens,Wall time,GPU time,Throughput REAL,Throughput GPU,Latency avg,Latency p95,GPU telemetry quality,GPU active samples,GPU first-active delay (s),GPU SM physical avg (%),GPU SM configured avg (%),GPU DRAM physical avg (%),GPU FB used avg (MiB),GPU FB used peak (MiB),GPU physical memory util avg (%),GPU power avg (W),GPU power p95 (W),GPU energy (Wh),GPU energy/token (J),Generated tokens/J,Power-SM Pearson r
 all-1g.5gb,7,100,25,2500,5.36,16.05,466.77,155.76,2156.92,4285.88,coarse_but_comparable,2,2.623,40.563,40.563,18.32,6867.0,6867.0,16.765,190.297,181.891,0.28312,0.407693,2.452827,0.340267
 all-1g.5gb,7,10,25,250,0.65,1.51,385.21,165.16,400.19,621.17,coarse_but_comparable,1,6.855,33.598,33.598,15.12,6869.0,6869.0,16.77,98.074,97.851,0.017681,0.2546,3.927732,-0.735666
-all-1g.5gb,7,100,25,2500,4.62,15.77,541.59,158.51,2115.83,3921.07,coarse_but_comparable,2,5.933,47.175,47.175,21.227,6869.0,6869.0,16.77,268.196,230.942,0.343887,0.495198,2.019395,-0.179206
 all-1g.5gb,7,200,25,5000,8.83,32.97,566.32,151.66,3837.74,7053.9,coarse_but_comparable,3,5.931,49.474,49.474,22.226,6870.25,6871.0,16.773,174.691,174.255,0.42843,0.30847,3.24181,0.796955
 all-1g.5gb,7,300,25,7500,11.2,49.45,669.64,151.67,5707.03,9649.94,good,4,5.923,58.492,58.492,26.279,6873.4,6875.0,16.781,185.69,225.698,0.577702,0.277297,3.606242,0.595314
 all-1g.5gb,7,400,25,10000,14.8,65.51,675.49,152.64,7611.4,12475.95,good,3,9.851,58.941,58.941,26.509,6875.75,6877.0,16.786,207.533,257.473,0.85342,0.307231,3.254878,0.640166
